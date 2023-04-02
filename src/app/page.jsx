@@ -45,6 +45,7 @@ export default function Home() {
             src={CidadeImagem}
             width={500}
             height={500}
+            alt='Cidade'
           />
         </div>
         <div className={styles.logins}>

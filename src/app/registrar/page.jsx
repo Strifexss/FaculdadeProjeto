@@ -48,6 +48,7 @@ export default function registrar() {
                         src={CidadeImagem}
                         width={500}
                         height={500}
+                        alt="Cidade"
                     />
                     <h1>Gerencie a sua academia com a melhor ferramenta do mercado</h1>
                     <p>Junte-se a milhares de devs e acelere na direção dos seus objetivos</p>
