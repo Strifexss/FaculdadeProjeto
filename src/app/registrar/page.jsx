@@ -5,8 +5,11 @@ import Image from "next/image"
 import CidadeImagem from "../imgs/purpleCidade.webp"
 import {motion} from "framer-motion"
 import axios from "axios"
+import { useRouter } from 'next/navigation';
+
 export default function registrar() {
 
+    const { push } = useRouter();
 
     function  Registrar() {
         const email = document.getElementById("email").value
@@ -23,6 +26,10 @@ export default function registrar() {
          if(response.data.errno === 1062) {
                  window.alert("Email já cadastrado")
             }
+        else {
+            window.alert("Cadastrado com sucesso")
+            push("/")
+        }
         })
     }
 
