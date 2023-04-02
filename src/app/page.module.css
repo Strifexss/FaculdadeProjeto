@@ -1,3 +1,63 @@
 .main {
-  color: red;
+  background-color: #121214;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  border-radius: 1rem;
+  width: 65rem;
+  height: 30rem;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.logins {
+  background-color: #202024;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logins input {
+  margin: 0.5rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  background-color: #121214;
+  border: none;
+  outline: 0;
+  transition: 0.1s;
+  color: #fff;
+  width: 60%;
+  padding: 1rem;
+}
+
+.logins input:focus {
+  border: solid 2.5px #8257E5;
+}
+
+.logins input::placeholder {
+  color: rgb(122, 122, 122);
+}
+
+.logins button {
+  cursor: pointer;
+  width: 60%;
+  height: 3.5rem;
+  margin: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: lighter;
+  color: #fff;
+  background-color: #8257E5;
+  transition: 0.1s;
+}
+
+.logins button:hover {
+  background-color: #4e348a;
 }
