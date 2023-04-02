@@ -1,12 +1,18 @@
+"use client"
 import styles from './page.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
 import CidadeImagem from "./imgs/purpleCidade.webp"
-
+import {motion} from "framer-motion"
 export default function Home() {
+  
   return (
     <div className={styles.main}>
-      <div className={styles.container}> 
+      <motion.div className={styles.container}
+        initial={{x: -60, opacity: 0}}
+        animate={{x: 0, opacity: 1}}
+        transition={{ duration: 0.2 }}
+      > 
         <div>
           <Image
             src={CidadeImagem}
@@ -22,7 +28,7 @@ export default function Home() {
           </button>
           <Link href="/registrar"><p>Não tem uma conta? <span>Registre-se</span></p></Link>
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }
