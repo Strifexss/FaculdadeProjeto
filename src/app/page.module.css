@@ -61,3 +61,17 @@
 .logins button:hover {
   background-color: #4e348a;
 }
+
+.logins a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.logins a span {
+  color: #8257E5;
+}
+
+.main img {
+  width: 100%;
+  height: 100%;
+}
