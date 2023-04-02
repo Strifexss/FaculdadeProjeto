@@ -11,7 +11,7 @@ export default function registrar() {
 
     const { push } = useRouter();
 
-    function  Registrar() {
+    function  registrar() {
         const email = document.getElementById("email").value
         const nome = document.getElementById("nome").value
         const senha = document.getElementById("senha").value
@@ -46,7 +46,7 @@ export default function registrar() {
                     <input type="text" placeholder="Seu Nome" id="nome"/>
                     <input type="password" placeholder="Sua Senha" id="senha"/>
                     <p>Ao se registrar, você aceita nossos <span>termos de uso</span> e a nossa <span>política de privacidade</span>.</p>
-                    <button onClick={Registrar}><h2>Cadastrar</h2></button>
+                    <button onClick={registrar}><h2>Cadastrar</h2></button>
                 </div>
                 <div className={styles.infos}>
                     <Image
