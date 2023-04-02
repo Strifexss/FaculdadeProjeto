@@ -26,8 +26,6 @@ export default function Registrar() {
          if(response.data.errno === 1062) {
                  window.alert("Email já cadastrado")
             }
-            window.alert("Cadastrado com sucesso")
-            push("/")
         })
     }
 
