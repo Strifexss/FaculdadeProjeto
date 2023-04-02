@@ -6,3 +6,123 @@
     justify-content: center;
     align-items: center;
   }
+
+  .container {
+    border-radius: 0.5rem;
+    width: 50vw;
+    height: 40rem;
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+
+  .registrar {
+    background-color: #202024;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .registrar h1 {
+    color: #fff;
+    margin: 1.5rem;
+  }
+  
+  .registrar input {
+    margin: 0.5rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    background-color: #121214;
+    border: none;
+    outline: 0;
+    transition: 0.1s;
+    color: #fff;
+    width: 60%;
+    padding: 1rem;
+  }
+  
+  .registrar input:focus {
+    border: solid 2.5px #8257E5;
+  }
+  
+  .registrar input::placeholder {
+    color: rgb(122, 122, 122);
+  }
+  
+  .registrar button {
+    cursor: pointer;
+    width: 60%;
+    height: 3.5rem;
+    margin: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: lighter;
+    color: #fff;
+    background-color: #8257E5;
+    transition: 0.1s;
+  }
+  
+  .registrar button:hover {
+    background-color: #4e348a;
+  }
+
+  .registrar p {
+    text-align: center;
+    width: 60%;
+    color: #fff;
+    font-weight: bold;
+    margin: 1rem;
+  }
+
+  .registrar p span {
+    color: #8257E5;
+    cursor: pointer;
+  }
+
+  .infos {
+    background-color: #121214;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10%;
+}
+
+  .infos h1 {
+    color: #fff;
+    text-align: left;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+  }
+
+  .infos p {
+    color: #c5c3c3;
+  }
+
+  .infos a {
+      text-decoration: none;
+        margin-right: 65%;
+        margin-top: 5rem;
+  }
+
+  .infos a p {
+    color: #8257E5;
+    font-weight: bold;
+  }
+
+
+  @media screen and (max-width: 768px) {
+    .container {
+        border-radius: 0.5rem;
+        width: 80%;
+        height: 40rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .infos {
+        display: none;
+      }
+  }
