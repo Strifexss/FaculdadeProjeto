@@ -7,7 +7,7 @@ import {motion} from "framer-motion"
 import axios from 'axios'
 import { useRouter } from 'next/navigation';
 
-export default function Home() {
+export default function home() {
 
   const { push } = useRouter();
 
