@@ -6,6 +6,7 @@ import CidadeImagem from "./imgs/purpleCidade.webp"
 import {motion} from "framer-motion"
 import axios from 'axios'
 import { useRouter } from 'next/navigation';
+import Cookies from "js-cookies"
 
 export default function Home() {
 
@@ -24,6 +25,8 @@ export default function Home() {
           console.log(response)
           if(response.data[0] !=  null) {
             if(response.data[0].email == email && response.data[0].senha == senha) {
+              Cookies.setItem("email", senha, {expires: 1})
+              console.log(Cookies.getItem("email"))
               push('/landing')
             }
           }
