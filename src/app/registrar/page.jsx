@@ -17,7 +17,7 @@ export default function Registrar() {
         const senha = document.getElementById("senha").value
 
         console.log(email)
-        
+        //asd
        axios.post("https://planet-scale-database-connect.vercel.app/registrar", {
             email: email,
             nome: nome,
