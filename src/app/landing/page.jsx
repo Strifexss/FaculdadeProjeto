@@ -4,7 +4,7 @@ import Cookies from "js-cookies"
 import { useRouter } from 'next/navigation';
 import { useEffect } from "react";
 
-export default function landing() {
+export default function Landing() {
 
     const { push } = useRouter();
 
