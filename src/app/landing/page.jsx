@@ -14,11 +14,16 @@ export default function Landing() {
         }
     },[])
 
-
+    function deslogar() {
+        Cookies.removeItem("email")
+        window.alert("Deslogado")
+        push("/")
+    }
 
     return(
         <div className={styles.main}>
             <h1>Logado!!!!!</h1>
+            <button onClick={deslogar}>Deslogar</button>
         </div>
     )
 }
