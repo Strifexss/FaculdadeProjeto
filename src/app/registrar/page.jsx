@@ -23,9 +23,14 @@ export default function Registrar() {
             nome: nome,
             senha: senha
         }).then((response) => {
+            console.log(response)
          if(response.data.errno === 1062) {
                  window.alert("Email já cadastrado")
             }
+        else if(response.data === "") {
+            window.alert("Email Cadastrado com Sucesso")
+            push("/")
+        }
         })
     }
 
