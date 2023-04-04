@@ -133,3 +133,13 @@
       }
   }
 
+  @media screen and (max-width: 1400px) and (min-width: 770px) {
+    .container {
+      border-radius: 0.5rem;
+      width: 90%;
+      height: 20rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
