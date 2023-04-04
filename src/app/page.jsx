@@ -12,6 +12,7 @@ export default function Home() {
 
   const { push } = useRouter();
 
+  //Teste 
 
   function login() {
     const email = document.getElementById("email").value
