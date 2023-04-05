@@ -36,11 +36,8 @@ export default function usuarios() {
    }
   )
 
-<<<<<<< HEAD
    function cadastrar() {
-=======
   function cadastrar() {
->>>>>>> producao
     const email = document.getElementById("email").value
     const peso = document.getElementById("peso").value
     const nome = document.getElementById("nome").value
