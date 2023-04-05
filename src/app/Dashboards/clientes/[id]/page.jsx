@@ -3,15 +3,6 @@ import styles from "./page.module.css"
 import axios from "axios"
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import { useState } from "react"
-<<<<<<< HEAD
-import {motion} from "framer-motion"
-export default function Usuarios() {
-
-    const [data, setData] = useState([])
-    const [cadastro, setCadastro] = useState(false)
-  
-    const { isLoading, error} =useQuery('repoData', async () =>
-=======
 import Image from "next/image"
 import {motion} from "framer-motion"
 import UserImage from "../../../imgs/icons/userIcon.png"
@@ -23,7 +14,6 @@ export default function usuarios() {
     const [data, setData] = useState([])
     const [cadastro, setCadastro] = useState(false)
   const { isLoading, error} =useQuery('repoData', async () =>
->>>>>>> producao
     await axios.get("https://planet-scale-database-connect.vercel.app/buscarClientes")
    .then(response => {
     console.log(response.data)
