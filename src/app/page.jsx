@@ -13,13 +13,7 @@ export default function Home() {
 
   const { push } = useRouter();
 
-  useEffect(() => {
-    console.log(Cookies.getItem("email"))
-    if(Cookies.getItem("email") !== null) {
-      push(`/landing/${Cookies.getItem("email")}`)
-    }
-  }, [])
-
+ 
   function login() {
     const email = document.getElementById("email").value
     const senha = document.getElementById("senha").value
@@ -34,7 +28,7 @@ export default function Home() {
             if(response.data[0].email == email && response.data[0].senha == senha) {
               Cookies.setItem("email", email, {expires: 1})
               console.log(Cookies.getItem("email"))
-              push(`/landing/${Cookies.getItem("email")}`)
+              push(`/Dashboards/landing/${Cookies.getItem("email")}`)
             }
           }
           else if(response.data[0] == null) {
