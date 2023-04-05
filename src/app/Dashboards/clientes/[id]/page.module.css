@@ -36,7 +36,7 @@
     border-radius: 1.5rem;
     overflow: scroll;
     display: grid;
-    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-columns: 25% 25% 25% 25% 25%;
 }
 
 .container::-webkit-scrollbar {
@@ -64,7 +64,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-   
 }
 
 .infos h3 {
@@ -119,6 +118,61 @@
   }
   
   .botoes input::placeholder {
+    color: rgb(122, 122, 122);
+    font-weight: bold;
+  }
+
+  .cadastro {
+    position: absolute;
+    width: 35%;
+    height: 60vh;
+    background-color: #fff;
+    border-radius: 1.5rem;
+    background-color: #121214;
+    border: solid 2px #2f2053;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cadastro button {
+    cursor: pointer;
+    width: 10rem;
+    height: 3rem;
+    margin: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #8257E5;
+    transition: 0.1s;
+    scale: 90%;
+    
+}
+
+.cadastro button:hover {
+    background-color: #4e348a;
+    scale: 100%;
+  }
+
+  .cadastro input {
+    margin: 0.5rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    background-color: black;
+    border: none;
+    outline: 0;
+    transition: 0.1s;
+    color: #fff;
+    width: 20rem;
+    padding: 1rem;
+  }
+  
+  .cadastro input:focus {
+    border: solid 2.5px #8257E5;
+  }
+  
+  .cadastro input::placeholder {
     color: rgb(122, 122, 122);
     font-weight: bold;
   }
