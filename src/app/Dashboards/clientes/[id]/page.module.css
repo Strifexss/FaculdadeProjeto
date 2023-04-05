@@ -29,16 +29,6 @@
     width: 100%;
 }
 
-<<<<<<< HEAD
-.container {
-    background-color: black;
-    width: 70vw;
-    height: 60vh;
-    border-radius: 1.5rem;
-    overflow: scroll;
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25% 25%;
-=======
 .cardsCampo {
   display: flex;
   justify-content: center;
@@ -46,7 +36,6 @@
   height: 100%;
   flex-wrap: wrap;
   overflow-y: scroll;
->>>>>>> producao
 }
 
 .cardsCampo::-webkit-scrollbar {
@@ -58,14 +47,6 @@
   border-radius: 1rem;    
 }
 
-<<<<<<< HEAD
-.infos {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-=======
 .cards {
   width: 25rem;
   cursor: pointer;
@@ -78,7 +59,6 @@
   flex-direction: column;
   align-items: flex-start;
   color: #fff;
->>>>>>> producao
 }
 
 .cards section {
