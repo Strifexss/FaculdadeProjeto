@@ -9,7 +9,7 @@ import UserImage from "../../../imgs/icons/userIcon.png"
 
 
 
-export default function usuarios() {
+export default function Usuarios() {
 
     const [data, setData] = useState([])
     const [cadastro, setCadastro] = useState(false)
@@ -60,9 +60,9 @@ export default function usuarios() {
                 <div className={styles.cardsCampo}>
                     {data.map(x => {
                         return(
-                            <div className={styles.cards}>
-                        <section>
-                        <Image
+                            <div id={x.id} className={styles.cards}>
+                        <section id={x.id}>
+                        <Image id={x.id}
                             src={UserImage}
                             width={500}
                             height={500}
