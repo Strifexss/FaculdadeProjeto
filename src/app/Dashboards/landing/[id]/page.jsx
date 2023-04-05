@@ -4,17 +4,10 @@ import Cookies from "js-cookies"
 import { useRouter } from 'next/navigation';
 import { useEffect } from "react";
 
-<<<<<<< HEAD:src/app/landing/page.jsx
-export default function Landing() {
-
-    const { push } = useRouter();
-
-=======
 
 
 export default function landing() {
     
->>>>>>> producao:src/app/Dashboards/landing/[id]/page.jsx
     useEffect(() => {
         if(Cookies.getItem("email") == null) {
             push("/invalido")
@@ -22,9 +15,6 @@ export default function landing() {
     }, [])
 
     const { push } = useRouter();
-
-
-       
 
     return(
         <div className={styles.main}>
