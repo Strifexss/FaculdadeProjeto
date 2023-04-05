@@ -13,7 +13,8 @@ export default function Usuarios() {
 
     const [data, setData] = useState([])
     const [cadastro, setCadastro] = useState(false)
-  const { isLoading, error} =useQuery('repoData', async () =>
+ 
+   const { isLoading, error} =useQuery('repoData', async () =>
     await axios.get("https://planet-scale-database-connect.vercel.app/buscarClientes")
    .then(response => {
     console.log(response.data)
@@ -24,7 +25,7 @@ export default function Usuarios() {
      refetchOnWindowFocus: false, //Caso true, ele recarrega o fecth de dados toda vez que o usuario volta pra aba
      staleTime: 1000 * 10   
    }
-  )
+  ) 
 
   function cadastrar() {
     const email = document.getElementById("email").value

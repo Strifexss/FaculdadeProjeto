@@ -36,6 +36,7 @@
   height: 100%;
   flex-wrap: wrap;
   overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 .cardsCampo::-webkit-scrollbar {
@@ -192,4 +193,14 @@
   .cadastro input::placeholder {
     color: rgb(122, 122, 122);
     font-weight: bold;
+  }
+
+  @media screen and (max-width: 768px) {
+    .main {
+      padding-top: 5rem;
+    }
+
+    .cadastro {
+      width: 100%;
+    }
   }

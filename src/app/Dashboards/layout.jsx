@@ -19,7 +19,7 @@ export default function Layout({ children }) {
       push(`/Dashboards/clientes/${Cookies.getItem("email")}`)
     }
 
-    return (
+    return (   
       <div className={styles.main}>
         <div className={styles.barra}>
           <div onClick={clientes}>
@@ -30,6 +30,6 @@ export default function Layout({ children }) {
           </div>
         </div>
         {children}
-      </div>
+      </div>   
     )
   }

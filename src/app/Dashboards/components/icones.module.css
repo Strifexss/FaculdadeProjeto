@@ -25,3 +25,10 @@
 .main:hover {
     scale: 100%;
 }
+
+
+@media screen and (max-width: 768px) {
+    .main h3 {
+        display: none;
+    }
+}
