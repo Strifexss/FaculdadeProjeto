@@ -7,13 +7,13 @@ import {motion} from "framer-motion"
 import axios from 'axios'
 import { useRouter } from 'next/navigation';
 import Cookies from "js-cookies"
+import { useEffect } from 'react'
 
 export default function Home() {
 
   const { push } = useRouter();
 
-  //Teste 
-
+ 
   function login() {
     const email = document.getElementById("email").value
     const senha = document.getElementById("senha").value
@@ -26,9 +26,9 @@ export default function Home() {
           console.log(response)
           if(response.data[0] !=  null) {
             if(response.data[0].email == email && response.data[0].senha == senha) {
-              Cookies.setItem("email", senha, {expires: 1})
+              Cookies.setItem("email", email, {expires: 1})
               console.log(Cookies.getItem("email"))
-              push('/landing')
+              push(`/Dashboards/landing/${Cookies.getItem("email")}`)
             }
           }
           else if(response.data[0] == null) {
