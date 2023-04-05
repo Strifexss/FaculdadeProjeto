@@ -3,7 +3,8 @@ import styles from "./page.module.css"
 import axios from "axios"
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import { useState } from "react"
-export default function usuarios() {
+
+export default function Usuarios() {
 
     const [data, setData] = useState([])
 
@@ -36,7 +37,7 @@ export default function usuarios() {
                         <div className={styles.infos}>
                             {data.map(x => {
                                 return(
-                                    <h3>{x.nome}</h3>
+                                    <h3 key={x.id}>{x.nome}</h3>
                                 )
                             })}
                         </div>
@@ -46,7 +47,7 @@ export default function usuarios() {
                         <div className={styles.infos}>
                         {data.map(x => {
                                 return(
-                                    <h3>{x.email}</h3>
+                                    <h3 key={x.id}>{x.email}</h3>
                                 )
                             })}
                         </div>
@@ -56,7 +57,7 @@ export default function usuarios() {
                         <div className={styles.infos}>
                         {data.map(x => {
                                 return(
-                                    <h3>{x.telefone}</h3>
+                                    <h3 key={x.id}>{x.telefone}</h3>
                                 )
                             })}
                         </div>
@@ -66,7 +67,7 @@ export default function usuarios() {
                         <div className={styles.infos}>
                         {data.map(x => {
                                 return(
-                                    <h3>{x.peso}</h3>
+                                    <h3 key={x.id}>{x.peso}</h3>
                                 )
                             })}
                         </div>
@@ -76,7 +77,7 @@ export default function usuarios() {
                         <div className={styles.infos}>
                         {data.map(x => {
                                 return(
-                                    <h3>{x.altura}</h3>
+                                    <h3 key={x.id}>{x.altura}</h3>
                                 )
                             })}
                         </div>

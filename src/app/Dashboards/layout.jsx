@@ -5,7 +5,7 @@ import LogoutIcon from "../imgs/icons/logoutIcon.png"
 import UserIcon from "../imgs/icons/userIcon.png"
 import Cookies from "js-cookies"
 import { useRouter } from 'next/navigation';
-export default function layout({ children }) {
+export default function Layout({ children }) {
   
   const {push} = useRouter()
 

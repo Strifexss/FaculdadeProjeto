@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 
 
-export default function landing() {
+export default function Landing() {
     
     useEffect(() => {
         if(Cookies.getItem("email") == null) {
