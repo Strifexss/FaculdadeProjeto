@@ -60,20 +60,20 @@ export default function Usuarios() {
                 <div className={styles.cardsCampo}>
                     {data.map(x => {
                         return(
-                            <div id={x.id} className={styles.cards}>
-                        <section id={x.id}>
-                        <Image id={x.id}
+                            <div key={x.id} className={styles.cards}>
+                        <section >
+                        <Image 
                             src={UserImage}
                             width={500}
                             height={500}
                             alt="Cliente"
                         />
-                        <h3 key={x.id}>{x.nome}</h3>
+                        <h3 >{x.nome}</h3>
                         </section>
-                        <h4 key={x.id}>Email: {x.email}</h4>
-                        <h4 key={x.id}>Telefone: {x.telefone}</h4>
-                        <h4 key={x.id}>Altura: {x.altura}</h4>
-                        <h4 key={x.id}>Peso: {x.peso}kg</h4>
+                        <h4 >Email: {x.email}</h4>
+                        <h4 >Telefone: {x.telefone}</h4>
+                        <h4 >Altura: {x.altura}</h4>
+                        <h4>Peso: {x.peso}kg</h4>
                     </div>
                         )
                     })}        
