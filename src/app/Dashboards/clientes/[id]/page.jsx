@@ -6,15 +6,23 @@ import { useState } from "react"
 import Image from "next/image"
 import {motion} from "framer-motion"
 import UserImage from "../../../imgs/icons/userIcon.png"
-
-//Teste
+import { useEffect } from "react"
+import Cookies from "js-cookies"
+import { useRouter } from 'next/navigation';
 
 export default function Usuarios() {
 
     const [data, setData] = useState([])
     const [cadastro, setCadastro] = useState(false)
- 
-   const { isLoading, error} =useQuery('repoData', async () =>
+    const { push } = useRouter();
+    useEffect(() => {
+        if(Cookies.getItem("email") == null) {
+            push("/invalido")
+        }
+    }, [])
+
+
+  const { isLoading, error} =useQuery('repoData', async () =>
     await axios.get("https://planet-scale-database-connect.vercel.app/buscarClientes")
    .then(response => {
     console.log(response.data)

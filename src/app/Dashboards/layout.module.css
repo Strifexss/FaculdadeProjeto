@@ -1,7 +1,7 @@
 .main {
     display: flex;
     justify-content: center;
-    align-items: center;
+
 }
 .barra {
     width: 10rem;
@@ -11,6 +11,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: fixed;
+    left: 0;
 }
 
 
