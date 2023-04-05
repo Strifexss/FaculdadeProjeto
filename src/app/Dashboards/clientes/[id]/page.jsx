@@ -3,6 +3,7 @@ import styles from "./page.module.css"
 import axios from "axios"
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import { useState } from "react"
+<<<<<<< HEAD
 import {motion} from "framer-motion"
 export default function Usuarios() {
 
@@ -10,6 +11,19 @@ export default function Usuarios() {
     const [cadastro, setCadastro] = useState(false)
   
     const { isLoading, error} =useQuery('repoData', async () =>
+=======
+import Image from "next/image"
+import {motion} from "framer-motion"
+import UserImage from "../../../imgs/icons/userIcon.png"
+
+
+
+export default function usuarios() {
+
+    const [data, setData] = useState([])
+    const [cadastro, setCadastro] = useState(false)
+  const { isLoading, error} =useQuery('repoData', async () =>
+>>>>>>> producao
     await axios.get("https://planet-scale-database-connect.vercel.app/buscarClientes")
    .then(response => {
     console.log(response.data)
@@ -22,7 +36,11 @@ export default function Usuarios() {
    }
   )
 
+<<<<<<< HEAD
    function cadastrar() {
+=======
+  function cadastrar() {
+>>>>>>> producao
     const email = document.getElementById("email").value
     const peso = document.getElementById("peso").value
     const nome = document.getElementById("nome").value
@@ -51,6 +69,7 @@ export default function Usuarios() {
             <div className={styles.campo}>
                 <div className={styles.botoes}>
                     <button onClick={() => setCadastro(true)}><h2>Cadastrar Aluno</h2> </button>
+<<<<<<< HEAD
                     <button><h2>Deletar Aluno</h2> </button>
                     <input type="text" placeholder="Pesquisar"/>
                 </div>
@@ -104,7 +123,30 @@ export default function Usuarios() {
                                 )
                             })}
                         </div>
+=======
+                    <input type="text" placeholder="Pesquisar"/>
+                </div>
+                <div className={styles.cardsCampo}>
+                    {data.map(x => {
+                        return(
+                            <div className={styles.cards}>
+                        <section>
+                        <Image
+                            src={UserImage}
+                            width={500}
+                            height={500}
+                            alt="Cliente"
+                        />
+                        <h3 key={x.id}>{x.nome}</h3>
+                        </section>
+                        <h4 key={x.id}>Email: {x.email}</h4>
+                        <h4 key={x.id}>Telefone: {x.telefone}</h4>
+                        <h4 key={x.id}>Altura: {x.altura}</h4>
+                        <h4 key={x.id}>Peso: {x.peso}kg</h4>
+>>>>>>> producao
                     </div>
+                        )
+                    })}        
                 </div>
                 {
                     cadastro && 
