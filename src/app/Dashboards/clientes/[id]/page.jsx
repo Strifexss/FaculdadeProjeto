@@ -69,7 +69,6 @@ export default function usuarios() {
             <div className={styles.campo}>
                 <div className={styles.botoes}>
                     <button onClick={() => setCadastro(true)}><h2>Cadastrar Aluno</h2> </button>
-<<<<<<< HEAD
                     <button><h2>Deletar Aluno</h2> </button>
                     <input type="text" placeholder="Pesquisar"/>
                 </div>
@@ -123,7 +122,6 @@ export default function usuarios() {
                                 )
                             })}
                         </div>
-=======
                     <input type="text" placeholder="Pesquisar"/>
                 </div>
                 <div className={styles.cardsCampo}>
@@ -143,7 +141,6 @@ export default function usuarios() {
                         <h4 key={x.id}>Telefone: {x.telefone}</h4>
                         <h4 key={x.id}>Altura: {x.altura}</h4>
                         <h4 key={x.id}>Peso: {x.peso}kg</h4>
->>>>>>> producao
                     </div>
                         )
                     })}        
