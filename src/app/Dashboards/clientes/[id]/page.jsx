@@ -10,7 +10,7 @@ export default function Usuarios() {
     const [cadastro, setCadastro] = useState(false)
   
     const { isLoading, error} =useQuery('repoData', async () =>
-    await axios.get("http://localhost:3001/buscarClientes")
+    await axios.get("https://planet-scale-database-connect.vercel.app/buscarClientes")
    .then(response => {
     console.log(response.data)
     setData(response.data)
