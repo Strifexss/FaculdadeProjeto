@@ -1,14 +1,15 @@
 .main {
    width: 100vw;
     height: 100vh;
-    background-color: #121214;
+    background-color: black;
     color: #fff;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .rodape {
-    background-color: black;
+    background-color: #121214;
     width: 100%;
     height: 5rem;
     display: flex;
@@ -22,63 +23,78 @@
 
 .campo {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 100%;
     width: 100%;
 }
 
-.container {
-    background-color: black;
-    width: 70vw;
-    height: 60vh;
-    border-radius: 1.5rem;
-    overflow: scroll;
-    display: grid;
-    grid-template-columns: 20% 20% 20% 20% 20%;
+.cardsCampo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  flex-wrap: wrap;
+  overflow-y: scroll;
 }
 
-.container::-webkit-scrollbar {
-    background-color: #8257E5;
+.cardsCampo::-webkit-scrollbar {
+  background-color: #8257E5;
 }
 
-.container::-webkit-scrollbar-thumb {
-    background: #4e348a;
-    border-radius: 1rem;    
-  }
-
-.containerCampos {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-right: solid 2px #8257E5 ;
-}
-.containerCampos h2 {
-    margin: 1rem;
+.cardsCampo::-webkit-scrollbar-thumb {
+  background: #4e348a;
+  border-radius: 1rem;    
 }
 
-.infos {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-   
+.cards {
+  width: 25rem;
+  cursor: pointer;
+  height: 15rem;
+  background-color: #121214;
+  margin: 1rem;
+  border-radius: 1rem;
+  transition: 0.1s;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #fff;
 }
 
-.infos h3 {
-    margin: 1rem;
-    text-align: center;
-    width: 100%;
-    border-bottom: solid 2px #8257E5;
+.cards section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cards h3 {
+  margin: 1rem;
+  text-align: center;
+}
+.cards h4 {
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+  text-align: center;
+}
+
+.cards img {
+  width: 4rem;
+  height: 4rem;
+  border: solid 2px #8257E5;
+  border-radius: 50%;
+  margin: 1rem;
+}
+
+.cards:hover {
+  border: solid 2px #8257E5;
 }
 
 .botoes {
-    width: 70vw;
+    width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    background-color: #2d1f4e;
 }
 
 .botoes button {
@@ -119,6 +135,61 @@
   }
   
   .botoes input::placeholder {
+    color: rgb(122, 122, 122);
+    font-weight: bold;
+  }
+
+  .cadastro {
+    position: absolute;
+    width: 35%;
+    height: 60vh;
+    background-color: #fff;
+    border-radius: 1.5rem;
+    background-color: #121214;
+    border: solid 2px #2f2053;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cadastro button {
+    cursor: pointer;
+    width: 10rem;
+    height: 3rem;
+    margin: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #8257E5;
+    transition: 0.1s;
+    scale: 90%;
+    
+}
+
+.cadastro button:hover {
+    background-color: #4e348a;
+    scale: 100%;
+  }
+
+  .cadastro input {
+    margin: 0.5rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    background-color: black;
+    border: none;
+    outline: 0;
+    transition: 0.1s;
+    color: #fff;
+    width: 20rem;
+    padding: 1rem;
+  }
+  
+  .cadastro input:focus {
+    border: solid 2.5px #8257E5;
+  }
+  
+  .cadastro input::placeholder {
     color: rgb(122, 122, 122);
     font-weight: bold;
   }
