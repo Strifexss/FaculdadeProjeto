@@ -151,5 +151,29 @@
  width: 50%;
 }
 
+.destaques {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.destaques section {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.destaques iframe {
+  width: 90%;
+  height: 15rem;
+  margin: 1rem;
+  border-radius: 2rem;
+}
 
 }
