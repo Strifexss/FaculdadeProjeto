@@ -3,10 +3,11 @@ import styles from "./page.module.css"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
-
+import {motion} from "framer-motion"
 export default function Aulas() {
 
     const [data, setData] = useState([])
+    const [openCadastro, setOpenCadastro] = useState(false)
 
     const { isLoading, error} =useQuery('repoData', async () =>
     await axios.get("https://planet-scale-database-connect.vercel.app/buscarAulas")
@@ -21,17 +22,40 @@ export default function Aulas() {
    }
   ) 
   
+  function adicionar() {
+    const nome = document.getElementById("Nome").value
+    const descricao = document.getElementById("Descricao").value
+    const duracao = document.getElementById("Duracao").value
+    const nivel = document.getElementById("Nivel").value
+    axios.post("https://planet-scale-database-connect.vercel.app/adicionarAulas", {
+        nome: nome,
+        descricao: descricao,
+        nivel: nivel,
+        duracao: duracao,
+     
+    }).then((response) => {
+        console.log(response)
+    }).catch(err => {
+        console.log(err)
+    })
+   }
 
     return(
-        <div className={styles.main}>
+        <div  className={styles.main}>
             <header>
                 <h1>Aulas</h1>
             </header>
             <div className={styles.botoes}>
-                    <button><h2>Adicionar Aula</h2> </button>
+                    <button onClick={(() => {
+                        setOpenCadastro(!openCadastro)
+                    })}><h2>Adicionar Aula</h2> </button>
                     <input type="text" placeholder="Pesquisar"/>
                 </div>
                 <div className={styles.campo}>
+                    {
+                        isLoading && 
+                        <h1>Carregando...</h1>
+                    }
                     {data.map(x => {
                         return(
                             <div className={styles.container} key={x.id}>
@@ -54,8 +78,25 @@ export default function Aulas() {
                         </div>
                         )
                     })}
-                   
+                     {
+                    openCadastro && 
+                    <motion.div className={styles.cadastroModal}
+                    initial={{x: 60}}
+                    animate={{x: 0}}
+                    transition={{ duration: 0.3 }}
+                >
+                        <button onClick={() => {
+                            setOpenCadastro(!openCadastro)
+                        }}><h2>Fechar</h2></button>
+                        <input type="text" placeholder="Nome" id="Nome"/>
+                        <input type="text"  placeholder="Descrição" id="Descricao"/>
+                        <input type="text"  placeholder="Nivel" id="Nivel"/>
+                        <input type="number"  placeholder="Duração em Horas" id="Duracao"/>
+                        <button onClick={adicionar}><h2>Adicionar Aula</h2></button>
+                    </motion.div>
+                }
                 </div>
+               
         </div>
     )
 }

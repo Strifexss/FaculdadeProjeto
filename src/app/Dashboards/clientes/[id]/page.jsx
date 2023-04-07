@@ -63,7 +63,7 @@ export default function Usuarios() {
             </div>
             <div className={styles.campo}>
                 <div className={styles.botoes}>
-                    <button onClick={() => setCadastro(true)}><h2>Cadastrar Aluno</h2> </button>
+                    <button onClick={() => setCadastro(!cadastro)}><h2>Cadastrar Aluno</h2> </button>
                     <input type="text" placeholder="Pesquisar"/>
                 </div>
                 <div className={styles.cardsCampo}>

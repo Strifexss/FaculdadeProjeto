@@ -109,7 +109,9 @@
 .aviso {
   width: 60%;
   height: 20rem;
-  background-color: #121214;
+  background-image: url("../../imgs/BannerExemplo.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   margin: 1rem;
 }
 
