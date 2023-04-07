@@ -11,18 +11,65 @@
   }
   
   .header {
-    background-color: #121214;
+    background-image: url("https://i.pinimg.com/originals/bc/79/a4/bc79a4fe9aa1f6e56f5d00a01ad0dae2.jpg");
+    background-size: cover;
     width: 100%;
-    height: 5rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    height: 100vh;
+    background-repeat: no-repeat;
 }
 
 .header h1 {
+    font-size: 2rem;
     margin: 1rem;
 }
 
+.header p {
+  font-weight: bold;
+  margin: 1rem;
+}
+
+.header section {
+  width: 70%;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.headerTexto {
+  width: 35rem;
+  margin: 5rem;
+}
+
+.headerTexto button {
+  cursor: pointer;
+  width: 25%;
+  height: 3.5rem;
+  margin: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: lighter;
+  color: #fff;
+  background-color: #8257E5;
+  transition: 0.1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.headerTexto button h1{
+  font-size: 1rem;
+  font-weight: bold;
+}
+.headerTexto button:hover {
+  background-color: #4e348a;
+}
+
+.headerTexto a {
+  text-decoration: none;
+  color: #fff;
+}
 
 .destaques {
   width: 90%;
@@ -65,7 +112,7 @@
 }
 
 .main img {
-  width: 60%;
-  height: 20rem;
+  width: 100vw;
+  height: 100vh;
   margin: 1rem;
 }

@@ -24,14 +24,20 @@ export default function Layout({ children }) {
       push("/Dashboards/exercicios")
     }
 
+    function aulas() {
+      push(`/Dashboards/aulas/${Cookies.getItem("email")}`)
+    }
     return (   
       <div className={styles.main}>
         <div className={styles.barra}>
+          <div onClick={exercicios}>
+            <Icones nome="Exercicios" imagem={ExercicioIcon}/>
+          </div>
           <div onClick={clientes}>
             <Icones nome="Clientes" imagem={UserIcon}/>
           </div>
-          <div onClick={exercicios}>
-            <Icones nome="Exercicios" imagem={ExercicioIcon}/>
+          <div onClick={aulas}>
+          <Icones nome="Aulas" imagem={ExercicioIcon}/>
           </div>
           <div onClick={deslogar}>
           <Icones nome="Logout" imagem={LogoutIcon}/>

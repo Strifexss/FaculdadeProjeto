@@ -9,7 +9,7 @@
 
 .container {
   border-radius: 0.5rem;
-  width: 65rem;
+  width: 60rem;
   height: 30rem;
   display: grid;
   grid-template-columns: 50% 50%;
@@ -33,7 +33,7 @@
   outline: 0;
   transition: 0.1s;
   color: #fff;
-  width: 60%;
+  width: 65%;
   padding: 1rem;
 }
 
@@ -47,7 +47,7 @@
 
 .logins button {
   cursor: pointer;
-  width: 60%;
+  width: 65%;
   height: 3.5rem;
   margin: 1rem;
   border: none;

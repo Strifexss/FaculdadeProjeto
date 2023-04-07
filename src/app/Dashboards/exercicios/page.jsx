@@ -6,15 +6,17 @@ export default function Exercicios() {
     return(
         <div className={styles.main}>
             <div className={styles.header}>
-                <h1>Exercicios</h1>
+              <section>
+                <div className={styles.headerTexto}>
+                    <h1>TDD na prática com Java</h1>
+                    <p>
+                    Nessa aula você irá aprender como aplicar o fluxo do TDD num serviço usando Spring e Java 11, desde testes unitários até testes de integração usando JUnit 5.
+                    </p>
+                   <a href="#destaque"><button><h1>Ver Trilhas</h1></button></a>
+                </div>
+                </section>
             </div>
-            <Image
-                src={ExercicioImagem}
-                width={500}
-                height={500}
-                alt="BodyBuilder"
-            />
-            <div className={styles.destaques}>
+            <div id="destaque" className={styles.destaques}>
                 <>
                 <h2>Destaques</h2>
                 </>
