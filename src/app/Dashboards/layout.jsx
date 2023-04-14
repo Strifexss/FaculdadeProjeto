@@ -10,10 +10,10 @@ export default function Layout({ children }) {
   
   const {push} = useRouter()
 
-    async function deslogar() {
-      await Cookies.removeItem("email")
+   async function deslogar() {
+       Cookies.removeItem("email")
       window.alert("Deslogado com sucesso")
-      push("/")
+      await push("/")
     }
 
     function clientes() {

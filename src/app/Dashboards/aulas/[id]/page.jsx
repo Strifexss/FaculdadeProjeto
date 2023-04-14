@@ -4,10 +4,20 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import {motion} from "framer-motion"
+import { useRouter } from 'next/navigation';
+import Cookies from "js-cookies"
 export default function Aulas() {
 
     const [data, setData] = useState([])
     const [openCadastro, setOpenCadastro] = useState(false)
+
+    const { push } = useRouter();
+    useEffect(() => {
+        console.log(Cookies.getItem("email"))
+        if(Cookies.hasItem("email") == false) {
+            push("/invalido")
+        }
+    }, [])
 
     const { isLoading, error} =useQuery('repoData', async () =>
     await axios.get("https://planet-scale-database-connect.vercel.app/buscarAulas")

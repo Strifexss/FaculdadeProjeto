@@ -1,4 +1,4 @@
-"use client"
+
 import styles from "./page.module.css"
 import ExercicioImagem from "../../imgs/Bodybuilder.jpg"
 import Image from "next/image"
