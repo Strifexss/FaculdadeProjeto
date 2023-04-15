@@ -84,9 +84,9 @@ export default function Usuarios() {
    /*Funcao que pega o id do cliente clicado e filtra o array Data, passando o resultado para useState "dadosClientes"
     sendo utilizado depois no modal com as informacoes do Cliente
    */
-   function handleFilterData(id) {
-        Cookies.setItem("idCliente", id)
-        setDadosClientes(data.filter(x => {return x.id == Cookies.getItem("idCliente") }))
+   function handleFilterData(email) {
+        Cookies.setItem("emailCliente", email)
+        setDadosClientes(data.filter(x => {return x.email == Cookies.getItem("emailCliente") }))
    }
 
    function handleDeleteCliente(email) {
@@ -115,7 +115,7 @@ export default function Usuarios() {
                 <div className={styles.cardsCampo}>
                     {data.map(x => {
                         return(
-                            <div key={x.id} className={styles.cards} onClick={() => {setOpenCliente(true), handleFilterData(x.id)}}>
+                            <div key={x.id} className={styles.cards} onClick={() => {setOpenCliente(true), handleFilterData(x.email)}}>
                         <section >
                         <Image 
                             src={UserImage}
