@@ -99,6 +99,12 @@
     align-items: center;
     flex-direction: column;
     margin: 1rem;
+    transition: 0.1s;
+    cursor: pointer;
+  }
+
+  .professor:hover {
+    border: solid 3px #55BCC9;
   }
 
   .professor section {
@@ -148,6 +154,69 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .cadastro {
+    position: absolute;
+    width: 40%;
+    height: 40vh;
+    background-color: #fff;
+    border-radius: 1.5rem;
+    background-color: #121214;
+    border: solid 2px #2f2053;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cadastro section {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cadastro button {
+    cursor: pointer;
+    width: 10rem;
+    height: 3rem;
+    margin: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #8257E5;
+    transition: 0.1s;
+    scale: 90%;
+    
+}
+
+.cadastro button:hover {
+    background-color: #4e348a;
+    scale: 100%;
+  }
+
+  .cadastro input {
+    margin: 0.5rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    background-color: black;
+    border: none;
+    outline: 0;
+    transition: 0.1s;
+    color: #fff;
+    width: 45%;
+    padding: 1rem;
+  }
+  
+  .cadastro input:focus {
+    border: solid 2.5px #8257E5;
+  }
+  
+  .cadastro input::placeholder {
+    color: rgb(122, 122, 122);
+    font-weight: bold;
   }
 
   @media screen and (max-width: 768px) {
