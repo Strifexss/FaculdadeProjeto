@@ -113,6 +113,9 @@ export default function Usuarios() {
                     <input type="text" placeholder="Pesquisar"/>
                 </div>
                 <div className={styles.cardsCampo}>
+                    {isLoading && 
+                        <h1>Loading</h1>
+                    }
                     {data.map(x => {
                         return(
                             <div key={x.id} className={styles.cards} onClick={() => {setOpenCliente(true), handleFilterData(x.email)}}>

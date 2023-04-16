@@ -5,6 +5,7 @@ import LogoutIcon from "../imgs/icons/logoutIcon.png"
 import UserIcon from "../imgs/icons/userIcon.png"
 import ExercicioIcon from "../imgs/icons/ExerciciosIcon.png"
 import ProfessorIcon from "../imgs/icons/ProfessorIcon.png"
+import CalendarIcon from "../imgs/icons/Calendar.png"
 import Cookies from "js-cookies"
 import { useRouter } from 'next/navigation';
 export default function Layout({ children }) {
@@ -28,14 +29,22 @@ export default function Layout({ children }) {
     function aulas() {
       push(`/Dashboards/aulas/${Cookies.getItem("email")}`)
     }
+    
     function professores() {
       push(`/Dashboards/professores/${Cookies.getItem("email")}`)
+    }
+    
+    function calendario() {
+      push(`/Dashboards/calendario/${Cookies.getItem("email")}`)
     }
     return (   
       <div className={styles.main}>
         <div className={styles.barra}>
           <div onClick={exercicios}>
             <Icones nome="Exercicios" imagem={ExercicioIcon}/>
+          </div>
+          <div onClick={calendario}>
+            <Icones nome="Calendário" imagem={CalendarIcon}/>
           </div>
           <div onClick={professores}>
             <Icones nome="Professores" imagem={ProfessorIcon}/>

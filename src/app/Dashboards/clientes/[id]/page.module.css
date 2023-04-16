@@ -489,3 +489,9 @@
 
 
   }
+
+  @media screen and (min-width: 1000px) and (max-width: 1360px)  {
+    .main {
+      padding-left: 0;
+    }
+  }

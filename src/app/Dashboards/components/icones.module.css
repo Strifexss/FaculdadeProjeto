@@ -32,3 +32,13 @@
         display: none;
     }
 }
+
+@media screen and (min-width: 1000px) and (max-width: 1360px)  {
+    .main img {
+        width: 2rem;
+        height: 2rem;
+    }
+    .main h3 {
+        margin: 0;
+    }
+}

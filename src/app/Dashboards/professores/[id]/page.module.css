@@ -225,3 +225,18 @@
       padding-left: 0;
     }
   }
+
+  @media screen and (min-width: 1000px) and (max-width: 1360px)  {
+    .main {
+      padding-top: 4rem;
+      padding-left: 0;
+    }
+
+    .header {
+      height: 3rem;
+    }
+
+    .botoes {
+      height: 4rem;
+    }
+  }

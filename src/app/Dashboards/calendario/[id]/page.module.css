@@ -1,0 +1,105 @@
+.main {
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+    margin-left: 8rem;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main header {
+    width: 100%;
+    background-color: #121214;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+}
+
+.main header h1 {
+    margin: 1rem;
+}
+.calendario {
+    width: 100%;
+    height: 100%;
+    background-color: #C5CAC8;
+    display: flex;
+    flex-direction: row;
+}
+
+.calendario section {
+    width: 14.28%;
+    height: 100%;
+    background-color: #DCDCDC;
+    border-left: solid 1px #a0a0a0;
+    border-right: solid 1px #a0a0a0;
+}
+
+.dias {
+    background-color: #ababac;
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #5F5F60;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.dias:hover {
+    background-color: #6e6e6e;
+    color: #363636;
+}
+
+.aula {
+    background-color: #9C48C7;
+    width: 100%;
+    height: 7rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.aula:hover  {
+    background-color: #5a2a72;
+}
+
+@media screen and (max-width: 768px) {
+    .main {
+      padding-top: 5rem;
+      margin-left: 0;
+    }
+
+    .calendario {
+        flex-direction: column;
+    }
+
+    .calendario section {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1360px)  {
+    .main {
+      padding-top: 4rem;
+      margin-left: 0;
+    }
+
+    .main header {
+        height: 3rem;
+    }
+
+    .calendario {
+        flex-direction: row;
+    }
+
+    .calendario section {
+        width: 100%;
+        height: 100%;
+    }
+}
