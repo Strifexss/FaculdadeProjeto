@@ -109,7 +109,8 @@
     background-color: #121214;
     position: absolute;
     margin: 1rem;
-    top: 50%;                   
+    top: 50%;                         /* 3 */
+   transform: translate(0, -50%) ;
     border-radius: 1rem;
     border: solid 2px #5a2a72;
     display: flex;
