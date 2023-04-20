@@ -3,6 +3,7 @@ import styles from './page.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
 import CidadeImagem from "./imgs/purpleCidade.webp"
+import Logo from "./imgs/GymHubFont.png"
 import {motion} from "framer-motion"
 import axios from 'axios'
 import { useRouter } from 'next/navigation';
@@ -53,6 +54,14 @@ export default function Home() {
           />
         </div>
         <div className={styles.logins}>
+          <section>
+          <Image
+            src={Logo}
+            alt='Logo'
+            width={200}
+            height={200}
+          />
+          </section>
           <input type="text" id="email" placeholder='E-mail' />
           <input type="password" id="senha" placeholder='Senha' />
           <button onClick={login}>

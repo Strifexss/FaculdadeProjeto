@@ -37,6 +37,12 @@
   padding: 1rem;
 }
 
+.main section {
+  width: 20rem;
+  height: 7rem;
+  margin: 1rem;
+}
+
 .logins input:focus {
   border: solid 2.5px #8257E5;
 }
@@ -106,6 +112,10 @@
   
   .main img {
     display: none;
+  }
+
+  .logins img {
+    display: block;
   }
 }
 

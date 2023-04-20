@@ -55,7 +55,6 @@ export default function Calendario() {
   const carregarProfessor =useQuery('carregarProfessor', async () =>
   await axios.get("https://planet-scale-database-connect.vercel.app/buscarProfessores")
  .then(async response => {
-  console.log(response.data)
   setProfessor(response.data)
    
  }),
@@ -69,8 +68,7 @@ export default function Calendario() {
 const carregarAulas =useQuery('carregarAulas', async () =>
   await axios.get("https://planet-scale-database-connect.vercel.app/buscarAulas")
  .then(async response => {
-  console.log(response.data)
-  setAulas(response.data)
+      setAulas(response.data)
    
  }),
  {
@@ -222,8 +220,51 @@ const carregarAulas =useQuery('carregarAulas', async () =>
             {
                 aulasModal &&     
                 <div className={styles.aulasModal}>
-                    <h1>{infos[0].nome}</h1>
-                    <button onClick={() => {setAulasModal(false)}}>fechar</button>
+                    <header>
+                        <button onClick={() => {setAulasModal(false)}}>fechar</button>
+                        <button>Deletar</button>
+                    </header>
+                    <div className={styles.aulasModalCampos}>
+                        <div className={styles.aulasModalColuna}>
+                            <section>
+                            <h1>Nome:</h1>
+                            <h2>{infos[0].nome}</h2>
+                            </section>
+                            <section>
+                            <h1>Dia:</h1>
+                            <h2>{infos[0].dia_semana}</h2>
+                            </section>
+                            <section>
+                            <h1>Nivel:</h1>
+                            <h2>{infos[0].nivel}</h2>
+                            </section>
+                             
+                        </div>
+                        <div className={styles.aulasModalColuna}>
+                            <section>
+                            <h1>Professor:</h1>
+                            <h2>{infos[0].nome}</h2>
+                            </section>
+                            <section>
+                            <h1>Hora de Inicio:</h1>
+                            <h2>{infos[0].hora_inicio}Hrs</h2>
+                            </section>
+                            <section>
+                            <h1>Hora de Fim:</h1>
+                            <h2>{infos[0].hora_fim}Hrs</h2>
+                            </section>
+                             
+                        </div>
+                        <div className={styles.aulasModalColunaDireita}>
+                            <div className={styles.aulasModalQuadrado}>
+                                <h1>Descrição:</h1>
+                                <h3>
+                                    {infos[0].descricao}
+                                </h3>
+                            </div>
+                        </div>
+                     
+                    </div>
                 </div>
             }
             {

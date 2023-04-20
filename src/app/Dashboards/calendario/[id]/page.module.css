@@ -2,7 +2,7 @@
     background-color: black;
     height: 100vh;
     width: 100vw;
-    margin-left: 8rem;
+    margin-top: 5rem;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -94,13 +94,96 @@
 
 .aulasModal {
     background-color: #121214;
-    height: 50vh;
-    width: 50vw;
+    height: 65vh;
+    width: 70vw;
+    border-radius: 1rem;
+    border: solid 2px #8257E5;
     position: absolute;
     top: 50%;                         
    transform: translate(0, -50%);
    display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.aulasModal header {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem ;
+}
+
+.aulasModalCampos {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    width: 100%;
+    gap: 1rem;
+}
+
+.aulasModalColuna {
+    display: flex;
+    flex-direction: column;
+    height: 85%;
+    width: 25%;
+    margin-top: 2rem;
+}
+
+.aulasModalColunaDireita {
+    display: flex;
+    flex-direction: column;
+    height: 85%;
+    width: 40%;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.aulasModalColuna section {
+    width: 100%;
+    height: 7rem;
+    border-radius: 1rem;
+    background-color: black;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    border: solid 2px #8257E5;
+    cursor: pointer;
+}
+
+.aulasModalColuna section h1  {
+    margin: 0.5rem;
+}
+.aulasModalColuna section h2  {
+    margin: 0.5rem;
+    color: #969595;
     
+}
+
+.aulasModalQuadrado {
+    display: flex;
+    margin-top: 2rem;
+    flex-direction: column;
+    height: 75%;
+    width: 100%;
+    background-color: black;
+    border-radius: 1rem;
+    border: solid 2px #8257E5;
+    margin-top: 1rem;
+    overflow: hidden;
+}
+
+.aulasModalQuadrado h1 {
+    margin-left: 0.5rem;
+}
+.aulasModalQuadrado h3 {
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    color: #969595;
 }
 
 .adicionar {
@@ -147,7 +230,7 @@
   }
 @media screen and (max-width: 768px) {
     .main {
-      padding-top: 5rem;
+      margin-top: 5rem;
       margin-left: 0;
     }
 
@@ -164,17 +247,117 @@
         width: 90vw;
         height: auto;
     }
+
+    .aulasModal {
+        background-color: #121214;
+        height: 100vh;
+        width: 100vw;
+        border-radius: 1rem;
+        border: solid 2px #8257E5;
+        position: absolute;
+        top: 50%;                         
+       transform: translate(0, -50%);
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       
+    }
+    
+    .aulasModal header {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem ;
+    }
+    
+    .aulasModalCampos {
+        margin-top: 0rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        gap: 1rem;
+        overflow: scroll;
+        
+    }
+    
+    .aulasModalColuna {
+        display: flex;
+        flex-direction: column;
+        height: 85%;
+        width: 80%;
+        margin-top: 0rem;
+    }
+    
+    .aulasModalColunaDireita {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 80%;
+        margin-top: 1rem;
+        gap: 0rem;
+    }
+    
+    .aulasModalColuna section {
+        width: 100%;
+        height: 7rem;
+        border-radius: 1rem;
+        background-color: black;
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        border: solid 2px #8257E5;
+        cursor: pointer;
+    }
+    
+    .aulasModalColuna section h1  {
+        margin: 0.5rem;
+    }
+    .aulasModalColuna section h2  {
+        margin: 0.5rem;
+        color: #969595;
+        
+    }
+    
+    .aulasModalQuadrado {
+        display: flex;
+        margin-top: 2rem;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        background-color: black;
+        border-radius: 1rem;
+        border: solid 2px #8257E5;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        overflow: hidden;
+    }
+    
+    .aulasModalQuadrado h1 {
+        margin-left: 0.5rem;
+    }
+    .aulasModalQuadrado h3 {
+        margin-left: 0.5rem;
+        margin-top: 0.5rem;
+        color: #969595;
+    }
+
 }
 
 
 @media screen and (min-width: 1000px) and (max-width: 1360px)  {
+
     .main {
-      padding-top: 4rem;
-      margin-left: 0;
+        margin-top: 4rem;
     }
 
     .main header {
-        height: 3rem;
+        height: 3.5rem;
     }
 
     .calendario {

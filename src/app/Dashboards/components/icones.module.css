@@ -1,5 +1,5 @@
 .main {
-    color: #fff;
+    color: #8f8d8d;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,6 +24,8 @@
 
 .main:hover {
     scale: 100%;
+    color: #fff;
+    border-bottom: solid 3px #8257E5;
 }
 
 
@@ -31,9 +33,12 @@
     .main h3 {
         display: none;
     }
+
+        
 }
 
 @media screen and (min-width: 1000px) and (max-width: 1360px)  {
+   
     .main img {
         width: 2rem;
         height: 2rem;

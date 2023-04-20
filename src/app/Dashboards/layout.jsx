@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image"
 import styles from "./layout.module.css"
 import Icones from "./components/icones"
 import LogoutIcon from "../imgs/icons/logoutIcon.png"
@@ -6,6 +7,7 @@ import UserIcon from "../imgs/icons/userIcon.png"
 import ExercicioIcon from "../imgs/icons/ExerciciosIcon.png"
 import ProfessorIcon from "../imgs/icons/ProfessorIcon.png"
 import CalendarIcon from "../imgs/icons/Calendar.png"
+import Logo from "../imgs/GymHubFont.png"
 import Cookies from "js-cookies"
 import { useRouter } from 'next/navigation';
 export default function Layout({ children }) {
@@ -40,6 +42,15 @@ export default function Layout({ children }) {
     return (   
       <div className={styles.main}>
         <div className={styles.barra}>
+          <div className={styles.logo}>
+            <Image
+                src={Logo}
+                width={300}
+                height={300}
+                alt="Logo"
+              />
+          </div>          
+          <div className={styles.Links}>
           <div onClick={exercicios}>
             <Icones nome="Exercicios" imagem={ExercicioIcon}/>
           </div>
@@ -57,6 +68,15 @@ export default function Layout({ children }) {
           </div>
           <div onClick={deslogar}>
           <Icones nome="Logout" imagem={LogoutIcon}/>
+          </div>
+          </div>
+          <div className={styles.perfil}>
+              <Image
+                src={UserIcon}
+                width={500}
+                height={500}
+                alt="Usuario"
+              />
           </div>
         </div>
         {children}
