@@ -19,8 +19,10 @@ export default function Aulas() {
         }
     }, [])
 
-    const { isLoading, error} =useQuery('repoData', async () =>
-    await axios.get("https://planet-scale-database-connect.vercel.app/buscarAulas")
+    const { isLoading, error} =useQuery('buscarAulas', async () =>
+    await axios.post("https://planet-scale-database-connect.vercel.app/buscarAulas", {
+        id_usuario: Cookies.getItem("id_usuario")
+    })
    .then(response => {
     console.log(response.data)
     setData(response.data)
@@ -42,7 +44,7 @@ export default function Aulas() {
         descricao: descricao,
         nivel: nivel,
         duracao: duracao,
-     
+        id_usuario: Cookies.getItem("id_usuario")
     }).then((response) => {
         console.log(response)
     }).catch(err => {

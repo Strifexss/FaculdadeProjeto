@@ -3,7 +3,7 @@ import styles from "./page.module.css"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
-
+import Cookies from "js-cookies"
 export default function Calendario() {
 
     const [data, setData] = useState([])
@@ -38,12 +38,13 @@ export default function Calendario() {
     handleHandleDias()
   },[data])
     
-  const { isLoading, error} =useQuery('buscarClientes', async () =>
-    await axios.get("https://planet-scale-database-connect.vercel.app/buscarAulasSemanais")
+  const { isLoading, error} =useQuery('buscarAulasSemanais', async () =>
+    await axios.post("https://planet-scale-database-connect.vercel.app/buscarAulasSemanais", {
+        id_usuario: Cookies.getItem("id_usuario")
+    })
    .then(async response => {
     console.log(response.data)
     setData(response.data)
-     
    }),
    {
      retry: 5, 
@@ -53,7 +54,9 @@ export default function Calendario() {
   ) 
 
   const carregarProfessor =useQuery('carregarProfessor', async () =>
-  await axios.get("https://planet-scale-database-connect.vercel.app/buscarProfessores")
+  await axios.post("https://planet-scale-database-connect.vercel.app/buscarProfessores", {
+    id_usuario: Cookies.getItem("id_usuario")
+  })
  .then(async response => {
   setProfessor(response.data)
    
@@ -65,8 +68,10 @@ export default function Calendario() {
  }
 ) 
   
-const carregarAulas =useQuery('carregarAulas', async () =>
-  await axios.get("https://planet-scale-database-connect.vercel.app/buscarAulas")
+const carregarAulas =useQuery('buscarAulas', async () =>
+  await axios.post("https://planet-scale-database-connect.vercel.app/buscarAulas", {
+    id_usuario: Cookies.getItem("id_usuario")
+  })
  .then(async response => {
       setAulas(response.data)
    
@@ -97,12 +102,27 @@ const carregarAulas =useQuery('carregarAulas', async () =>
         dia: dia,
         aula: aula,
         fim: fim,
-        inicio: inicio
+        inicio: inicio,
+        id_usuario: Cookies.getItem("id_usuario")
 
     }).then((response) => {
         console.log(response)
         if(response.status == 200) {
             window.alert("Adicionado com Sucesso")
+        }
+    }).catch(err => {
+        console.log(err)
+    })
+   }
+
+   function Deletar() {
+    axios.post("https://planet-scale-database-connect.vercel.app/deletarCalendario", {
+        id: infos[0].id_dia_semana
+    }).then(response => {
+        console.log(infos[0].id_dia_semana)
+        console.log(response)
+        if(response.status == 200) {
+            window.alert("Aula deletada com sucesso")
         }
     }).catch(err => {
         console.log(err)
@@ -222,7 +242,7 @@ const carregarAulas =useQuery('carregarAulas', async () =>
                 <div className={styles.aulasModal}>
                     <header>
                         <button onClick={() => {setAulasModal(false)}}>fechar</button>
-                        <button>Deletar</button>
+                        <button onClick={Deletar}>Deletar</button>
                     </header>
                     <div className={styles.aulasModalCampos}>
                         <div className={styles.aulasModalColuna}>

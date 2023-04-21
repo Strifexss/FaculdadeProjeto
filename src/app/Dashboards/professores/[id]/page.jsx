@@ -5,14 +5,16 @@ import UserImage from "../../../imgs/icons/userIcon.png"
 import { useState } from "react"
 import axios from "axios"
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
-
+import Cookies from "js-cookies"
 export default function Professores() {
 
     const [data, setData] = useState([])
     const [modalCadastro, setModalCadastro] = useState(false)
 
-    const { isLoading, error} =useQuery('buscarClientes', async () =>
-    await axios.get("https://planet-scale-database-connect.vercel.app/buscarProfessores")
+    const { isLoading, error} =useQuery('buscarProfessores', async () =>
+    await axios.post("https://planet-scale-database-connect.vercel.app/buscarProfessores", {
+        id_usuario: Cookies.getItem("id_usuario")
+    })
    .then(response => {
     console.log(response.data)
     setData(response.data)
@@ -34,7 +36,8 @@ export default function Professores() {
             nome: nome,
             telefone: telefone,
             salario: salario,
-            email: email
+            email: email,
+            id_usuario: Cookies.getItem("id_usuario")
         }).then((response) => {
             console.log(response)
         }).catch(err => {

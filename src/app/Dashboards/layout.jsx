@@ -39,6 +39,9 @@ export default function Layout({ children }) {
     function calendario() {
       push(`/Dashboards/calendario/${Cookies.getItem("email")}`)
     }
+    function planos() {
+      push(`/Dashboards/planos/${Cookies.getItem("email")}`)
+    }
     return (   
       <div className={styles.main}>
         <div className={styles.barra}>
@@ -59,6 +62,9 @@ export default function Layout({ children }) {
           </div>
           <div onClick={professores}>
             <Icones nome="Professores" imagem={ProfessorIcon}/>
+          </div>
+          <div onClick={planos}>
+            <Icones nome="Planos" imagem={ProfessorIcon}/>
           </div>
           <div onClick={clientes}>
             <Icones nome="Clientes" imagem={UserIcon}/>

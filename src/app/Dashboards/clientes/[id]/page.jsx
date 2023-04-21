@@ -12,6 +12,7 @@ import { useRouter } from 'next/navigation';
 
 export default function Usuarios() {
 
+    const [id_usuario, setId_usuario] = useState()
     const [data, setData] = useState([])
     const [cadastro, setCadastro] = useState(false)
     const [planos, setPlanos] = useState([])
@@ -26,9 +27,12 @@ export default function Usuarios() {
         }
     }, [])
 
+
     //Query para buscar os dados do Cliente, utiliza o useState "Data" para guardar os dados
   const { isLoading, error} =useQuery('buscarClientes', async () =>
-    await axios.get("https://planet-scale-database-connect.vercel.app/buscarClientes")
+    await axios.post("https://planet-scale-database-connect.vercel.app/buscarClientes", {
+        id_usuario: Cookies.getItem("id_usuario")
+    })
    .then(response => {
     console.log(response.data)
     setData(response.data)
@@ -70,7 +74,8 @@ export default function Usuarios() {
         altura: altura,
         objetivo: objetivo,
         telefone: telefone,
-        planosId: planosId
+        planosId: planosId,
+        id_usuario: Cookies.getItem("id_usuario") 
     }).then((response) => {
         console.log(response)
         if(response.status == 200) {
@@ -85,8 +90,7 @@ export default function Usuarios() {
     sendo utilizado depois no modal com as informacoes do Cliente
    */
    function handleFilterData(email) {
-        Cookies.setItem("emailCliente", email)
-        setDadosClientes(data.filter(x => {return x.email == Cookies.getItem("emailCliente") }))
+        setDadosClientes(data.filter(x => {return x.email == email}))
    }
 
    function handleDeleteCliente(email) {
@@ -118,7 +122,7 @@ export default function Usuarios() {
                     }
                     {data.map(x => {
                         return(
-                            <div key={x.id} className={styles.cards} onClick={() => {setOpenCliente(true), handleFilterData(x.email)}}>
+                            <div key={x.email} className={styles.cards} onClick={() => {setOpenCliente(true), handleFilterData(x.email)}}>
                         <section >
                         <Image 
                             src={UserImage}
