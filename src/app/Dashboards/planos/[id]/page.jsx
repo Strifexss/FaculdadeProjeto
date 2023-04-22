@@ -39,16 +39,16 @@ export default function Planos() {
                 {
                     data.map(x => {
                         return(
-                            <div className={styles.card}>
-                            <section>
-                            </section>  
-                            <h2>Plano: {x.nomePlanos}</h2>  
-                            <Image
-                                src={NextIcon}
-                                width={40}
-                                height={40}
-                                alt="Next"
-                            />    
+                            <div className={styles.card} key={x.id}>
+                                <section>
+                                </section>  
+                                <h2>Plano: {x.nomePlanos}</h2>  
+                                <Image
+                                    src={NextIcon}
+                                    width={40}
+                                    height={40}
+                                    alt="Next"
+                                />    
                         </div>        
                         )
                     })
