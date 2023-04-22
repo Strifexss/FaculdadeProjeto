@@ -1,7 +1,128 @@
 .main {
-    background-color: #121214;
+    background-color: black;
     height: 100vh;
     width: 100vw;
-    margin-top: 5rem;
+    padding-top: 5rem;
     color: #fff;
+    overflow: hidden;
 }
+
+.main header {
+    background-color: #121214;
+    width: 100%;
+    height: 3.5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.main header h1 {
+    margin: 1rem;
+}
+
+.botoes {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #2d1f4e;
+  }
+
+.botoes button {
+    cursor: pointer;
+    width: 15rem;
+    height: 3.5rem;
+    margin: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #8257E5;
+    transition: 0.1s;
+    scale: 90%;
+    
+}
+
+.botoes button:hover {
+    background-color: #4e348a;
+    scale: 100%;
+  }
+
+  .botoes input {
+    margin: 0.5rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    background-color: black;
+    border: none;
+    outline: 0;
+    transition: 0.1s;
+    color: #fff;
+    width: 20rem;
+    padding: 1rem;
+  }
+  
+  .botoes input:focus {
+    border: solid 2.5px #8257E5;
+  }
+  
+  .botoes input::placeholder {
+    color: rgb(122, 122, 122);
+    font-weight: bold;
+  }
+
+
+.campo {
+    height: 100%;
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    }
+
+.card {
+    width: 25rem;
+    height: 7rem;
+    border-radius: 1rem;
+    background-color: #121214;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+}
+
+.card img {
+    margin: 1rem;
+    border: solid 2px #8257E5;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.card img:hover{
+    margin: 1rem;
+    border: solid 2px #4c328a;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.card section {
+    height: 100%;
+    width: 10%;
+    background-color: #8257E5;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+
+.cardModal {
+    width: 30rem;
+    height: 10rem;
+    background-color: #121214;
+    border-radius: 1rem;
+}   

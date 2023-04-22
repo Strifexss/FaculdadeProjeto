@@ -16,7 +16,6 @@
     position: fixed;
     left: 0;
     border-bottom: 2px solid #585858;
-
 }
 
 .barra h1 {
@@ -41,7 +40,19 @@
     cursor: pointer;
     border: solid 2px #8257E5;
     border-radius: 50%;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.perfilFlex section {
+    width: 10rem;
+    height: 15rem;
+    background-color: #202024;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .perfil img {
@@ -58,6 +69,21 @@
     cursor: pointer;
 }
 
+.modalOpcoes {
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.1s;
+}
+
+.modalOpcoes:hover {
+    background-color: #313131;
+}
 
 @media screen and (max-width: 768px) {
     .main {

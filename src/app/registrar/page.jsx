@@ -3,6 +3,7 @@ import styles from "./page.module.css"
 import Link from "next/link"
 import Image from "next/image"
 import CidadeImagem from "../imgs/purpleCidade.webp"
+import Logo from "../imgs/GymHubFont.png"
 import {motion} from "framer-motion"
 import axios from "axios"
 import { useRouter } from 'next/navigation';
@@ -42,6 +43,12 @@ export default function Registrar() {
                 transition={{ duration: 0.3 }}
             >
                 <div className={styles.registrar}>
+                    <Image
+                        src={Logo}
+                        height={150}
+                        width={300}
+                        alt="Logo"
+                    />
                     <h1>Crie sua conta</h1>
                     <input type="text" placeholder="Seu E-mail" id="email"/>
                     <input type="text" placeholder="Seu Nome" id="nome"/>

@@ -10,12 +10,17 @@ import CalendarIcon from "../imgs/icons/Calendar.png"
 import Logo from "../imgs/GymHubFont.png"
 import Cookies from "js-cookies"
 import { useRouter } from 'next/navigation';
+import { useState } from "react"
+
 export default function Layout({ children }) {
   
   const {push} = useRouter()
+  const [modal, openModal] = useState(false)
+
 
    async function deslogar() {
        Cookies.removeItem("email")
+       Cookies.removeItem("id_usuario")
       window.alert("Deslogado com sucesso")
       await push("/")
     }
@@ -67,22 +72,43 @@ export default function Layout({ children }) {
             <Icones nome="Planos" imagem={ProfessorIcon}/>
           </div>
           <div onClick={clientes}>
-            <Icones nome="Clientes" imagem={UserIcon}/>
+            <Icones nome="Alunos" imagem={UserIcon}/>
           </div>
           <div onClick={aulas}>
           <Icones nome="Aulas" imagem={ExercicioIcon}/>
           </div>
-          <div onClick={deslogar}>
-          <Icones nome="Logout" imagem={LogoutIcon}/>
+          
           </div>
-          </div>
-          <div className={styles.perfil}>
-              <Image
-                src={UserIcon}
-                width={500}
-                height={500}
-                alt="Usuario"
-              />
+          <div className={styles.perfilFlex}>
+            <div className={styles.perfil} onClick={() => {openModal(!modal)}}>
+                <Image
+                  src={UserIcon}
+                  width={500}
+                  height={500}
+                  alt="Usuario"
+                />
+            </div>
+            {
+              modal &&
+              <section>
+                <div className={styles.modalOpcoes} onClick={deslogar}>
+                    <h3>Deslogar</h3>
+                </div>
+                <div className={styles.modalOpcoes} onClick={deslogar}>
+                    <h3>Deslogar</h3>
+                </div>
+                <div className={styles.modalOpcoes} onClick={deslogar}>
+                    <h3>Deslogar</h3>
+                </div>
+                <div className={styles.modalOpcoes} onClick={deslogar}>
+                    <h3>Deslogar</h3>
+                </div>
+                <div className={styles.modalOpcoes} onClick={deslogar}>
+                    <h3>Deslogar</h3>
+                </div>
+              </section>
+            }
+            
           </div>
         </div>
         {children}
