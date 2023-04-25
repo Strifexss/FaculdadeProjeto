@@ -9,6 +9,9 @@ import Cookies from "js-cookies"
 
 export default function Planos() {
 
+    const [info, setInfo] = useState([])
+    const [modalInfo, setModalInfo] = useState(false)
+    const [cadastro, setCadastro] = useState(false)
     const [data, setData] = useState([])
 
     const { isLoading, error} =useQuery('buscarPlanos', async () =>
@@ -25,6 +28,30 @@ export default function Planos() {
    }
   ) 
 
+  function adicionar() {
+
+    const nome = document.getElementById("nome").value
+    const descricao = document.getElementById("descricao").value
+    const dias = document.getElementById("dias").value
+    const valor = document.getElementById("valor").value
+
+    axios.post("http://localhost:3001/adicionarPlanos", {
+        nome: nome,
+        descricao: descricao,
+        preco: valor,
+        dias: dias,
+        id_usuario: Cookies.getItem("id_usuario")
+    }).then(response => {
+        console.log(response)
+    }).catch(err => {
+        console.log(err)
+    })
+  }
+
+  function handleInfoData(id) {
+    setInfo(data.filter(x => { return x.id == id}))
+    setModalInfo(true)
+  }
 
     return(
         <div className={styles.main}>
@@ -32,18 +59,18 @@ export default function Planos() {
                 <h1>Planos</h1>
             </header>
             <div className={styles.botoes}>
-                    <button><h2>Adicionar Plano</h2> </button>
+                    <button onClick={() => setCadastro(!cadastro)}><h2>Adicionar Plano</h2> </button>
                     <input type="text" placeholder="Pesquisar"/>
                 </div>
             <div className={styles.campo}>
                 {
                     data.map(x => {
                         return(
-                            <div className={styles.card} key={x.id}>
+                            <div className={styles.card} key={x.id} onClick={() => handleInfoData(x.id)}>
                                 <section>
                                 </section>  
                                 <h2>Plano: {x.nomePlanos}</h2>  
-                                <Image
+                                <Image 
                                     src={NextIcon}
                                     width={40}
                                     height={40}
@@ -53,7 +80,27 @@ export default function Planos() {
                         )
                     })
                 }
-                 
+                 {
+                    cadastro && 
+                    <div className={styles.cadastro}>
+                        <button onClick={() => setCadastro(false)}>Fechar</button>
+                        <input type="text" placeholder="Insira o nome do Plano" id="nome" />
+                        <input type="text" placeholder="Insira uma descrição para o Plano" id="descricao" />
+                        <input type="number" placeholder="Insira uma duração em dias" id="dias" />
+                        <input type="number" placeholder="Insira o valor do Plano" id="valor" />
+                        <button onClick={adicionar}>Adicionar</button>
+                    </div>
+                 }
+                 { 
+                    modalInfo &&
+                    <div className={styles.info}>
+                        <section>
+                            <button onClick={() => setModalInfo(false)}>Fechar</button>
+                            <button>Deletar</button>
+                        </section>
+                        <h1>Plano: {info[0].nomePlanos}</h1>
+                    </div>
+                 }
             </div>
         </div>
     )

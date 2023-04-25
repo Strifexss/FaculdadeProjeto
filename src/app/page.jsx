@@ -29,8 +29,10 @@ export default function Home() {
             if(response.data[0].email == email && response.data[0].senha == senha) {
               Cookies.setItem("email", email)
               Cookies.setItem("id_usuario", response.data[0].id)
+              Cookies.setItem("nome", response.data[0].nome)
               console.log(Cookies.getItem("email"))
               console.log(Cookies.getItem("id_usuario"))
+              console.log(Cookies.getItem("nome"))
               push(`/Dashboards/landing/${Cookies.getItem("email")}`)
             }
           }

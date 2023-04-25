@@ -47,7 +47,7 @@
 
 .perfilFlex section {
     width: 10rem;
-    height: 15rem;
+    height: auto;
     background-color: #202024;
     position: absolute;
     display: flex;

@@ -118,7 +118,92 @@ export default function Usuarios() {
                 </div>
                 <div className={styles.cardsCampo}>
                     {isLoading && 
-                        <h1>Loading</h1>
+                    <>
+                            <div className={styles.cardsLoading}>
+                            <section>
+                                <div className={styles.cardsLoadingUser}></div>                        
+                                <div className={styles.cardsLoadingInfos}></div>
+                            </section>
+                            <div className={styles.cardsLoadingInfos2}></div>
+                        </div>
+                        <div className={styles.cardsLoading}>
+                            <section>
+                                <div className={styles.cardsLoadingUser}></div>                        
+                                <div className={styles.cardsLoadingInfos}></div>
+                            </section>
+                            <div className={styles.cardsLoadingInfos2}></div>
+                        </div>
+                        <div className={styles.cardsLoading}>
+                            <section>
+                                <div className={styles.cardsLoadingUser}></div>                        
+                                <div className={styles.cardsLoadingInfos}></div>
+                            </section>
+                            <div className={styles.cardsLoadingInfos2}></div>
+                        </div>
+                        <div className={styles.cardsLoading}>
+                            <section>
+                                <div className={styles.cardsLoadingUser}></div>                        
+                                <div className={styles.cardsLoadingInfos}></div>
+                            </section>
+                            <div className={styles.cardsLoadingInfos2}></div>
+                        </div>
+                        <div className={styles.cardsLoading}>
+                            <section>
+                                <div className={styles.cardsLoadingUser}></div>                        
+                                <div className={styles.cardsLoadingInfos}></div>
+                            </section>
+                            <div className={styles.cardsLoadingInfos2}></div>
+                        </div>
+                        <div className={styles.cardsLoading}>
+                            <section>
+                                <div className={styles.cardsLoadingUser}></div>                        
+                                <div className={styles.cardsLoadingInfos}></div>
+                            </section>
+                            <div className={styles.cardsLoadingInfos2}></div>
+                        </div>
+                        <div className={styles.cardsLoading}>
+                            <section>
+                                <div className={styles.cardsLoadingUser}></div>                        
+                                <div className={styles.cardsLoadingInfos}></div>
+                            </section>
+                            <div className={styles.cardsLoadingInfos2}></div>
+                        </div>
+                        <div className={styles.cardsLoading}>
+                            <section>
+                                <div className={styles.cardsLoadingUser}></div>                        
+                                <div className={styles.cardsLoadingInfos}></div>
+                            </section>
+                            <div className={styles.cardsLoadingInfos2}></div>
+                        </div>
+                        <div className={styles.cardsLoading}>
+                            <section>
+                                <div className={styles.cardsLoadingUser}></div>                        
+                                <div className={styles.cardsLoadingInfos}></div>
+                            </section>
+                            <div className={styles.cardsLoadingInfos2}></div>
+                        </div>
+                        <div className={styles.cardsLoading}>
+                            <section>
+                                <div className={styles.cardsLoadingUser}></div>                        
+                                <div className={styles.cardsLoadingInfos}></div>
+                            </section>
+                            <div className={styles.cardsLoadingInfos2}></div>
+                        </div>
+                        <div className={styles.cardsLoading}>
+                            <section>
+                                <div className={styles.cardsLoadingUser}></div>                        
+                                <div className={styles.cardsLoadingInfos}></div>
+                            </section>
+                            <div className={styles.cardsLoadingInfos2}></div>
+                        </div>
+                        <div className={styles.cardsLoading}>
+                            <section>
+                                <div className={styles.cardsLoadingUser}></div>                        
+                                <div className={styles.cardsLoadingInfos}></div>
+                            </section>
+                            <div className={styles.cardsLoadingInfos2}></div>
+                        </div>
+                    </>
                     }
                     {data.map(x => {
                         return(

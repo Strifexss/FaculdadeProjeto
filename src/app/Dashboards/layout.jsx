@@ -18,11 +18,12 @@ export default function Layout({ children }) {
   const [modal, openModal] = useState(false)
 
 
+
    async function deslogar() {
-       Cookies.removeItem("email")
-       Cookies.removeItem("id_usuario")
+     Cookies.removeItem("email")
+     Cookies.removeItem("id_usuario")
       window.alert("Deslogado com sucesso")
-      await push("/")
+      push("/")
     }
 
     function clientes() {
@@ -46,6 +47,10 @@ export default function Layout({ children }) {
     }
     function planos() {
       push(`/Dashboards/planos/${Cookies.getItem("email")}`)
+    }
+   
+    function inicio() {
+      push(`/Dashboards/landing/${Cookies.getItem("email")}`)
     }
     return (   
       <div className={styles.main}>
@@ -77,6 +82,9 @@ export default function Layout({ children }) {
           <div onClick={aulas}>
           <Icones nome="Aulas" imagem={ExercicioIcon}/>
           </div>
+          <div onClick={inicio}>
+          <Icones nome="Início" imagem={ExercicioIcon}/>
+          </div>
           
           </div>
           <div className={styles.perfilFlex}>
@@ -94,18 +102,7 @@ export default function Layout({ children }) {
                 <div className={styles.modalOpcoes} onClick={deslogar}>
                     <h3>Deslogar</h3>
                 </div>
-                <div className={styles.modalOpcoes} onClick={deslogar}>
-                    <h3>Deslogar</h3>
-                </div>
-                <div className={styles.modalOpcoes} onClick={deslogar}>
-                    <h3>Deslogar</h3>
-                </div>
-                <div className={styles.modalOpcoes} onClick={deslogar}>
-                    <h3>Deslogar</h3>
-                </div>
-                <div className={styles.modalOpcoes} onClick={deslogar}>
-                    <h3>Deslogar</h3>
-                </div>
+               
               </section>
             }
             
