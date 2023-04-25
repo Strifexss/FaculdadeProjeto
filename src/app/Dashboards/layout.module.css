@@ -85,6 +85,14 @@
     background-color: #313131;
 }
 
+.mobileBar {
+ display: none;
+}
+
+.mobileMenu {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
     .main {
         flex-direction: column;
@@ -93,9 +101,12 @@
         top: 0;
     }
     .logo  {
-        display: none;
         width: 3.5rem;
         height: 3.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 4rem;
     } 
 
     .barra h1{
@@ -105,6 +116,8 @@
         width: 100%;
         height: 5rem;
         flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
         position: fixed;
         top: 0;
     }
@@ -115,6 +128,78 @@
 
     .perfil {
         display: none;
+    }
+
+    .Links {
+        display: none;
+    }
+    
+    .mobileBar {
+        display: block;
+        width: 3rem;
+        height: 3rem;
+        background-color: #8257E5;
+        margin-right: 1rem;
+    }
+
+    .mobileMenu {
+        height: 100vh;
+        width: 100vw;
+        background-color: #101010;
+        position: absolute;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding-left: 10%;
+        padding-right: 10%;
+        }
+
+    .mobileMenu section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .mobileMenu section p {
+        color: #737577;
+        font-weight: bold;
+    }
+
+    .mobileMenu header {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .mobileMenu header button{
+        margin-top: 2rem;
+    }
+
+    .mobileMenu footer {
+        width: 100%;
+        height: 4rem;
+        background-color: #222526;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .mobileMenuFooter{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem;
+    }
+    .mobileMenuFooter h3{
+        color: #fff;
+    }
+    .mobileMenuFooter p{
+        color: #707477;
+        font-weight: bold;
     }
 }
 

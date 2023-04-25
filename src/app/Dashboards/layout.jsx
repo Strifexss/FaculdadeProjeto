@@ -16,7 +16,7 @@ export default function Layout({ children }) {
   
   const {push} = useRouter()
   const [modal, openModal] = useState(false)
-
+  const [mobileModal, setMobileModal] = useState(false)
 
 
    async function deslogar() {
@@ -104,10 +104,41 @@ export default function Layout({ children }) {
                 </div>
                
               </section>
-            }
-            
+            }     
+          </div>
+          <div className={styles.mobileBar} onClick={() => setMobileModal(!mobileModal)}>
+
           </div>
         </div>
+        {
+          mobileModal && 
+          <div className={styles.mobileMenu}>
+            <header>
+                <Image 
+                src={Logo}
+                width={200}
+                height={100}
+                alt="Logo"
+              />
+              <button onClick={() => setMobileModal(!mobileModal)}>Fechar</button>
+            </header>
+              <section>
+                <p>Overview</p>
+              </section>
+            <footer>
+                <Image
+                  src={UserIcon}
+                  width={70}
+                  height={60}
+                  alt="Usuario"
+                />
+                <div className={styles.mobileMenuFooter}>
+                  <h3>Matheus Henrique</h3>
+                  <p>matheushlm2@gmail.com</p>
+                </div>
+            </footer>     
+          </div>
+        }
         {children}
       </div>   
     )

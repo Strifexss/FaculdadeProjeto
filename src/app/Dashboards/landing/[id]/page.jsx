@@ -6,15 +6,76 @@ import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import TesteImage from "../../../imgs/icons/userLandingIcon.png"
+import { Chart } from "chart.js/auto";
+
+
 export default function Landing() {
     
     useEffect(() => {
         if(Cookies.getItem("email") == null) {
             push("/invalido")
         }
+        const ctx = document.getElementById('grafico')
+        const ctx2 = document.getElementById('grafico2')
+        
+        const chart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo'],
+                datasets: [{
+                  label: 'Aulas Semanais',
+                  data: [12, 19, 3, 5, 2, 3, 10],
+                  borderWidth: 3,
+                  backgroundColor: '#8257E5'
+                }]
+            },
+            options: {
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                    min: 0,
+                  }
+                },
+                layout: {
+                    padding: 0
+                },
+                responsive: true,
+                maintainAspectRatio: true,
+                aspectRatio: 1,
+              }
+        })
+        const chart2 = new Chart(ctx2, {
+            type: "pie",
+            data: {
+                labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo'],
+                datasets: [{
+                  label: 'Aulas Semanais',
+                  data: [12, 19, 3, 5, 2, 3, 10],
+                  borderWidth: 3,
+                  backgroundColor: '#8257E5'
+                }]
+            },
+            options: {
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                    min: 0,
+                  }
+                },
+                layout: {
+                    padding: 0
+                },
+                responsive: true,
+                maintainAspectRatio: true,
+                aspectRatio: 1,
+              }
+        })
     }, [])
 
     const { push } = useRouter();
+
+   
+ 
 
     return(
         <div className={styles.main}>
@@ -125,7 +186,12 @@ export default function Landing() {
                     </section>
                 </div>
                 <div className={styles.grafico}>
+                    <canvas id="grafico">
 
+                    </canvas>
+                    <canvas id="grafico2">
+
+                    </canvas>
                 </div>
             </div>
         </div>
