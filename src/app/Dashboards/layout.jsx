@@ -11,7 +11,7 @@ import Logo from "../imgs/GymHubFont.png"
 import Cookies from "js-cookies"
 import { useRouter } from 'next/navigation';
 import { useState } from "react"
-
+import {motion} from "framer-motion"
 export default function Layout({ children }) {
   
   const {push} = useRouter()
@@ -112,7 +112,11 @@ export default function Layout({ children }) {
         </div>
         {
           mobileModal && 
-          <div className={styles.mobileMenu}>
+          <motion.div className={styles.mobileMenu} 
+          initial={{y: "-100vh"}}
+          animate={{y: "0"}}
+          transition={{ duration: 0.4 }}
+          >
             <header>
                 <Image 
                 src={Logo}
@@ -156,7 +160,7 @@ export default function Layout({ children }) {
                   <p>matheushlm2@gmail.com</p>
                 </div>
             </footer>     
-          </div>
+          </motion.div>
         }
         {children}
       </div>   
