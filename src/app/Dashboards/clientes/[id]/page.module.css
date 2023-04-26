@@ -152,14 +152,12 @@
     font-weight: bold;
     color: #fff;
     background-color: #8257E5;
-    transition: 0.1s;
-    scale: 90%;
-    
-}
+    scale: 100%;
+    z-index: 0;
+  }
 
 .botoes button:hover {
     background-color: #4e348a;
-    scale: 100%;
   }
 
   .botoes input {
@@ -425,7 +423,7 @@
 
   @media screen and (max-width: 768px) {
     .main {
-      margin-top: 5rem;
+      margin-top: 0rem;
       padding-left: 0;
     }
 
@@ -449,7 +447,7 @@
     .OpenCliente {
       width: 100vw;
       height: 100vh;
-     
+      position: fixed;
     }
 
     .principalContainer {

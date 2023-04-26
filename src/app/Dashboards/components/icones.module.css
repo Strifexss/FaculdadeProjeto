@@ -1,7 +1,7 @@
 .main {
     color: #8f8d8d;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     scale: 90%;
@@ -31,7 +31,6 @@
 
 @media screen and (max-width: 768px) {
     .main h3 {
-        display: none;
     }
 
         

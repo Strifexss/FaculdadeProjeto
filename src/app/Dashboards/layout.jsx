@@ -122,9 +122,28 @@ export default function Layout({ children }) {
               />
               <button onClick={() => setMobileModal(!mobileModal)}>Fechar</button>
             </header>
-              <section>
-                <p>Overview</p>
-              </section>
+                <p style={{color: "#8d8d8d", fontWeight: "bold"}}>Overview</p>
+                <div onClick={exercicios}>
+            <Icones nome="Exercicios" imagem={ExercicioIcon}/>
+          </div>
+          <div onClick={calendario}>
+            <Icones nome="Calendário" imagem={CalendarIcon}/>
+          </div>
+          <div onClick={professores}>
+            <Icones nome="Professores" imagem={ProfessorIcon}/>
+          </div>
+          <div onClick={planos}>
+            <Icones nome="Planos" imagem={ProfessorIcon}/>
+          </div>
+          <div onClick={clientes}>
+            <Icones nome="Alunos" imagem={UserIcon}/>
+          </div>
+          <div onClick={aulas}>
+          <Icones nome="Aulas" imagem={ExercicioIcon}/>
+          </div>
+          <div onClick={inicio}>
+          <Icones nome="Início" imagem={ExercicioIcon}/>
+          </div>
             <footer>
                 <Image
                   src={UserIcon}

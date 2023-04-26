@@ -46,7 +46,10 @@ export default function Usuarios() {
 
   //Query para buscar os planos, guarda os dados no useState "planos"
   const buscarPlanos =useQuery('buscarPlanos', async () =>
-    await axios.get("https://planet-scale-database-connect.vercel.app/buscarPlanos")
+    await axios.post("https://planet-scale-database-connect.vercel.app/buscarPlanos",{
+    id_usuario: Cookies.getItem("id_usuario")
+}
+    )
    .then(response => {
     setPlanos(response.data)
    }),
@@ -207,7 +210,11 @@ export default function Usuarios() {
                     }
                     {data.map(x => {
                         return(
-                            <div key={x.email} className={styles.cards} onClick={() => {setOpenCliente(true), handleFilterData(x.email)}}>
+                            <motion.div
+                               initial={{opacity: 0}}
+                               animate={{opacity: 1}}
+                               transition={{ duration: 0.5 }}
+                            key={x.email} className={styles.cards} onClick={() => {setOpenCliente(true), handleFilterData(x.email)}}>
                         <section >
                         <Image 
                             src={UserImage}
@@ -220,7 +227,7 @@ export default function Usuarios() {
                         <h4 >Email: {x.email}</h4>
                         <h4 >Telefone: {x.telefone}</h4>
                         <h4>{x.nomePlanos}</h4>
-                    </div>
+                    </motion.div>
                         )
                     })}        
                 </div>

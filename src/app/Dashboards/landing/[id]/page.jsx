@@ -2,15 +2,17 @@
 import styles from "./page.module.css"
 import Cookies from "js-cookies"
 import { useRouter } from 'next/navigation';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import TesteImage from "../../../imgs/icons/userLandingIcon.png"
 import { Chart } from "chart.js/auto";
-
-
+import axios from "axios";
 export default function Landing() {
     
+    const [alunosData, setAlunosData] = useState([])
+    const [professoresData, setProfessoresData] = useState([])
+
     useEffect(() => {
         if(Cookies.getItem("email") == null) {
             push("/invalido")
@@ -18,6 +20,32 @@ export default function Landing() {
         const ctx = document.getElementById('grafico')
         const ctx2 = document.getElementById('grafico2')
         
+         axios.post("https://planet-scale-database-connect.vercel.app/buscarClientes", {
+            id_usuario: Cookies.getItem("id_usuario")
+        })
+       .then(response => {
+        console.log(response.data)
+        setAlunosData(response.data)
+       }),
+       {
+         retry: 5, 
+         refetchOnWindowFocus: false, 
+         staleTime: 1000 * 10   
+       }
+      
+        axios.post("https://planet-scale-database-connect.vercel.app/buscarProfessores", {
+           id_usuario: Cookies.getItem("id_usuario")
+       })
+      .then(response => {
+       console.log(response.data)
+       setProfessoresData(response.data)
+      }),
+      {
+        retry: 5, 
+        refetchOnWindowFocus: false, 
+        staleTime: 1000 * 10   
+      }
+
         const chart = new Chart(ctx, {
             type: "bar",
             data: {
@@ -168,8 +196,8 @@ export default function Landing() {
                             alt="Icone"
                         />
                     <div className={styles.totaisInfos}>
-                        <h2>218</h2>
-                        <h4>Sales Today</h4>
+                        <h2>{alunosData.length}</h2>
+                        <h4>Alunos Cadastrados</h4>
                     </div>
                     </section>
                     <section>
@@ -180,8 +208,8 @@ export default function Landing() {
                             alt="Icone"
                         />
                         <div className={styles.totaisInfos}>
-                             <h2>4.138</h2>
-                             <h4>Visitors Today</h4>
+                             <h2>{professoresData.length}</h2>
+                             <h4>Professores Adicionados</h4>
                         </div>
                     </section>
                 </div>
