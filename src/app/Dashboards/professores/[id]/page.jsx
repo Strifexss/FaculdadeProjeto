@@ -26,6 +26,16 @@ export default function Professores() {
    }
   ) 
 
+   function deletar(id) {
+    axios.post(`http://localhost:3001/deletarProfessores`, {
+        id: id
+    }).then(result => {
+        console.log(result)
+    }).catch(err => {
+        console.log(err)
+    })
+   }
+
    function cadastrarProfessor() {
         const nome = document.getElementById("nome").value
         const telefone = document.getElementById("telefone").value
@@ -72,7 +82,7 @@ export default function Professores() {
                                     />
                                 </section>
                                 <h3>{x.nome}</h3>
-                                <button>Deletar</button>
+                                <button onClick={() => deletar(x.id)}>Deletar</button>
                                 <div className={styles.infoProfessor}>
                                     <p>Telefone: {x.telefone}</p>
                                     <p>E-mail: {x.email}</p>

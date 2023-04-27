@@ -235,11 +235,13 @@
     }
 
     .calendario {
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 
     .calendario section {
         width: 100%;
+        height: auto;
         overflow-y: scroll;
     }
 

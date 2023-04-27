@@ -28,29 +28,36 @@ export default function Layout({ children }) {
 
     function clientes() {
       push(`/Dashboards/clientes/${Cookies.getItem("email")}`)
+      setMobileModal(false)
     }
 
     function exercicios() {
       push("/Dashboards/exercicios")
+      setMobileModal(false)
     }
 
     function aulas() {
       push(`/Dashboards/aulas/${Cookies.getItem("email")}`)
+      setMobileModal(false)
     }
     
     function professores() {
       push(`/Dashboards/professores/${Cookies.getItem("email")}`)
+      setMobileModal(false)
     }
     
     function calendario() {
       push(`/Dashboards/calendario/${Cookies.getItem("email")}`)
+      setMobileModal(false)
     }
     function planos() {
       push(`/Dashboards/planos/${Cookies.getItem("email")}`)
+      setMobileModal(false)
     }
    
     function inicio() {
       push(`/Dashboards/landing/${Cookies.getItem("email")}`)
+      setMobileModal(false)
     }
     return (   
       <div className={styles.main}>

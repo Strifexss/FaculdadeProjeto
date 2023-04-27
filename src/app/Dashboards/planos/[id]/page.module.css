@@ -233,3 +233,8 @@
     background-color: #4e348a;
     scale: 100%;
   }
+  @media screen and (max-width: 800px)  {
+    .cadastro  {
+      width: 100%;
+    }
+  }

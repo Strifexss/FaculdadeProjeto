@@ -28,6 +28,16 @@ export default function Planos() {
    }
   ) 
 
+   function deletar(id) {
+        axios.post("http://localhost:3001/deletarPlanos", {
+            id: id
+        }).then(response => {
+            console.log(response)
+        }).catch(err => {
+            console.log(err)
+        })
+   }
+
   function adicionar() {
 
     const nome = document.getElementById("nome").value
@@ -96,7 +106,7 @@ export default function Planos() {
                     <div className={styles.info}>
                         <section>
                             <button onClick={() => setModalInfo(false)}>Fechar</button>
-                            <button>Deletar</button>
+                            <button onClick={() => deletar(info[0].id)}>Deletar</button>
                         </section>
                         <h1>Plano: {info[0].nomePlanos}</h1>
                     </div>
