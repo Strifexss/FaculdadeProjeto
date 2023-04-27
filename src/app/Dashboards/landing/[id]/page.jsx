@@ -10,17 +10,19 @@ import { Chart } from "chart.js/auto";
 import axios from "axios";
 export default function Landing() {
     
-    const [alunosData, setAlunosData] = useState([])
-    const [professoresData, setProfessoresData] = useState([])
+    const [alunosData, setAlunosData] = useState(1)
+    const [professoresData, setProfessoresData] = useState(1)
+    
 
-    useEffect(() => {
+    useEffect(async () => {
+        
         if(Cookies.getItem("email") == null) {
             push("/invalido")
         }
         const ctx = document.getElementById('grafico')
         const ctx2 = document.getElementById('grafico2')
         
-         axios.post("https://planet-scale-database-connect.vercel.app/buscarClientes", {
+       await axios.post("https://planet-scale-database-connect.vercel.app/buscarClientes", {
             id_usuario: Cookies.getItem("id_usuario")
         })
        .then(response => {
@@ -33,7 +35,7 @@ export default function Landing() {
          staleTime: 1000 * 10   
        }
       
-        axios.post("https://planet-scale-database-connect.vercel.app/buscarProfessores", {
+     await  axios.post("https://planet-scale-database-connect.vercel.app/buscarProfessores", {
            id_usuario: Cookies.getItem("id_usuario")
        })
       .then(response => {
@@ -75,12 +77,15 @@ export default function Landing() {
         const chart2 = new Chart(ctx2, {
             type: "pie",
             data: {
-                labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo'],
+                labels: ['Professor', 'Alunos'],
                 datasets: [{
-                  label: 'Aulas Semanais',
-                  data: [12, 19, 3, 5, 2, 3, 10],
+                  label: 'Relação Aluno/Professor',
+                  data: [4, 9],
                   borderWidth: 3,
-                  backgroundColor: '#8257E5'
+                  backgroundColor: [
+                     '#8257E5',
+                     '#36a2eb'
+                  ]
                 }]
             },
             options: {

@@ -6,10 +6,15 @@ import { useState } from "react"
 import axios from "axios"
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import Cookies from "js-cookies"
-export default function Professores() {
+import { useRouter } from 'next/navigation';
 
+export default function Professores() {
+    const router = useRouter()
     const [data, setData] = useState([])
     const [modalCadastro, setModalCadastro] = useState(false)
+    const [deletarConfirm, modalDeletarConfirm] = useState(false)
+    const [filterData, setFilterData] = useState([])
+
 
     const { isLoading, error} =useQuery('buscarProfessores', async () =>
     await axios.post("https://planet-scale-database-connect.vercel.app/buscarProfessores", {
@@ -31,9 +36,16 @@ export default function Professores() {
         id: id
     }).then(result => {
         console.log(result)
+        window.alert("Professor deletado com sucesso")
+        location.reload()
     }).catch(err => {
         console.log(err)
     })
+   }
+
+   function handleDelete(id) {
+        setFilterData(data.filter(x => x.id == id))
+        modalDeletarConfirm(!deletarConfirm)
    }
 
    function cadastrarProfessor() {
@@ -50,6 +62,8 @@ export default function Professores() {
             id_usuario: Cookies.getItem("id_usuario")
         }).then((response) => {
             console.log(response)
+            window.alert("Professor Cadastrado com Sucesso")
+            location.reload()
         }).catch(err => {
             console.log(err)
         })
@@ -82,7 +96,7 @@ export default function Professores() {
                                     />
                                 </section>
                                 <h3>{x.nome}</h3>
-                                <button onClick={() => deletar(x.id)}>Deletar</button>
+                                <button onClick={() => handleDelete(x.id)}>Deletar</button>
                                 <div className={styles.infoProfessor}>
                                     <p>Telefone: {x.telefone}</p>
                                     <p>E-mail: {x.email}</p>
@@ -92,6 +106,16 @@ export default function Professores() {
                             </div>
                             )
                         })
+                    }
+                    {
+                        deletarConfirm && 
+                                <div className={styles.deletar}>
+                                    <h2>Deseja deletar o Professor?</h2>
+                                    <section>
+                                        <button onClick={() => {modalDeletarConfirm(!deletarConfirm)}}><h2>Não</h2></button>
+                                        <button onClick={() => (deletar(filterData[0].id), modalDeletarConfirm(!deletarConfirm))}><h2>Sim</h2></button>
+                                    </section>
+                                </div>                                
                     }
                 </div>
                 {

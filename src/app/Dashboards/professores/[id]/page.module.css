@@ -219,12 +219,55 @@
     font-weight: bold;
   }
 
+  .deletar {
+    width: 25rem;
+    height: 15rem;
+    border: solid 2px #8257E5;
+    border-radius: 1rem;
+    background-color: #121214;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .deletar section {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .deletar button {
+    cursor: pointer;
+    width: 10rem;
+    height: 3rem;
+    margin: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #8257E5;
+    transition: 0.1s;
+    
+}
+  .deletar button:hover {
+    background-color: #533992;
+}
+
   @media screen and (max-width: 768px) {
     .main {
       margin-top: 4rem;
     }
     .cadastro {
       width: 100%;
+    }
+
+    .deletar {
+      width: 90%;
     }
   }
 

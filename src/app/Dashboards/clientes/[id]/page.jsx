@@ -18,7 +18,7 @@ export default function Usuarios() {
     const [planos, setPlanos] = useState([])
     const [openCliente, setOpenCliente] = useState(false)
     const [dadosClientes, setDadosClientes] = useState({})
-
+    const [deletarConfirm, modalDeletarConfirm] = useState(false)
     const { push } = useRouter();
     //Função para validar o acesso a pagina
     useEffect(() => {
@@ -83,6 +83,7 @@ export default function Usuarios() {
         console.log(response)
         if(response.status == 200) {
             window.alert("Cliente Cadastrado com Sucesso")
+            location.reload()
         }
     }).catch(err => {
         console.log(err)
@@ -103,6 +104,7 @@ export default function Usuarios() {
             console.log(response)
             if(response.status == 200) {
                 window.alert("Cliente Deletado com Sucesso")
+                location.reload()
             }
         }).catch(err => {
             console.log(err)
@@ -266,10 +268,21 @@ export default function Usuarios() {
                     <div className={styles.OpenCliente}>
                         <div className={styles.flexarButtons}>
                             <button onClick={() => {setOpenCliente(false)}}>Fechar</button>
-                            <button onClick={() => {handleDeleteCliente(dadosClientes[0].email)}}>Excluir</button>
+                            <button onClick={() => {modalDeletarConfirm(!deletarConfirm)}}>Excluir</button>
                         </div>
                         <section>
                             <div className={styles.principalContainer}>
+                                {
+                                    deletarConfirm && 
+                                        <div className={styles.deletar}>
+                                            <h1>Deseja deletar o aluno?</h1>
+                                            <section>
+                                                <button onClick={() => {modalDeletarConfirm(!deletarConfirm)}}><h2>Não</h2></button>
+                                                <button onClick={() => (handleDeleteCliente(dadosClientes[0].email), modalDeletarConfirm(!deletarConfirm))}><h2>Sim</h2></button>
+                                            </section>
+                                        </div>
+                                        
+                                }
                                  <div className={styles.userName}>
                                     <Image
                                         src={UserImage}
