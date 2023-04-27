@@ -29,7 +29,7 @@ export default function Planos() {
   ) 
 
    function deletar(id) {
-        axios.post("http://localhost:3001/deletarPlanos", {
+        axios.post("https://planet-scale-database-connect.vercel.app/deletarPlanos", {
             id: id
         }).then(response => {
             console.log(response)
@@ -45,7 +45,7 @@ export default function Planos() {
     const dias = document.getElementById("dias").value
     const valor = document.getElementById("valor").value
 
-    axios.post("http://localhost:3001/adicionarPlanos", {
+    axios.post("https://planet-scale-database-connect.vercel.app/adicionarPlanos", {
         nome: nome,
         descricao: descricao,
         preco: valor,

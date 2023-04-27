@@ -32,7 +32,7 @@ export default function Professores() {
   ) 
 
    function deletar(id) {
-    axios.post(`http://localhost:3001/deletarProfessores`, {
+    axios.post(`https://planet-scale-database-connect.vercel.app/deletarProfessores`, {
         id: id
     }).then(result => {
         console.log(result)
