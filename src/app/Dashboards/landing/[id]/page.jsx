@@ -12,17 +12,15 @@ export default function Landing() {
     
     const [alunosData, setAlunosData] = useState(1)
     const [professoresData, setProfessoresData] = useState(1)
-    
-
-    useEffect(async () => {
+   
+    useEffect(() => {
         
         if(Cookies.getItem("email") == null) {
             push("/invalido")
         }
-        const ctx = document.getElementById('grafico')
-        const ctx2 = document.getElementById('grafico2')
+       
         
-       await axios.post("https://planet-scale-database-connect.vercel.app/buscarClientes", {
+      axios.post("https://planet-scale-database-connect.vercel.app/buscarClientes", {
             id_usuario: Cookies.getItem("id_usuario")
         })
        .then(response => {
@@ -35,7 +33,7 @@ export default function Landing() {
          staleTime: 1000 * 10   
        }
       
-     await  axios.post("https://planet-scale-database-connect.vercel.app/buscarProfessores", {
+       axios.post("https://planet-scale-database-connect.vercel.app/buscarProfessores", {
            id_usuario: Cookies.getItem("id_usuario")
        })
       .then(response => {
@@ -47,67 +45,68 @@ export default function Landing() {
         refetchOnWindowFocus: false, 
         staleTime: 1000 * 10   
       }
-
-        const chart = new Chart(ctx, {
-            type: "bar",
-            data: {
-                labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo'],
-                datasets: [{
-                  label: 'Aulas Semanais',
-                  data: [12, 19, 3, 5, 2, 3, 10],
-                  borderWidth: 3,
-                  backgroundColor: '#8257E5'
-                }]
-            },
-            options: {
-                scales: {
-                  y: {
-                    beginAtZero: true,
-                    min: 0,
-                  }
-                },
-                layout: {
-                    padding: 0
-                },
-                responsive: true,
-                maintainAspectRatio: true,
-                aspectRatio: 1,
+       
+     let ctx = document.getElementById('grafico')
+     let ctx2 = document.getElementById('grafico2')
+      
+    let chart = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo'],
+            datasets: [{
+              label: 'Aulas Semanais',
+              data: [12, 19, 3, 5, 2, 3, 10],
+              borderWidth: 3,
+              backgroundColor: '#8257E5'
+            }]
+        },
+        options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                min: 0,
               }
-        })
-        const chart2 = new Chart(ctx2, {
-            type: "pie",
-            data: {
-                labels: ['Professor', 'Alunos'],
-                datasets: [{
-                  label: 'Relação Aluno/Professor',
-                  data: [4, 9],
-                  borderWidth: 3,
-                  backgroundColor: [
-                     '#8257E5',
-                     '#36a2eb'
-                  ]
-                }]
             },
-            options: {
-                scales: {
-                  y: {
-                    beginAtZero: true,
-                    min: 0,
-                  }
-                },
-                layout: {
-                    padding: 0
-                },
-                responsive: true,
-                maintainAspectRatio: true,
-                aspectRatio: 1,
+            layout: {
+                padding: 0
+            },
+            responsive: true,
+            maintainAspectRatio: true,
+            aspectRatio: 1,
+          }
+    })
+    let chart2 = new Chart(ctx2, {
+        type: "pie",
+        data: {
+            labels: ['Professor', 'Alunos'],
+            datasets: [{
+              label: 'Relação Aluno/Professor',
+              data: [4, 9],
+              borderWidth: 3,
+              backgroundColor: "#8257E5"
+            }]
+        },
+        options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                min: 0,
               }
-        })
+            },
+            layout: {
+                padding: 0
+            },
+            responsive: true,
+            maintainAspectRatio: true,
+            aspectRatio: 1,
+          }
+    })
+       
     }, [])
 
     const { push } = useRouter();
-
-   
+    
+    
  
 
     return(
