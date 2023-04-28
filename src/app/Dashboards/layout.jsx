@@ -7,6 +7,8 @@ import UserIcon from "../imgs/icons/userIcon.png"
 import ExercicioIcon from "../imgs/icons/ExerciciosIcon.png"
 import ProfessorIcon from "../imgs/icons/ProfessorIcon.png"
 import CalendarIcon from "../imgs/icons/Calendar.png"
+import MenuIcon from "../imgs/icons/IconMenu.png"
+import CloseIcon from "../imgs/icons/CloseIcon.png"
 import Logo from "../imgs/GymHubFont.png"
 import Cookies from "js-cookies"
 import { useRouter } from 'next/navigation';
@@ -95,27 +97,42 @@ export default function Layout({ children }) {
           
           </div>
           <div className={styles.perfilFlex}>
-            <div className={styles.perfil} onClick={() => {openModal(!modal)}}>
+            <motion.div className={styles.perfil} onClick={() => {openModal(!modal)}}
+              whileTap={{ scale: 0.80 }}
+            >
                 <Image
                   src={UserIcon}
                   width={500}
                   height={500}
                   alt="Usuario"
                 />
-            </div>
+            </motion.div>
             {
               modal &&
-              <section>
+              <motion.section 
+              initial={{opacity: 0}}
+              animate={{opacity: 1}}
+              transition={{type: "spring", stiffness: 300, damping: 24}}
+              
+              >
                 <div className={styles.modalOpcoes} onClick={deslogar}>
                     <h3>Deslogar</h3>
                 </div>
                
-              </section>
+              </motion.section>
             }     
           </div>
-          <div className={styles.mobileBar} onClick={() => setMobileModal(!mobileModal)}>
-
-          </div>
+          <motion.div
+            whileTap={{scale: 0.80}}
+          >
+          <Image onClick={() => setMobileModal(true)}
+          style={{marginRight: "1rem"}}
+            src={MenuIcon}
+            width={35}
+            height={35}
+            alt="Menu"
+          />
+          </motion.div>
         </div>
         {
           mobileModal && 
@@ -131,7 +148,16 @@ export default function Layout({ children }) {
                 height={100}
                 alt="Logo"
               />
-              <button onClick={() => setMobileModal(!mobileModal)}>Fechar</button>
+              <motion.div
+                whileTap={{scale: 0.80}}
+              >
+              <Image onClick={() => setMobileModal(false)} style={{marginTop: "2rem"}}
+                src={CloseIcon}
+                width={35}
+                height={35}
+                alt="Fechar"
+              />
+              </motion.div>
             </header>
                 <p style={{color: "#8d8d8d", fontWeight: "bold"}}>Overview</p>
                 <div onClick={exercicios}>

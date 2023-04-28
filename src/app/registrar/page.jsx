@@ -40,7 +40,7 @@ export default function Registrar() {
             <motion.div className={styles.container}
                 initial={{x: 60, opacity: 0}}
                 animate={{x: 0, opacity: 1}}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.5 }}
             >
                 <div className={styles.registrar}>
                     <Image

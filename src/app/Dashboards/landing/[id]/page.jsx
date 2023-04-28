@@ -3,9 +3,13 @@ import styles from "./page.module.css"
 import Cookies from "js-cookies"
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from "react";
+import {motion} from "framer-motion"
 import Image from "next/image";
 import Link from "next/link";
 import TesteImage from "../../../imgs/icons/userLandingIcon.png"
+import CapelloIcon from "../../../imgs/icons/CapelloIcon.png"
+import ExerciciosIcon from "../../../imgs/icons/IconExercicios.png"
+import CalendarioIcon from "../../../imgs/icons/CalendarioIcon.png"
 import { Chart } from "chart.js/auto";
 import axios from "axios";
 export default function Landing() {
@@ -57,7 +61,7 @@ export default function Landing() {
               label: 'Aulas Semanais',
               data: [12, 19, 3, 5, 2, 3, 10],
               borderWidth: 3,
-              backgroundColor: '#8257E5'
+              backgroundColor: ["#8257E5", "#55BCC9"]
             }]
         },
         options: {
@@ -83,7 +87,7 @@ export default function Landing() {
               label: 'Relação Aluno/Professor',
               data: [4, 9],
               borderWidth: 3,
-              backgroundColor: "#8257E5"
+              backgroundColor: ["#8257E5", "#55BCC9"]
             }]
         },
         options: {
@@ -110,12 +114,20 @@ export default function Landing() {
  
 
     return(
-        <div className={styles.main}>
+        <motion.div className={styles.main}
+           
+        >
             <header>
                 <h2>Bem vindo de volta, {Cookies.getItem("nome")}!</h2>
             </header>
-            <div className={styles.campo}>
-                <div className={styles.edit}>
+            <motion.div className={styles.campo}
+                 initial={{opacity: 0, scale: 0}}
+                 animate={{opacity: 1, scale: 1}}
+                 transition={{duration: 0.5}}
+            >
+                <motion.div className={styles.edit}
+        
+                >
                     <header>
                         <h1>Gerencie Agora</h1>
                     </header>
@@ -130,17 +142,37 @@ export default function Landing() {
                             <Link href={`./Dashboards/calendario/${Cookies.getItem("email")}`}><h3>Alunos</h3></Link>
                         </section>
                         <section className={styles.editCampos} style={{backgroundColor: "#FFEECC",}}>
+                            <Image
+                                src={CapelloIcon}
+                                width={35}
+                                height={35}
+                                alt="Imagem"
+                            />
                         <Link href={`./Dashboards/professores/${Cookies.getItem("email")}`}> <h3 style={{color: "#FFA800"}}>Professores</h3></Link>
                         </section>
                         <section className={styles.editCampos} style={{backgroundColor: "#FDDCDF",}}>
+                        <Image
+                                src={ExerciciosIcon}
+                                width={35}
+                                height={35}
+                                alt="Imagem"
+                            />
                         <Link href={`./Dashboards/professores/${Cookies.getItem("email")}`}> <h3 style={{color: "#F64E60"}}>Aulas</h3></Link>
                         </section>
                         <section className={styles.editCampos} style={{backgroundColor: "#E7DCFE",}}>
+                            <Image
+                                src={CalendarioIcon}
+                                width={35}
+                                height={35}
+                                alt="Imagem"
+                            />
                         <Link href={`./Dashboards/professores/${Cookies.getItem("email")}`}> <h3 style={{color: "#8950FC"}}>Calendario</h3></Link>
                         </section>
                     </div>
-                </div>
-                <div className={styles.toDo}>
+                </motion.div>
+                <motion.div className={styles.toDo}
+                  
+                >
                     <header><h2>Compromissos</h2></header>
                     <div className={styles.toDoCampo}>
                         <section>
@@ -184,7 +216,7 @@ export default function Landing() {
                             <p>Aenean facilisis mi ac vestibulum vestibulum.</p>
                         </section>
                     </div>
-                </div>
+                </motion.div>
                 <div className={styles.calendario}>
                     <header>
                         <h2>Calêndario</h2>
@@ -225,7 +257,7 @@ export default function Landing() {
 
                     </canvas>
                 </div>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     )
 }
