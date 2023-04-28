@@ -10,20 +10,35 @@ import TesteImage from "../../../imgs/icons/userLandingIcon.png"
 import CapelloIcon from "../../../imgs/icons/CapelloIcon.png"
 import ExerciciosIcon from "../../../imgs/icons/IconExercicios.png"
 import CalendarioIcon from "../../../imgs/icons/CalendarioIcon.png"
+import AddIcon from "../../../imgs/icons/IconAdd.png"
 import { Chart } from "chart.js/auto";
 import axios from "axios";
 export default function Landing() {
     
     const [alunosData, setAlunosData] = useState(1)
     const [professoresData, setProfessoresData] = useState(1)
-   
+    const [compromissos, setCompromissos] = useState([])
+    const [compromissosModal, setCompromissosModal] = useState(false)
+    const [compromissosInfos, setCompromissosInfos] = useState([])
+
+    const { push } = useRouter();
+
     useEffect(() => {
         
         if(Cookies.getItem("email") == null) {
             push("/invalido")
         }
        
-        
+      
+        axios.post("https://planet-scale-database-connect.vercel.app/buscarCompromissos", {
+            id: Cookies.getItem("id_usuario")
+        }).then(response => {
+            console.log(response.data)
+            setCompromissos(response.data)
+        }).catch(err => {
+            console.log(err)
+        })
+
       axios.post("https://planet-scale-database-connect.vercel.app/buscarClientes", {
             id_usuario: Cookies.getItem("id_usuario")
         })
@@ -108,10 +123,37 @@ export default function Landing() {
        
     }, [])
 
-    const { push } = useRouter();
     
+    function adicionarCompromissos() {
+        
+        const nome = document.getElementById("nomeCompromissos").value
+        const descricao = document.getElementById("descricaoCompromissos").value
+
+        axios.post("https://planet-scale-database-connect.vercel.app/adicionarCompromissos", {
+            id_usuario: Cookies.getItem("id_usuario"),
+            nome: nome,
+            descricao: descricao
+        }).then(result => {
+            console.log(result)
+            window.alert("Compromisso Adicionado com Sucesso!")
+            location.reload()
+        }).catch(err => {
+            console.log(err)
+        })
+    }
     
- 
+    function deletarCompromissos(id) {
+        axios.post("https://planet-scale-database-connect.vercel.app/deletarCompromissos", {
+            id: id
+        }).then(response => {
+            console.log(response)
+            location.reload()
+        }).catch(err => {
+            console.log(err)
+        })
+        
+    }
+
 
     return(
         <motion.div className={styles.main}
@@ -173,48 +215,34 @@ export default function Landing() {
                 <motion.div className={styles.toDo}
                   
                 >
-                    <header><h2>Compromissos</h2></header>
+                    <header>
+                        <h2>Compromissos</h2>
+                        <motion.div 
+                             whileTap={{scale: 0.80}}   
+                        >
+                        <Image onClick={() => setCompromissosModal(!compromissosModal)}
+                            src={AddIcon}
+                            width={40}
+                            height={40}
+                            alt="Adicionar"
+                        />
+                        </motion.div>
+                    </header>
                     <div className={styles.toDoCampo}>
-                        <section>
-                            <aside>
-                                <div className={styles.toDoBola}>
-                                </div>
-                                <h3>Contact Sales</h3>
-                            </aside>
-                            <p>Proin sagittis nisl diam, in pretium velit congue et.</p>
-                        </section>
-                        <section>
-                            <aside>
-                                <div className={styles.toDoBola}>
-                                </div>
-                                <h3>Meet with new client</h3>
-                            </aside>
-                            <p>Donec sodales, tellus at facilisis commodo, lectus lectus pharetra neque, at condimentum augue diam vitae massa.</p>
-                        </section>
-                        <section>
-                            <aside>
-                                <div className={styles.toDoBola}>
-                                </div>
-                                <h3>Dinner with manager</h3>
-                            </aside>
-                            <p>Aenean facilisis mi ac vestibulum vestibulum.</p>
-                        </section>
-                        <section>
-                            <aside>
-                                <div className={styles.toDoBola}>
-                                </div>
-                                <h3>Meeting with the colegues</h3>
-                            </aside>
-                            <p>Aenean facilisis mi ac vestibulum vestibulum.</p>
-                        </section>
-                        <section>
-                            <aside>
-                                <div className={styles.toDoBola}>
-                                </div>
-                                <h3>Lunch with Wife</h3>
-                            </aside>
-                            <p>Aenean facilisis mi ac vestibulum vestibulum.</p>
-                        </section>
+                        {
+                        compromissos.map(x => {
+                            return(  
+                            <section  key={x.id} onClick={() => deletarCompromissos(x.id)}>
+                                <aside>
+                                    <div className={styles.toDoBola}>
+                                    </div>
+                                    <h3>{x.nome}</h3>
+                                </aside>
+                                <p>{x.descricao}</p>
+                            </section>)
+                        }   
+                            )                   
+                        }
                     </div>
                 </motion.div>
                 <div className={styles.calendario}>
@@ -257,6 +285,15 @@ export default function Landing() {
 
                     </canvas>
                 </div>
+                {
+                    compromissosModal && 
+                    <div className={styles.compromissosModal}>
+                        <button onClick={() => setCompromissosModal(false)}>Fechar</button>
+                        <input type="text" placeholder="Nome" id="nomeCompromissos" />
+                        <input type="text" placeholder="Descrição" id="descricaoCompromissos"/>
+                        <button onClick={adicionarCompromissos}>Adicionar</button>
+                    </div>
+                }
             </motion.div>
         </motion.div>
     )
