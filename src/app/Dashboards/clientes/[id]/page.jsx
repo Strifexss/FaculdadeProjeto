@@ -83,7 +83,17 @@ export default function Usuarios() {
         console.log(response)
         if(response.status == 200) {
             window.alert("Cliente Cadastrado com Sucesso")
-            location.reload()
+        
+            axios.post("https://planet-scale-database-connect.vercel.app/buscarClientes", {
+                id_usuario: Cookies.getItem("id_usuario")
+            })
+        .then(response => {
+            console.log(response.data)
+            setData(response.data)
+        })
+
+        setCadastro(false)
+
         }
     }).catch(err => {
         console.log(err)
@@ -104,7 +114,17 @@ export default function Usuarios() {
             console.log(response)
             if(response.status == 200) {
                 window.alert("Cliente Deletado com Sucesso")
-                location.reload()
+            
+            axios.post("https://planet-scale-database-connect.vercel.app/buscarClientes", {
+                    id_usuario: Cookies.getItem("id_usuario")
+                })
+            .then(response => {
+                console.log(response.data)
+                setData(response.data)
+            })
+
+            setOpenCliente(false)
+
             }
         }).catch(err => {
             console.log(err)
