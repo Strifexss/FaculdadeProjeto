@@ -11,6 +11,8 @@ import CapelloIcon from "../../../imgs/icons/CapelloIcon.png"
 import ExerciciosIcon from "../../../imgs/icons/IconExercicios.png"
 import CalendarioIcon from "../../../imgs/icons/CalendarioIcon.png"
 import AddIcon from "../../../imgs/icons/IconAdd.png"
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import { Chart } from "chart.js/auto";
 import axios from "axios";
 export default function Landing() {
@@ -20,7 +22,7 @@ export default function Landing() {
     const [compromissos, setCompromissos] = useState([])
     const [compromissosModal, setCompromissosModal] = useState(false)
     const [compromissosInfos, setCompromissosInfos] = useState([])
-
+    const [value, onChange] = useState(new Date());
     const { push } = useRouter();
 
     useEffect(() => {
@@ -136,7 +138,18 @@ export default function Landing() {
         }).then(result => {
             console.log(result)
             window.alert("Compromisso Adicionado com Sucesso!")
-            location.reload()
+
+            axios.post("https://planet-scale-database-connect.vercel.app/buscarCompromissos", {
+                id: Cookies.getItem("id_usuario")
+            }).then(response => {
+                console.log(response.data)
+                setCompromissos(response.data)
+            }).catch(err => {
+                console.log(err)
+            })
+
+            setCompromissosModal(false)
+
         }).catch(err => {
             console.log(err)
         })
@@ -147,7 +160,16 @@ export default function Landing() {
             id: id
         }).then(response => {
             console.log(response)
-            location.reload()
+
+            axios.post("https://planet-scale-database-connect.vercel.app/buscarCompromissos", {
+                id: Cookies.getItem("id_usuario")
+            }).then(response => {
+                console.log(response.data)
+                setCompromissos(response.data)
+            }).catch(err => {
+                console.log(err)
+            })
+
         }).catch(err => {
             console.log(err)
         })
@@ -249,7 +271,11 @@ export default function Landing() {
                     <header>
                         <h2>Calêndario</h2>
                     </header>
-                    <input type="datetime-local" />
+                    <Calendar onChange={onChange} value={value} 
+                        className={styles.calendar}
+                        locale="pt-BR"
+                        tileClassName="Calêndario"
+                    />
                 </div>
                 <div className={styles.totais}>
                     <section>
