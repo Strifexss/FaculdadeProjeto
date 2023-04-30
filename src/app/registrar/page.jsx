@@ -28,7 +28,7 @@ export default function Registrar() {
          if(response.data.errno === 1062) {
                  window.alert("Email já cadastrado")
             }
-        else if(response.data === "") {
+        else {
             window.alert("Email Cadastrado com Sucesso")
             push("/")
         }

@@ -39,7 +39,9 @@ export default function Home() {
               setLoginErro(true)
             }
           }
-         
+          else {
+            setLoginErro(true)
+          }
         })
   }
 
