@@ -83,6 +83,10 @@
   border-radius: 0.5rem;
 }
 
+.loading {
+  position: absolute;
+}
+
 @media screen and (max-width: 425px) {
   .main {
     width: 100vw;

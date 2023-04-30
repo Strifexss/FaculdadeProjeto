@@ -3,19 +3,23 @@ import styles from './page.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
 import CidadeImagem from "./imgs/purpleCidade.webp"
+import loadingIcon from "./imgs/icons/spinnerLoading.svg"
 import Logo from "./imgs/GymHubFont.png"
 import {motion} from "framer-motion"
 import axios from 'axios'
 import { useRouter } from 'next/navigation';
 import Cookies from "js-cookies"
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function Home() {
 
   const { push } = useRouter();
   const [loginErro, setLoginErro] = useState(false)
- 
+  const focusInputRef = useRef(null)
+  const [loading, setLoading] = useState(false)
+
   function login() {
+    setLoading(true)
     const email = document.getElementById("email").value
     const senha = document.getElementById("senha").value
 
@@ -36,11 +40,15 @@ export default function Home() {
               push(`/Dashboards/landing/${Cookies.getItem("email")}`)
             }
             else {
+              setLoading(false)
               setLoginErro(true)
+              focusInputRef.current.focus()
             }
           }
           else {
+            setLoading(false)
             setLoginErro(true)
+            focusInputRef.current.focus()
           }
         })
   }
@@ -80,11 +88,23 @@ export default function Home() {
               Usuário ou senha incorretos
               </motion.p>
           }
-          <input type="text" id="email" placeholder='E-mail' />
+          <input type="text" id="email" placeholder='E-mail' ref={focusInputRef} />
           <input type="password" id="senha" placeholder='Senha' />
           <button onClick={login}>
             <h2>Entrar</h2>
+          
           </button>
+          {
+              loading && 
+              <div className={styles.loading}>
+              <Image
+                src={loadingIcon}
+                width={5}
+                height={5}
+                alt='Loading'
+              />
+              </div>
+            }
           <Link href="/registrar"><p>Não tem uma conta? <span>Registre-se</span></p></Link>
         </div>
       </motion.div>
