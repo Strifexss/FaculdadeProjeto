@@ -8,12 +8,12 @@ import {motion} from "framer-motion"
 import axios from 'axios'
 import { useRouter } from 'next/navigation';
 import Cookies from "js-cookies"
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
 
   const { push } = useRouter();
-
+  const [loginErro, setLoginErro] = useState(false)
  
   function login() {
     const email = document.getElementById("email").value
@@ -35,10 +35,11 @@ export default function Home() {
               console.log(Cookies.getItem("nome"))
               push(`/Dashboards/landing/${Cookies.getItem("email")}`)
             }
+            else {
+              setLoginErro(true)
+            }
           }
-          else if(response.data[0] == null) {
-            window.alert("usuario ou senha incorreto")
-          }
+         
         })
   }
 
@@ -66,6 +67,17 @@ export default function Home() {
             height={200}
           />
           </section>
+          {
+            loginErro &&
+            <motion.p
+              style={{color: "red", fontWeight: "bold", textAlign: "left"}}
+              initial={{y: 10, opacity: 0}}
+              animate={{y: 0, opacity: 1}}
+              transition={{ duration: 0.3 }}
+            >
+              Usuário ou senha incorretos
+              </motion.p>
+          }
           <input type="text" id="email" placeholder='E-mail' />
           <input type="password" id="senha" placeholder='Senha' />
           <button onClick={login}>

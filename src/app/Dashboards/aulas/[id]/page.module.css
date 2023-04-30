@@ -220,3 +220,14 @@
     width: auto;
   }
 }
+
+@media screen and (min-width: 800px) and (max-width: 1400px) {
+  .main {
+    margin-top: 3.5rem;
+    width: 100%;
+  }
+
+  .main header {
+    height: 3.5rem;
+  }
+}

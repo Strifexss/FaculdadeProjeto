@@ -15,6 +15,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { Chart } from "chart.js/auto";
 import axios from "axios";
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 export default function Landing() {
     
     const [alunosData, setAlunosData] = useState(1)
@@ -41,36 +42,16 @@ export default function Landing() {
             console.log(err)
         })
 
-      axios.post("https://planet-scale-database-connect.vercel.app/buscarClientes", {
-            id_usuario: Cookies.getItem("id_usuario")
-        })
-       .then(response => {
-        console.log(response.data)
-        setAlunosData(response.data)
-       }),
-       {
-         retry: 5, 
-         refetchOnWindowFocus: false, 
-         staleTime: 1000 * 10   
-       }
-      
-       axios.post("https://planet-scale-database-connect.vercel.app/buscarProfessores", {
-           id_usuario: Cookies.getItem("id_usuario")
-       })
-      .then(response => {
-       console.log(response.data)
-       setProfessoresData(response.data)
-      }),
-      {
-        retry: 5, 
-        refetchOnWindowFocus: false, 
-        staleTime: 1000 * 10   
-      }
+    
        
      let ctx = document.getElementById('grafico')
-     let ctx2 = document.getElementById('grafico2')
-      
-    let chart = new Chart(ctx, {
+     
+     if (window.ctx) {
+        // Se sim, destruir o gráfico anterior
+        window.ctx.destroy();
+    } 
+
+    window.ctx = new Chart(ctx, {
         type: "bar",
         data: {
             labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo'],
@@ -96,13 +77,22 @@ export default function Landing() {
             aspectRatio: 1,
           }
     })
-    let chart2 = new Chart(ctx2, {
+    
+    const ctx2 = document.getElementById('grafico3')
+
+    if (window.ctx2) {
+        // Se sim, destruir o gráfico anterior
+        window.ctx2.destroy();
+    } 
+
+
+    window.ctx2 = new Chart(ctx2, {
         type: "pie",
         data: {
             labels: ['Professor', 'Alunos'],
             datasets: [{
               label: 'Relação Aluno/Professor',
-              data: [4, 9],
+              data: [professoresData.length, alunosData.length],
               borderWidth: 3,
               backgroundColor: ["#8257E5", "#55BCC9"]
             }]
@@ -122,10 +112,41 @@ export default function Landing() {
             aspectRatio: 1,
           }
     })
-       
-    }, [])
+   
 
-    
+
+    }, [alunosData, professoresData])
+
+    const { isLoading, error} =useQuery('buscarClientes', async () =>
+    await axios.post("https://planet-scale-database-connect.vercel.app/buscarClientes", {
+        id_usuario: Cookies.getItem("id_usuario")
+    })
+   .then(response => {
+    console.log(response.data)
+    setAlunosData(response.data)
+}),
+   {
+     retry: 5, 
+     refetchOnWindowFocus: false, 
+     staleTime: 1000 * 10   
+   }
+  ) 
+  
+  const buscarProfessores = useQuery('buscarProfessores', async () =>
+   axios.post("https://planet-scale-database-connect.vercel.app/buscarProfessores", {
+       id_usuario: Cookies.getItem("id_usuario")
+   })
+  .then(response => {
+   console.log(response.data)
+   setProfessoresData(response.data)
+  }),
+  {
+    retry: 5, 
+    refetchOnWindowFocus: false, 
+    staleTime: 1000 * 10   
+  }
+  )
+
     function adicionarCompromissos() {
         
         const nome = document.getElementById("nomeCompromissos").value
@@ -185,9 +206,6 @@ export default function Landing() {
                 <h2>Bem vindo de volta, {Cookies.getItem("nome")}!</h2>
             </header>
             <motion.div className={styles.campo}
-                 initial={{opacity: 0, scale: 0}}
-                 animate={{opacity: 1, scale: 1}}
-                 transition={{duration: 0.5}}
             >
                 <motion.div className={styles.edit}
         
@@ -306,9 +324,9 @@ export default function Landing() {
                 <div className={styles.grafico}>
                     <canvas id="grafico">
 
-                    </canvas>
-                    <canvas id="grafico2">
-
+                    </canvas>                    
+                    <canvas id="grafico3">
+                    
                     </canvas>
                 </div>
                 {
