@@ -33,6 +33,16 @@ export default function Planos() {
             id: id
         }).then(response => {
             console.log(response)
+
+             axios.post("https://planet-scale-database-connect.vercel.app/buscarPlanos", {
+                id_usuario: Cookies.getItem("id_usuario")
+            })
+           .then(response => {
+            console.log(response.data)
+            setData(response.data)
+            setModalInfo(false)
+           })
+
         }).catch(err => {
             console.log(err)
         })
@@ -104,11 +114,23 @@ export default function Planos() {
                  { 
                     modalInfo &&
                     <div className={styles.info}>
-                        <section>
+                        <div className={styles.infoButtons}>
                             <button onClick={() => setModalInfo(false)}>Fechar</button>
                             <button onClick={() => deletar(info[0].id)}>Deletar</button>
+                        </div>
+                        <section>
+                            <h1>Plano: {info[0].nomePlanos}</h1>
                         </section>
-                        <h1>Plano: {info[0].nomePlanos}</h1>
+                        <section>
+                            <h1>Descricao:</h1>
+                            <p> {info[0].descricao}</p>
+                        </section>
+                        <section>
+                            <h1>Duração: {info[0].duracao_dias}dias</h1>
+                        </section>
+                        <section>
+                            <h1>Valor: {info[0].preco}R$</h1>
+                        </section>
                     </div>
                  }
             </div>

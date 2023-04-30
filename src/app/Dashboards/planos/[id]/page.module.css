@@ -196,18 +196,19 @@
   }
 
   .info {
-    background-color: #121214;
-    width: 40vw;
-    height: 45vh;
+    background-color: black;
+    width: 30vw;
+    height: 60vh;
     position: absolute;
     margin-top: 2rem;
     border: solid #8257E5 2px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    transform: translateY(-5rem);
   }
 
-  .info section {
+  .infoButtons  {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -229,6 +230,23 @@
     
 }
 
+.info section {
+  width: 90%;
+  height: 5rem;
+  background-color: #121214;
+  border-radius: 1rem;
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.info section h1 {
+  margin: 1rem;
+}
+.info section p {
+  font-weight: bold;
+}
+
 .info button:hover {
     background-color: #4e348a;
     scale: 100%;
@@ -237,6 +255,18 @@
     .cadastro  {
       width: 100%;
     }
+
+    .info {
+      width: 90vw;
+      height: 80vh;
+      position: fixed;
+      transform: translateY(-8rem);
+    } 
+
+    .info section {
+      height: 9rem;
+      
+    }
   }
 
   @media screen and (min-width: 1000px) and (max-width: 1400px)  {
@@ -244,5 +274,17 @@
       padding-left: 0;
       padding-top: 3.5rem;
     }
-  
+    
+    .info {
+      width: 40vw;
+      height: 80vh;
+      position: fixed;
+      transform: translateY(-8rem);
+    } 
+
+    .info section {
+      height: 10rem;
+      
+    }
+
   }

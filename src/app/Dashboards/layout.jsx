@@ -194,6 +194,7 @@ export default function Layout({ children }) {
                 </div>
             </footer>     
           </motion.div>
+        
         }
         {children}
       </div>   
