@@ -101,8 +101,8 @@ export default function Aulas() {
                 <div className={styles.campo}>
                     {data.map(x => {
                         return(
-                            <div className={styles.flexar}>
-                            <motion.div className={styles.container} key={x.id}
+                            <div className={styles.flexar} key={x.id}>
+                            <motion.div className={styles.container} 
                                 initial={{opacity: 0}}
                                 animate={{opacity: 1}}
                                 transition={{ duration: 0.5 }}
