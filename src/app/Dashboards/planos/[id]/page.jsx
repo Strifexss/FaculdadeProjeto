@@ -64,6 +64,16 @@ export default function Planos() {
         id_usuario: Cookies.getItem("id_usuario")
     }).then(response => {
         console.log(response)
+        setCadastro(false)
+        axios.post("https://planet-scale-database-connect.vercel.app/buscarPlanos", {
+            id_usuario: Cookies.getItem("id_usuario")
+        })
+       .then(response => {
+        console.log(response.data)
+        setData(response.data)
+        
+    })
+
     }).catch(err => {
         console.log(err)
     })
@@ -101,6 +111,34 @@ export default function Planos() {
                         )
                     })
                 }
+                { isLoading &&
+                        <>
+                         <div className={styles.card}>
+                                <section>
+                                </section>  
+                        </div>        
+                         <div className={styles.card}>
+                                <section>
+                                </section>  
+                        </div>        
+                         <div className={styles.card}>
+                                <section>
+                                </section>  
+                        </div>        
+                         <div className={styles.card}>
+                                <section>
+                                </section>  
+                        </div>        
+                         <div className={styles.card}>
+                                <section>
+                                </section>  
+                        </div>        
+                         <div className={styles.card}>
+                                <section>
+                                </section>  
+                        </div>        
+                    </>   
+                }
                  {
                     cadastro && 
                     <div className={styles.cadastro}>
@@ -124,7 +162,7 @@ export default function Planos() {
                     deletarModal && 
                     <div>
                           <div className={styles.deletar}>
-                            <h1>Deseja deletar o aluno?</h1>
+                            <h1>Deseja deletar o plano?</h1>
                          <section>
                             <button onClick={() => {setDeletarModal(false)}}><h2>Não</h2></button>
                              <button onClick={() => (deletar(info[0].id), setDeletarModal(false))}><h2>Sim</h2></button>
@@ -149,7 +187,7 @@ export default function Planos() {
                  }
              
             </div>
-       
+  
         </div>
     )
 }

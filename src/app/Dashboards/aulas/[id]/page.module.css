@@ -364,6 +364,126 @@
   }
 
   .main header {
-    height: 3.5rem;
+    height: 2.8rem;
+    font-size: 0.8rem;
   }
+
+  .botoes {
+    height: 3rem;
+  }
+
+  .botoes button:hover {
+    background-color: #4e348a;
+    scale: 100%;
+  }
+
+  .botoes button {
+    height: 2.5rem;
+    width: 10rem;
+  }
+
+  .botoes input {
+    margin: 0.5rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    background-color: black;
+    border: none;
+    outline: 0;
+    transition: 0.1s;
+    color: #fff;
+    width: 20rem;
+    padding: 1rem;
+  }
+
+  .campo {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    margin-top: 1rem;
+}
+
+  .container {
+    width: 15rem;
+    height: 25rem;
+    background-color: #121214;
+    margin: 1rem;
+    margin-bottom: 0.2rem;
+    cursor: pointer;
+    transition: 0.1s;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    scale: 90%;
+}
+
+.textBox {
+  width: 90%;
+  height: 60%;
+  margin: 1rem;
+  background-color: #4e348a;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  overflow-y: scroll;
+}
+
+.textBox::-webkit-scrollbar {
+  background-color: #8257E5;
+  width: 4px;
+}
+
+.textBox::-webkit-scrollbar-thumb {
+  background: #3a2768;
+  border-radius: 1rem;    
+}
+
+.container section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.container section h4 {
+  margin: 1rem;
+  width: 110%;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 1rem;
+  background-color: rgb(177, 177, 4);
+  font-weight: bold;
+}
+
+.flexarButtons button {
+  cursor: pointer;
+  width: 6rem;
+  height: 3.5rem;
+  margin: 1rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #8257E5;
+  transition: 0.1s;
+  scale: 90%;
+  
+}
+
+.flexarButtons button:hover {
+  background-color: #4e348a;
+  scale: 100%;
+}
+
 }
