@@ -18,6 +18,8 @@ import axios from "axios";
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 export default function Landing() {
     
+    const [modalDeletarCompromisso, setModalDeletarCompromisso] = useState(false)
+    const [id_compromisso, setId_Compromisso] = useState(1)
     const [alunosData, setAlunosData] = useState(1)
     const [professoresData, setProfessoresData] = useState(1)
     const [compromissos, setCompromissos] = useState([])
@@ -176,9 +178,9 @@ export default function Landing() {
         })
     }
     
-    function deletarCompromissos(id) {
+    function deletarCompromissos() {
         axios.post("https://planet-scale-database-connect.vercel.app/deletarCompromissos", {
-            id: id
+            id: id_compromisso
         }).then(response => {
             console.log(response)
 
@@ -272,7 +274,7 @@ export default function Landing() {
                         {
                         compromissos.map(x => {
                             return(  
-                            <section  key={x.id} onClick={() => deletarCompromissos(x.id)}>
+                            <section  key={x.id} onClick={() => {setId_Compromisso(x.id), setModalDeletarCompromisso(true)}}>
                                 <aside>
                                     <div className={styles.toDoBola}>
                                     </div>
@@ -337,6 +339,16 @@ export default function Landing() {
                         <input type="text" placeholder="Descrição" id="descricaoCompromissos"/>
                         <button onClick={adicionarCompromissos}>Adicionar</button>
                     </div>
+                }
+                {
+                    modalDeletarCompromisso && 
+                    <div className={styles.deletar}>
+                    <h1 contentEditable>Deseja deletar o Compromisso?</h1>
+                    <section>
+                        <button onClick={() => {setModalDeletarCompromisso(!modalDeletarCompromisso)}}><h2>Não</h2></button>
+                        <button onClick={() => (deletarCompromissos(), setModalDeletarCompromisso(!modalDeletarCompromisso))}><h2>Sim</h2></button>
+                    </section>
+                </div>
                 }
             </motion.div>
         </motion.div>
