@@ -2,7 +2,7 @@
 import styles from "./page.module.css"
 import axios from "axios"
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
-import { use, useState } from "react"
+import { use, useRef, useState } from "react"
 import Image from "next/image"
 import {motion} from "framer-motion"
 import UserImage from "../../../imgs/icons/userIcon.png"
@@ -11,7 +11,6 @@ import Cookies from "js-cookies"
 import { useRouter } from 'next/navigation';
 
 export default function Usuarios() {
-
     const [id_usuario, setId_usuario] = useState()
     const [data, setData] = useState([])
     const [cadastro, setCadastro] = useState(false)
@@ -20,6 +19,7 @@ export default function Usuarios() {
     const [dadosClientes, setDadosClientes] = useState({})
     const [deletarConfirm, modalDeletarConfirm] = useState(false)
     const { push } = useRouter();
+    const nomeAluno = useRef(null)
     //Função para validar o acesso a pagina
     useEffect(() => {
         if(Cookies.getItem("email") == null) {
@@ -129,6 +129,10 @@ export default function Usuarios() {
         }).catch(err => {
             console.log(err)
         })
+   }
+
+   function salvar() {
+    console.log(nomeAluno.current.textContent)
    }
 
     return(
@@ -244,7 +248,7 @@ export default function Usuarios() {
                             height={500}
                             alt="Cliente"
                         />
-                        <h3 >{x.nome}</h3>
+                        <h3>{x.nome}</h3>
                         </section>
                         <h4 >Email: {x.email}</h4>
                         <h4 >Telefone: {x.telefone}</h4>
@@ -289,6 +293,7 @@ export default function Usuarios() {
                         <div className={styles.flexarButtons}>
                             <button onClick={() => {setOpenCliente(false)}}>Fechar</button>
                             <button onClick={() => {modalDeletarConfirm(!deletarConfirm)}}>Excluir</button>
+                            <button onClick={() => salvar()}>Salvar</button>
                         </div>
                         <section>
                             <div className={styles.principalContainer}>
@@ -299,6 +304,7 @@ export default function Usuarios() {
                                             <section>
                                                 <button onClick={() => {modalDeletarConfirm(!deletarConfirm)}}><h2>Não</h2></button>
                                                 <button onClick={() => (handleDeleteCliente(dadosClientes[0].email), modalDeletarConfirm(!deletarConfirm))}><h2>Sim</h2></button>
+                                             
                                             </section>
                                         </div>
                                         
@@ -310,7 +316,7 @@ export default function Usuarios() {
                                         height={500}
                                         alt="Cliente"
                                     />
-                                    <h1>{dadosClientes[0].nome}</h1>
+                                    <h1 contentEditable ref={nomeAluno} >{dadosClientes[0].nome}</h1>
                                     
                                  </div>
                                  <section>
