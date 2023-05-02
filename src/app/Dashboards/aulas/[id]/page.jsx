@@ -8,6 +8,9 @@ import { useRouter } from 'next/navigation';
 import Cookies from "js-cookies"
 export default function Aulas() {
 
+
+    const [deletarModal, setDeletarModal] = useState(false)
+    const [aulaInfo, setAulaInfo] = useState()
     const [data, setData] = useState([])
     const [openCadastro, setOpenCadastro] = useState(false)
 
@@ -47,9 +50,41 @@ export default function Aulas() {
         id_usuario: Cookies.getItem("id_usuario")
     }).then((response) => {
         console.log(response)
+        axios.post("https://planet-scale-database-connect.vercel.app/buscarAulas", {
+            id_usuario: Cookies.getItem("id_usuario")
+        })
+       .then(response => {
+        console.log(response.data)
+        setData(response.data)
+       })
     }).catch(err => {
         console.log(err)
     })
+    setOpenCadastro(false)
+   }
+
+   function handleAulaInfo(id) {
+        setAulaInfo(id)
+        console.log(aulaInfo)
+   }
+
+   function deletar() {
+        axios.post("https://planet-scale-database-connect.vercel.app/deletarAulas", {
+            id_aula: aulaInfo,
+            id_usuario: Cookies.getItem("id_usuario")
+        }).then(response => {
+            console.log(response)
+            setDeletarModal(false)
+            axios.post("https://planet-scale-database-connect.vercel.app/buscarAulas", {
+                id_usuario: Cookies.getItem("id_usuario")
+            })
+           .then(response => {
+            console.log(response.data)
+            setData(response.data)
+           })
+        }).catch(err => {
+            console.log(err)
+        })
    }
 
     return(
@@ -64,13 +99,14 @@ export default function Aulas() {
                     <input type="text" placeholder="Pesquisar"/>
                 </div>
                 <div className={styles.campo}>
-                    {
-                        isLoading && 
-                        <h1>Carregando...</h1>
-                    }
                     {data.map(x => {
                         return(
-                            <div className={styles.container} key={x.id}>
+                            <div className={styles.flexar}>
+                            <motion.div className={styles.container} key={x.id}
+                                initial={{opacity: 0}}
+                                animate={{opacity: 1}}
+                                transition={{ duration: 0.5 }}
+                            >
                             <div className={styles.containerHeader}>
                                 <h2>{x.nome}</h2>
                             </div>
@@ -87,9 +123,71 @@ export default function Aulas() {
                                     Nivel: {x.nivel}
                                 </h4>
                             </section>
+                        </motion.div>
+                        <div className={styles.flexarButtons}>
+                        <button onClick={() => { setDeletarModal(true), handleAulaInfo(x.id) }}>Deletar</button>
+                        <button>Editar</button>
+                        </div>
                         </div>
                         )
                     })}
+                        
+                        { isLoading &&
+                            <>
+                          <div className={styles.containerLoading}>
+                            <div className={styles.containerHeaderLoading}>
+                            </div>
+                            <div className={styles.textBoxLoading}>
+                                <h3>
+                                </h3>
+                            </div>
+                            <section>
+                                <h4>
+                                </h4>
+                                <h4>
+                                </h4>
+                            </section>
+                        </div>
+                          <div className={styles.containerLoading}>
+                            <div className={styles.containerHeaderLoading}>
+                            </div>
+                            <div className={styles.textBoxLoading}>
+                                <h3>
+                                </h3>
+                            </div>
+                            <section>
+                                <h4>
+                                </h4>
+                                <h4>
+                                </h4>
+                            </section>
+                        </div>
+                          <div className={styles.containerLoading}>
+                            <div className={styles.containerHeaderLoading}>
+                            </div>
+                            <div className={styles.textBoxLoading}>
+                                <h3>
+                                </h3>
+                            </div>
+                            <section>
+                                <h4>
+                                </h4>
+                                <h4>
+                                </h4>
+                            </section>
+                        </div>
+                        </>
+}
+                    {
+                        deletarModal && 
+                        <div className={styles.deletar}>
+                            <h2>Deseja Deletar?</h2>
+                            <section>
+                            <button onClick={() => setDeletarModal(false)}>Não</button>
+                            <button onClick={deletar}>Sim</button>
+                            </section>
+                        </div>
+                    }
                      {
                     openCadastro && 
                     <motion.div className={styles.cadastroModal}

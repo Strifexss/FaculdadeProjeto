@@ -248,7 +248,7 @@ export default function Landing() {
                                 height={35}
                                 alt="Imagem"
                             />
-                        <Link href={`./Dashboards/professores/${Cookies.getItem("email")}`}> <h3 style={{color: "#8950FC"}}>Calendario</h3></Link>
+                        <Link href={`./Dashboards/professores/${Cookies.getItem("email")}`}> <h3 style={{color: "#8950FC"}}>Calendário</h3></Link>
                         </section>
                     </div>
                 </motion.div>
@@ -287,7 +287,7 @@ export default function Landing() {
                 </motion.div>
                 <div className={styles.calendario}>
                     <header>
-                        <h2>Calêndario</h2>
+                        <h2>Calendário</h2>
                     </header>
                     <Calendar onChange={onChange} value={value} 
                         className={styles.calendar}

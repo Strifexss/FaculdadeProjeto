@@ -91,11 +91,89 @@
     border-radius: 1rem;    
   }
 
+.flexar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
+
+.flexarButtons {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+  margin-top: 0;
+
+}
+
+.flexarButtons button {
+  cursor: pointer;
+  width: 8rem;
+  height: 3.5rem;
+  margin: 1rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #8257E5;
+  transition: 0.1s;
+  scale: 90%;
+  
+}
+
+.flexarButtons button:hover {
+  background-color: #4e348a;
+  scale: 100%;
+}
+
+.deletar {
+  width: 25rem;
+  height: 15rem;
+  border: solid 2px #8257E5;
+  border-radius: 1rem;
+  transform: translateY(-5rem);
+  background-color: #121214;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.deletar section {
+  display: flex;
+  flex-direction: row;
+}
+
+.deletar button {
+  cursor: pointer;
+  width: 8rem;
+  height: 3.5rem;
+  margin: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #8257E5;
+  transition: 0.1s;
+  scale: 90%;
+  
+}
+
+.deletar button:hover {
+  background-color: #4e348a;
+  scale: 100%;
+}
+
+
+
 .container {
     width: 20rem;
     height: 30rem;
     background-color: #121214;
     margin: 1rem;
+    margin-bottom: 0.2rem;
     cursor: pointer;
     transition: 0.1s;
     border-radius: 1rem;
@@ -151,6 +229,64 @@
   text-align: center;
   border-radius: 1rem;
   background-color: rgb(177, 177, 4);
+  font-weight: bold;
+}
+.containerLoading{
+    width: 20rem;
+    height: 30rem;
+    background-color: #121214;
+    margin: 1rem;
+    cursor: pointer;
+    transition: 0.1s;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    scale: 90%;
+}
+
+.containerHeaderLoading {
+  width: 100%;
+  height: 15%;
+  background-color: #302153;
+  border-top-right-radius: 1rem ;
+  border-top-left-radius: 1rem;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.textBoxLoading {
+  width: 90%;
+  height: 60%;
+  margin: 1rem;
+  background-color: #1a122e;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.containerLoading section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.containerLoading section h4 {
+  margin: 1rem;
+  width: 110%;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 1rem;
+  background-color: rgb(46, 46, 2);
   font-weight: bold;
 }
 

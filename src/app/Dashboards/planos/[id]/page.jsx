@@ -9,6 +9,7 @@ import Cookies from "js-cookies"
 
 export default function Planos() {
 
+    const [deletarModal, setDeletarModal] = useState(false)
     const [info, setInfo] = useState([])
     const [modalInfo, setModalInfo] = useState(false)
     const [cadastro, setCadastro] = useState(false)
@@ -116,9 +117,21 @@ export default function Planos() {
                     <div className={styles.info}>
                         <div className={styles.infoButtons}>
                             <button onClick={() => setModalInfo(false)}>Fechar</button>
-                            <button onClick={() => deletar(info[0].id)}>Deletar</button>
+                            <button onClick={() => setDeletarModal(true)}>Deletar</button>
                         </div>
                         <section>
+                        {
+                    deletarModal && 
+                    <div>
+                          <div className={styles.deletar}>
+                            <h1>Deseja deletar o aluno?</h1>
+                         <section>
+                            <button onClick={() => {setDeletarModal(false)}}><h2>Não</h2></button>
+                             <button onClick={() => (deletar(info[0].id), setDeletarModal(false))}><h2>Sim</h2></button>
+                         </section>
+                           </div>
+                    </div>
+                 }
                             <h1>Plano: {info[0].nomePlanos}</h1>
                         </section>
                         <section>
@@ -131,9 +144,12 @@ export default function Planos() {
                         <section>
                             <h1>Valor: {info[0].preco}R$</h1>
                         </section>
+                
                     </div>
                  }
+             
             </div>
+       
         </div>
     )
 }
