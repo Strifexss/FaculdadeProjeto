@@ -271,6 +271,16 @@
     overflow-y: scroll;
   }
 
+  .OpenCliente::-webkit-scrollbar {
+    background-color: #8257E5;
+    width: 0;
+  }
+  
+  .OpenCliente::-webkit-scrollbar-thumb {
+    background: #4e348a;
+    border-radius: 1rem;    
+  }
+
   .OpenCliente section {
     display: flex;
     justify-content: center;

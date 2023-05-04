@@ -20,6 +20,13 @@ export default function Usuarios() {
     const [deletarConfirm, modalDeletarConfirm] = useState(false)
     const { push } = useRouter();
     const nomeAluno = useRef(null)
+    const emailAluno = useRef(null)
+    const objetivoAluno = useRef(null)
+    const telefoneAluno = useRef(null)
+    const pesoAluno = useRef(null)
+    const alturaAluno = useRef(null)
+
+
     //Função para validar o acesso a pagina
     useEffect(() => {
         if(Cookies.getItem("email") == null) {
@@ -134,6 +141,11 @@ export default function Usuarios() {
    function salvar(id) {
     axios.post("https://planet-scale-database-connect.vercel.app/modificarClientes", {
         nome: nomeAluno.current.textContent,
+        objetivo: objetivoAluno.current.textContent,
+        telefone: telefoneAluno.current.textContent,
+        email: emailAluno.current.textContent,
+        peso: pesoAluno.current.textContent,
+        altura: alturaAluno.current.textContent,
         cliente_id: id
     }).then(response => {
         console.log(response)
@@ -310,7 +322,7 @@ export default function Usuarios() {
                         <div className={styles.flexarButtons}>
                             <button onClick={() => {setOpenCliente(false)}}>Fechar</button>
                             <button onClick={() => {modalDeletarConfirm(!deletarConfirm)}}>Excluir</button>
-                            <button onClick={() => salvar(dadosClientes[0].cliente_id)}>Salvar</button>
+                            <button onClick={() => salvar(dadosClientes[0].cliente_id)}>Salvar Alterações</button>
                         </div>
                         <section>
                             <div className={styles.principalContainer}>
@@ -339,7 +351,7 @@ export default function Usuarios() {
                                  <section>
                                  <div className={styles.Objetivo}>
                                     <h1>Objetivo:</h1>
-                                    <h3>{dadosClientes[0].objetivo}</h3>
+                                    <h3 ref={objetivoAluno} contentEditable>{dadosClientes[0].objetivo}</h3>
                                  </div>
                                  <div className={styles.Objetivo}>
                                     <h1>{dadosClientes[0].nomePlanos}</h1>
@@ -349,11 +361,11 @@ export default function Usuarios() {
                                  <section>
                                  <div className={styles.dadosPrincipais}>
                                     <h1>Email:</h1>
-                                    <h3>{dadosClientes[0].email}</h3>
+                                    <h3 ref={emailAluno} contentEditable>{dadosClientes[0].email}</h3>
                                  </div>
                                  <div className={styles.dadosPrincipais}>
                                     <h1>Telefone:</h1>
-                                    <h3>{dadosClientes[0].telefone}</h3>
+                                    <h3 ref={telefoneAluno} contentEditable>{dadosClientes[0].telefone}</h3>
                                  </div>
                                  </section>
                                  <div className={styles.infoCorpo}>
@@ -361,15 +373,15 @@ export default function Usuarios() {
                                         <h1>
                                             Peso:
                                         </h1>
-                                        <h3>
-                                            {dadosClientes[0].peso}Kg
+                                        <h3 ref={pesoAluno} contentEditable>
+                                            {dadosClientes[0].peso}
                                         </h3>
                                     </section>
                                     <section>
                                         <h1>
                                             Altura:
                                         </h1>
-                                        <h3>
+                                        <h3 ref={alturaAluno} contentEditable>
                                             {dadosClientes[0].altura}
                                         </h3>
                                     </section>
