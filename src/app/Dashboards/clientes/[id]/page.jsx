@@ -131,8 +131,24 @@ export default function Usuarios() {
         })
    }
 
-   function salvar() {
-    console.log(nomeAluno.current.textContent)
+   function salvar(id) {
+    axios.post("https://planet-scale-database-connect.vercel.app/modificarClientes", {
+        nome: nomeAluno.current.textContent,
+        cliente_id: id
+    }).then(response => {
+        console.log(response)
+
+        axios.post("https://planet-scale-database-connect.vercel.app/buscarClientes", {
+            id_usuario: Cookies.getItem("id_usuario")
+        })
+    .then(response => {
+        console.log(response.data)
+        setData(response.data)
+    })
+
+    }).catch(err => {
+        console.log(err)
+    })
    }
 
     return(
@@ -288,12 +304,13 @@ export default function Usuarios() {
                     
                 }
                 {
-                    openCliente &&
+                    openCliente 
+                    &&
                     <div className={styles.OpenCliente}>
                         <div className={styles.flexarButtons}>
                             <button onClick={() => {setOpenCliente(false)}}>Fechar</button>
                             <button onClick={() => {modalDeletarConfirm(!deletarConfirm)}}>Excluir</button>
-                            <button onClick={() => salvar()}>Salvar</button>
+                            <button onClick={() => salvar(dadosClientes[0].cliente_id)}>Salvar</button>
                         </div>
                         <section>
                             <div className={styles.principalContainer}>
