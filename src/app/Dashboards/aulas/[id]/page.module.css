@@ -84,6 +84,7 @@
 
 .campo::-webkit-scrollbar {
     background-color: #8257E5;
+    display: none;
   }
   
   .campo::-webkit-scrollbar-thumb {
@@ -345,7 +346,81 @@
   font-weight: bold;
 }
 
+.openAula {
+  position: fixed;
+  width: 30rem;
+  height: 40rem;
+  background-color: black;
+  border: solid 2px #8257E5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(-5rem);
+}
 
+.openAula section {
+  width: 100%;
+  height: auto;
+  background-color: #1a122e;
+  display: flex;
+  justify-content: space-around;
+}
+
+.openAula button {
+  cursor: pointer;
+  width: 10rem;
+  height: 3rem;
+  margin: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #8257E5;
+  transition: 0.1s;
+  scale: 90%;
+  
+}
+
+.openAula button:hover {
+  background-color: #4e348a;
+  scale: 100%;
+}
+
+.openAulaInfos {
+  width: 80%;
+  height: 6rem;
+  background-color:#121214;
+  margin: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.openAulaInfosDesc{
+  width: 80%;
+  height: auto;
+  background-color:#121214;
+  margin: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.openAulaInfosDesc h2{
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+.openAulaInfosDesc h3{
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+.openAulaInfos h2{
+  margin-left: 1rem;
+}
+.openAulaInfos h3{
+  margin-left: 1rem;
+}
 @media screen and (max-width: 768px) {
   .main {
     margin-top: 4rem;
@@ -355,6 +430,20 @@
   .cadastroModal {
     width: auto;
   }
+
+
+
+  .openAula {
+    transform: translateY(-5rem);
+    width: 95vw;
+    height: auto;
+  }
+
+  .campo::-webkit-scrollbar {
+    background-color: #8257E5;
+    display: none;
+  }
+
 }
 
 @media screen and (min-width: 800px) and (max-width: 1400px) {
@@ -484,6 +573,12 @@
 .flexarButtons button:hover {
   background-color: #4e348a;
   scale: 100%;
+}
+
+.openAula {
+  transform: translateY(-8rem);
+  width: 25rem;
+  height: auto;
 }
 
 }

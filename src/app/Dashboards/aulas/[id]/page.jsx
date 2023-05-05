@@ -1,20 +1,25 @@
 "use client"
 import styles from "./page.module.css"
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import {motion} from "framer-motion"
 import { useRouter } from 'next/navigation';
 import Cookies from "js-cookies"
 export default function Aulas() {
 
-
+    const [modificar, setModificar] = useState(false)
+    const [openModal, setOpenModal] = useState(false)
+    const [modalData, setModalData] = useState([])
     const [deletarModal, setDeletarModal] = useState(false)
     const [aulaInfo, setAulaInfo] = useState()
     const [data, setData] = useState([])
     const [openCadastro, setOpenCadastro] = useState(false)
-
-    const { push } = useRouter();
+    const nomeEdit = useRef()
+    const descricaoEdit = useRef()
+    const nivelEdit = useRef()
+    const duracaoEdit = useRef()
+    const { push } = useRouter(null);
     useEffect(() => {
         console.log(Cookies.getItem("email"))
         if(Cookies.hasItem("email") == false) {
@@ -75,6 +80,7 @@ export default function Aulas() {
         }).then(response => {
             console.log(response)
             setDeletarModal(false)
+            setOpenModal(false)
             axios.post("https://planet-scale-database-connect.vercel.app/buscarAulas", {
                 id_usuario: Cookies.getItem("id_usuario")
             })
@@ -85,6 +91,37 @@ export default function Aulas() {
         }).catch(err => {
             console.log(err)
         })
+   }
+
+   function handleDataModal(id) {
+    setModalData(data.filter(x => {return x.id == id}))
+    console.log(modalData)
+   }
+
+   function editar(id) {
+    console.log(nomeEdit.current.textContent)
+
+    axios.post("https://planet-scale-database-connect.vercel.app/modificarAulas", {
+        nome: nomeEdit.current.textContent,
+        descricao: descricaoEdit.current.textContent,
+        nivel: nivelEdit.current.textContent,
+        duracao: duracaoEdit.current.textContent,
+        id: id
+    }).then(response => {
+        console.log(response)
+
+        axios.post("https://planet-scale-database-connect.vercel.app/buscarAulas", {
+            id_usuario: Cookies.getItem("id_usuario")
+        })
+       .then(response => {
+        console.log(response.data)
+        setData(response.data)
+       })
+
+    }).catch(error => {
+        console.log(error)
+    })
+
    }
 
     return(
@@ -101,7 +138,7 @@ export default function Aulas() {
                 <div className={styles.campo}>
                     {data.map(x => {
                         return(
-                            <div className={styles.flexar} key={x.id}>
+                            <div className={styles.flexar} key={x.id} onClick={() => {handleDataModal(x.id), setOpenModal(!openModal)}}>
                             <motion.div className={styles.container} 
                                 initial={{opacity: 0}}
                                 animate={{opacity: 1}}
@@ -117,17 +154,13 @@ export default function Aulas() {
                             </div>
                             <section>
                                 <h4>
-                                   Duração: {x.duracao}hr
+                                   Duração: {<div>{x.duracao}</div>}hr
                                 </h4>
                                 <h4>
-                                    Nivel: {x.nivel}
+                                    Nivel: {<div> {x.nivel} </div>}
                                 </h4>
                             </section>
                         </motion.div>
-                        <div className={styles.flexarButtons}>
-                        <button onClick={() => { setDeletarModal(true), handleAulaInfo(x.id) }}>Deletar</button>
-                        <button>Editar</button>
-                        </div>
                         </div>
                         )
                     })}
@@ -178,16 +211,7 @@ export default function Aulas() {
                         </div>
                         </>
 }
-                    {
-                        deletarModal && 
-                        <div className={styles.deletar}>
-                            <h2>Deseja Deletar?</h2>
-                            <section>
-                            <button onClick={() => setDeletarModal(false)}>Não</button>
-                            <button onClick={deletar}>Sim</button>
-                            </section>
-                        </div>
-                    }
+                  
                      {
                     openCadastro && 
                     <motion.div className={styles.cadastroModal}
@@ -205,6 +229,57 @@ export default function Aulas() {
                         <button onClick={adicionar}><h2>Adicionar Aula</h2></button>
                     </motion.div>
                 }
+                {
+                    openModal &&
+                    <div className={styles.openAula}>
+                    <section>
+                        <button onClick={() => setOpenModal(false)}>Fechar</button>
+                        <button onClick={() => setModificar(true)}>Editar</button>
+                        <button onClick={() => { setDeletarModal(true), handleAulaInfo(modalData[0].id) }}>Deletar</button>
+                    </section>
+                        <div className={styles.openAulaInfos}>
+                        <h2>Nome:</h2>
+                        <h3 ref={nomeEdit} contentEditable>{modalData[0].nome}</h3>
+                        </div>
+                        <div className={styles.openAulaInfosDesc}>
+                        <h2>Descrição:</h2>
+                        <h3 ref={descricaoEdit} contentEditable>{modalData[0].descricao}</h3>
+                        </div>
+                        <div style={{width:'80%', display: "flex", justifyContent: "space-around"}}>
+                                <div className={styles.openAulaInfosDesc} style={{height: "6rem"}}>
+                                <h2>Duração:</h2>
+                                <div style={{display: "flex"}}>
+                                <h3 ref={duracaoEdit} contentEditable>{modalData[0].duracao}</h3>
+                                <h3>hrs</h3>
+                                </div>
+                                </div>
+                                <div className={styles.openAulaInfosDesc}>
+                                <h2>Nivel:</h2>
+                                <h3 ref={nivelEdit} contentEditable> {modalData[0].nivel}</h3>
+                                </div>
+                        </div>
+                    </div>
+                }
+                  {
+                        deletarModal && 
+                        <div className={styles.deletar}>
+                            <h2>Deseja Deletar?</h2>
+                            <section>
+                            <button onClick={() => setDeletarModal(false)}>Não</button>
+                            <button onClick={deletar}>Sim</button>
+                            </section>
+                        </div>
+                    }
+                 {
+                    modificar &&
+                    <div className={styles.deletar}>
+                    <h2>Deseja salvar a modificação?</h2>
+                    <section>
+                    <button onClick={() => setModificar(false)}>Não</button>
+                    <button onClick={() => {editar(modalData[0].id), setModificar(false)}}>Sim</button>
+                    </section>
+                </div>
+                 }
                 </div>
                
         </div>
