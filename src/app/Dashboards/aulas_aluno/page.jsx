@@ -5,7 +5,7 @@ import axios from "axios"
 import { useEffect, useRef, useState } from "react"
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import Cookies from "js-cookies"
-export default function aulasAluno() {
+export default function AulasAluno() {
 
     const [adicionarModal, setAdicionarModal] = useState(false)
     const [dataAluno, setDataAluno] = useState([])
