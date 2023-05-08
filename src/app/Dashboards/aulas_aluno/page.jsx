@@ -71,7 +71,7 @@ export default function AulasAluno() {
                 {
                     dataAulas.map(x => {
                         return(
-                            <div className={styles.card}>
+                            <div className={styles.card} key={x.id}>
                                 <header>
                                 <h1>{x.dia_semana}</h1>
                                 </header>
