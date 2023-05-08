@@ -257,6 +257,64 @@
   .deletar button:hover {
     background-color: #533992;
 }
+  
+.Modal {
+  background-color: black;
+  width: 30vw;
+  height: 60vh;
+  position: absolute;
+  margin-top: 2rem;
+  border: solid #8257E5 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(-5rem);
+}
+
+.ModalButtons  {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.Modal button {
+  cursor: pointer;
+  width: 10rem;
+  height: 3rem;
+  margin: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #8257E5;
+  transition: 0.1s;
+  scale: 90%;
+  
+}
+
+.Modal section {
+width: 90%;
+height: 5rem;
+background-color: #121214;
+border-radius: 1rem;
+margin: 1rem;
+display: flex;
+align-items: center;
+justify-content: flex-start;
+}
+.Modal section h1 {
+margin: 1rem;
+}
+.Modal section p {
+font-weight: bold;
+}
+
+.Modal button:hover {
+  background-color: #4e348a;
+  scale: 100%;
+}
+
 
   @media screen and (max-width: 768px) {
     .main {
@@ -276,11 +334,103 @@
       margin-top: 4rem;
     }
 
+   .Modal {
+    width: 100vh;
+    height: auto;
+    position: fixed;
+   }
+
     .header {
-      height: 3rem;
-    }
+      background-color: #121214;
+      width: 100%;
+      height:2rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+  }
+  
+  .header h1 {
+      margin: 2rem;
+      font-size: 1.2rem;
+  }
 
     .botoes {
-      height: 4rem;
+      height: 3.5rem;
     }
+
+    .botoes button {
+      height: 3rem;
+      font-size: 0.7rem;
+      width: 12rem;
+    }
+
+    .professor {
+      width: 16rem;
+      height: 22rem;
+      background-color: #211738;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      margin: 1rem;
+      transition: 0.1s;
+      cursor: pointer;
+    }
+  
+    .professor:hover {
+      border: solid 3px #55BCC9;
+    }
+  
+    .professor section {
+      width: 50%;
+      height: 40%;
+      background-color: black;
+      margin: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      border: solid 3px #55BCC9;
+    }
+  
+    .professor h3 {
+      font-weight: lighter;
+      margin-bottom: 1rem;
+    }
+    .professor p {
+      margin: 0.3rem;
+      font-weight: bold;
+      color: #9b9b9b;
+    }
+  
+    .professor section img{
+      width: 6rem;
+      height: 6rem;
+    }
+  
+    .professor button {
+      background-color: #55BCC9;
+      border: none;
+      color: #211738;
+      font-weight: 700;
+      width: 6rem;
+      height: 2.5rem;
+      cursor: pointer;
+      transition: 0.1s;
+    }
+    .professor button:hover {
+      background-color: #397a83;
+    }
+  
+    .infoProfessor {
+      width: 100%;
+      height: 10rem;
+      background-color: #160c2e;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+
   }

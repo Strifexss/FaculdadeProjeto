@@ -2,19 +2,25 @@
 import styles from "./page.module.css"
 import Image from "next/image"
 import UserImage from "../../../imgs/icons/userIcon.png"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import axios from "axios"
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import Cookies from "js-cookies"
 import { useRouter } from 'next/navigation';
 
 export default function Professores() {
+    
     const router = useRouter()
     const [data, setData] = useState([])
     const [modalCadastro, setModalCadastro] = useState(false)
     const [deletarConfirm, modalDeletarConfirm] = useState(false)
     const [filterData, setFilterData] = useState([])
-
+    const [openModal, setOpenModal] = useState(false)
+    const [editarModal, setEditarModal] = useState(false)
+    const nomeEdit = useRef()
+    const emailEdit = useRef()
+    const telefoneEdit = useRef()
+    const salarioEdit = useRef()
 
     const { isLoading, error} =useQuery('buscarProfessores', async () =>
     await axios.post("https://planet-scale-database-connect.vercel.app/buscarProfessores", {
@@ -31,9 +37,9 @@ export default function Professores() {
    }
   ) 
 
-   function deletar(id) {
+   function deletar() {
     axios.post(`https://planet-scale-database-connect.vercel.app/deletarProfessores`, {
-        id: id
+        id: filterData[0].id
     }).then(result => {
         console.log(result)
         window.alert("Professor deletado com sucesso")
@@ -43,9 +49,9 @@ export default function Professores() {
     })
    }
 
-   function handleDelete(id) {
-        setFilterData(data.filter(x => x.id == id))
-        modalDeletarConfirm(!deletarConfirm)
+   function handleInfos(id) {
+    setFilterData(data.filter(x => x.id == id))
+    console.log(filterData[0])
    }
 
    function cadastrarProfessor() {
@@ -69,6 +75,30 @@ export default function Professores() {
         })
    }
 
+   function editar() {
+
+    axios.post("https://planet-scale-database-connect.vercel.app/editarProfessores", {
+        nome: nomeEdit.current.textContent,
+        email: emailEdit.current.textContent,
+        telefone: telefoneEdit.current.textContent,
+        salario: salarioEdit.current.textContent,
+        id: filterData[0].id
+    }).then(response => {
+        console.log(response)
+        setEditarModal(false)
+        axios.post("https://planet-scale-database-connect.vercel.app/buscarProfessores", {
+            id_usuario: Cookies.getItem("id_usuario")
+        })
+       .then(response => {
+        console.log(response.data)
+        setData(response.data)
+       })
+
+    }).catch(error => {
+        console.log(error)
+    })
+   }
+
     return(
         <div className={styles.main}>
             <div className={styles.header}>
@@ -86,7 +116,7 @@ export default function Professores() {
                     {
                         data.map(x => {
                             return(
-                             <div key={x.id} className={styles.professor}>
+                             <div key={x.id} className={styles.professor} onClick={() => {setOpenModal(true), handleInfos(x.id)}}>
                                 <section>
                                     <Image
                                         src={UserImage}
@@ -96,7 +126,6 @@ export default function Professores() {
                                     />
                                 </section>
                                 <h3>{x.nome}</h3>
-                                <button onClick={() => handleDelete(x.id)}>Deletar</button>
                                 <div className={styles.infoProfessor}>
                                     <p>Telefone: {x.telefone}</p>
                                     <p>E-mail: {x.email}</p>
@@ -107,16 +136,7 @@ export default function Professores() {
                             )
                         })
                     }
-                    {
-                        deletarConfirm && 
-                                <div className={styles.deletar}>
-                                    <h2>Deseja deletar o Professor?</h2>
-                                    <section>
-                                        <button onClick={() => {modalDeletarConfirm(!deletarConfirm)}}><h2>Não</h2></button>
-                                        <button onClick={() => (deletar(filterData[0].id), modalDeletarConfirm(!deletarConfirm))}><h2>Sim</h2></button>
-                                    </section>
-                                </div>                                
-                    }
+               
                 </div>
                 {
                     modalCadastro &&
@@ -128,6 +148,53 @@ export default function Professores() {
                         <input type="number"  id="salario" placeholder="Salario" />
                         <button onClick={cadastrarProfessor}>Cadastrar</button>
                     </div>
+                }
+                {
+                    openModal && 
+                    <div className={styles.Modal}>
+                        <div className={styles.ModalButtons}>
+                            <button onClick={() => setOpenModal(false)}>Fechar</button>
+                            <button onClick={ () => modalDeletarConfirm(!deletarConfirm)}>Excluir</button>
+                            <button onClick={() => setEditarModal(true)}>Editar</button>
+                        </div>
+                        {
+                        deletarConfirm && 
+                                <div className={styles.deletar}>
+                                    <h2>Deseja deletar o Professor?</h2>
+                                    <section>
+                                        <button onClick={() => {modalDeletarConfirm(!deletarConfirm)}}><h2>Não</h2></button>
+                                        <button onClick={() => (deletar(), modalDeletarConfirm(!deletarConfirm))}><h2>Sim</h2></button>
+                                    </section>
+                                </div>                                
+                        }
+                        {
+                            editarModal && 
+                            <div className={styles.deletar}>
+                            <h2>Deseja confirmar a Edição?</h2>
+                            <section>
+                                <button onClick={() => setEditarModal(false)}><h2>Não</h2></button>
+                                <button onClick={() => editar()}><h2>Sim</h2></button>
+                            </section>
+                        </div>     
+                        }
+                        <section>
+                            <h1>Nome:</h1>
+                            <h1 contentEditable ref={nomeEdit}>{filterData[0].nome}</h1>
+                        </section>
+                        <section>
+                            <h1>Email:</h1>
+                            <h1 contentEditable ref={emailEdit}>{filterData[0].email}</h1>
+                        </section>
+                        <section>
+                            <h1>Telefone:</h1>
+                            <h1  contentEditable ref={telefoneEdit}>{filterData[0].telefone}</h1>
+                        </section>
+                        <section>
+                            <h1>Salario:</h1>
+                            <h1 contentEditable ref={salarioEdit}>{filterData[0].salario}</h1>
+                        </section>
+                    </div>
+                    
                 }
             </div>
         </div>

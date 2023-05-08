@@ -1,6 +1,6 @@
 "use client"
 import styles from "./page.module.css"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import NextIcon from "../../../imgs/icons/NextIcon.png"
 import Image from "next/image"
 import axios from "axios"
@@ -14,6 +14,11 @@ export default function Planos() {
     const [modalInfo, setModalInfo] = useState(false)
     const [cadastro, setCadastro] = useState(false)
     const [data, setData] = useState([])
+    const nomeEdit = useRef()
+    const descricaoEdit = useRef()
+    const valorEdit = useRef()
+    const duracaoEdit = useRef()
+    const [editarInfo, setEditarInfo] = useState(false)
 
     const { isLoading, error} =useQuery('buscarPlanos', async () =>
     await axios.post("https://planet-scale-database-connect.vercel.app/buscarPlanos", {
@@ -82,6 +87,31 @@ export default function Planos() {
   function handleInfoData(id) {
     setInfo(data.filter(x => { return x.id == id}))
     setModalInfo(true)
+  }
+
+  function editar() {
+    axios.post("https://planet-scale-database-connect.vercel.app/editarPlanos", {
+        nome: nomeEdit.current.textContent,
+        duracao: duracaoEdit.current.textContent,
+        valor: valorEdit.current.textContent,
+        descricao: descricaoEdit.current.textContent,
+        id: info[0].id
+    }).then(response => {
+        console.log(response)
+
+        axios.post("https://planet-scale-database-connect.vercel.app/buscarPlanos", {
+            id_usuario: Cookies.getItem("id_usuario")
+        })
+       .then(response => {
+        console.log(response.data)
+        setData(response.data)
+        
+    })
+
+    }).catch(error => {
+        console.log(error)
+    })
+
   }
 
     return(
@@ -156,8 +186,8 @@ export default function Planos() {
                         <div className={styles.infoButtons}>
                             <button onClick={() => setModalInfo(false)}>Fechar</button>
                             <button onClick={() => setDeletarModal(true)}>Deletar</button>
+                            <button onClick={() => {setEditarInfo(!editarInfo)}}>Editar</button>
                         </div>
-                        <section>
                         {
                     deletarModal && 
                     <div>
@@ -169,18 +199,36 @@ export default function Planos() {
                          </section>
                            </div>
                     </div>
-                 }
-                            <h1>Plano: {info[0].nomePlanos}</h1>
+                     }          
+                        <section>
+                            <h1>Plano:</h1>
+                            <h1 contentEditable ref={nomeEdit}>{info[0].nomePlanos}</h1>
                         </section>
+                        {
+                            editarInfo &&
+                            <div>
+                          <div className={styles.deletar}>
+                            <h1>Deseja deletar o plano?</h1>
+                         <section>
+                            <button onClick={() => {setEditarInfo(false)}}><h2>Não</h2></button>
+                             <button onClick={() => (editar(), setEditarInfo(false))}><h2>Sim</h2></button>
+                         </section>
+                           </div>
+                    </div>
+                        }
                         <section>
                             <h1>Descricao:</h1>
-                            <p> {info[0].descricao}</p>
+                            <p contentEditable ref={descricaoEdit}>{info[0].descricao}</p>
                         </section>
                         <section>
-                            <h1>Duração: {info[0].duracao_dias}dias</h1>
+                            <h1>Duração:</h1>
+                            <h1 contentEditable ref={duracaoEdit}>{info[0].duracao_dias}</h1>
+                            <h1>Dias</h1>
                         </section>
                         <section>
-                            <h1>Valor: {info[0].preco}R$</h1>
+                            <h1>Valor:</h1>
+                            <h1 contentEditable ref={valorEdit}>{info[0].preco}</h1>
+                            <h1>R$</h1>
                         </section>
                 
                     </div>

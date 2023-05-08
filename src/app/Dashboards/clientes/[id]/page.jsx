@@ -34,6 +34,12 @@ export default function Usuarios() {
         }
     }, [])
 
+     function pushAulas() {
+        Cookies.setItem("id_aluno", dadosClientes[0].cliente_id)
+        console.log(Cookies.getItem("id_aluno"))
+        push("Dashboards/aulas_aluno")
+    }
+
 
     //Query para buscar os dados do Cliente, utiliza o useState "Data" para guardar os dados
   const { isLoading, error} =useQuery('buscarClientes', async () =>
@@ -166,7 +172,7 @@ export default function Usuarios() {
     return(
         <div className={styles.main}>
             <div className={styles.rodape}>
-                <h1>Alunos cadastrados</h1>
+                <h1>Alunos</h1>
             </div>
             <div className={styles.campo}>
                 <div className={styles.botoes}>
@@ -323,6 +329,7 @@ export default function Usuarios() {
                             <button onClick={() => {setOpenCliente(false)}}>Fechar</button>
                             <button onClick={() => {modalDeletarConfirm(!deletarConfirm)}}>Excluir</button>
                             <button onClick={() => salvar(dadosClientes[0].cliente_id)}>Salvar Alterações</button>
+                            <button onClick={pushAulas}>Aulas</button>
                         </div>
                         <section>
                             <div className={styles.principalContainer}>
