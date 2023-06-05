@@ -131,8 +131,9 @@
 .cadastro {
     position: absolute;
     margin-top: 1rem;
-    width: 30vw;
-    height: 45vh;
+    width: auto;
+    height: auto;
+    padding: 1rem;
     background-color: #121214;
     border: solid 2px #8257E5;
     border-radius: 1rem;
@@ -170,7 +171,7 @@
     outline: 0;
     transition: 0.1s;
     color: #fff;
-    width: 50%;
+    width: 20rem;
     padding: 1rem;
   }
   
@@ -197,8 +198,9 @@
 
   .info {
     background-color: black;
-    width: 30vw;
-    height: 60vh;
+    width: auto;
+    height: auto;
+    padding: 1rem;
     position: absolute;
     margin-top: 2rem;
     border: solid #8257E5 2px;

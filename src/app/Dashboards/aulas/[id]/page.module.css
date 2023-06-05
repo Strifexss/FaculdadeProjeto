@@ -292,7 +292,7 @@
 }
 
 .cadastroModal {
-  width: 30%;
+  width: auto + 5rem;
   height: auto;
   background-color: #121214;
   border: solid 2px #8257E5;
@@ -301,6 +301,7 @@
   margin: 1rem;
   display: flex;
   flex-direction: column;
+  padding: 1rem;
   align-items: center;
 }
 

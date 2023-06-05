@@ -21,7 +21,7 @@ export default function Professores() {
     const emailEdit = useRef()
     const telefoneEdit = useRef()
     const salarioEdit = useRef()
-
+    const senhaEdit = useRef()
     const { isLoading, error} =useQuery('buscarProfessores', async () =>
     await axios.post("https://planet-scale-database-connect.vercel.app/buscarProfessores", {
         id_usuario: Cookies.getItem("id_usuario")
@@ -59,12 +59,13 @@ export default function Professores() {
         const telefone = document.getElementById("telefone").value
         const email = document.getElementById("email").value
         const salario = document.getElementById("salario").value
-
-        axios.post("https://planet-scale-database-connect.vercel.app/registrarProfessores", {
+        const senha = document.getElementById('senha').value
+        axios.post("http://localhost:3001/registrarProfessores", {
             nome: nome,
             telefone: telefone,
             salario: salario,
             email: email,
+            senha: senha,
             id_usuario: Cookies.getItem("id_usuario")
         }).then((response) => {
             console.log(response)
@@ -77,12 +78,13 @@ export default function Professores() {
 
    function editar() {
 
-    axios.post("https://planet-scale-database-connect.vercel.app/editarProfessores", {
+    axios.post("http://localhost:3001/editarProfessores", {
         nome: nomeEdit.current.textContent,
         email: emailEdit.current.textContent,
         telefone: telefoneEdit.current.textContent,
         salario: salarioEdit.current.textContent,
-        id: filterData[0].id
+        id: filterData[0].id,
+        senha: senhaEdit.current.textContent
     }).then(response => {
         console.log(response)
         setEditarModal(false)
@@ -144,6 +146,7 @@ export default function Professores() {
                         <button onClick={() => setModalCadastro(false)}>Fechar</button>
                         <input type="text"  id="nome" placeholder="Nome" />
                         <input type="text"  id="email" placeholder="E-mail" />
+                        <input type="text"  id="senha" placeholder="Senha" />
                         <input type="text"  id="telefone" placeholder="Telefone" />
                         <input type="number"  id="salario" placeholder="Salario" />
                         <button onClick={cadastrarProfessor}>Cadastrar</button>
@@ -184,6 +187,10 @@ export default function Professores() {
                         <section>
                             <h1>Email:</h1>
                             <h1 contentEditable ref={emailEdit}>{filterData[0].email}</h1>
+                        </section>
+                        <section>
+                            <h1>Senha:</h1>
+                            <h1 contentEditable ref={senhaEdit}>{filterData[0].senha}</h1>
                         </section>
                         <section>
                             <h1>Telefone:</h1>

@@ -7,8 +7,6 @@
     align-items: flex-start;
     padding-top: 5rem;
     color: #fff;
-    padding-left: 20rem;
-    padding-right: 20rem;
 }
 
 .main button {
@@ -30,7 +28,6 @@
   }
 
 .main header {
-    margin: 1rem;
     margin-left: 0;
 }
 
@@ -45,6 +42,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    overflow-y: scroll;
 }
 
 .adicionar input[type=text]  {
@@ -75,6 +73,147 @@
     font-weight: bold;
   }
 
+.divisoria {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.divisoria header {
+  width: 100%;
+  height: 4rem;
+  background-color: #121214;
+  border-bottom: solid 2px #585858;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.divisoria header h3 {
+  color: gray;
+  cursor: pointer;
+  margin: 0.5rem;
+  transition: 0.1s;
+}
+
+.divisoria header h3:hover {
+  
+  color: white;
+}
+
+.alunoInformacoes {
+  height: 100%;
+  width: 45rem;
+  background-color: #0D0C13;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem;
+}
+
+.userIcon img {
+  border-radius: 50%;
+  padding: 1rem;
+  margin: 0.5rem;
+  margin-top: 1rem;
+  border: solid 5px #8257E5;
+}
+
+.alunoInformacoes section {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem;
+}
+
+.alunoInformacoes section h3 {
+  margin-left: 1rem;
+}
+
+.alunoInformacoesObjetivo {
+  margin: 1rem;
+  width: 90%;
+  padding: 1rem;
+  height: 7rem;
+  background-color: #1E1D26;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.alturaPeso {
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.alturaPeso section {
+  margin: 0.5rem;
+  width: 45%;
+  height: 5rem;
+  border-radius: 1rem;
+  background-color: #1E1D26;
+  display: flex;
+  gap: 2rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.alturaPeso img {
+  border-radius: 30%;
+  border: solid 2px #8257E5;
+  padding: 0.1rem;
+}
+
+.alturaPeso section h3 {
+  margin: 0;
+}
+
+.flexarAlturaPeso {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexarAlturaPeso p {
+  font-weight: bold;
+}
+
+.alunoInformacoesEmail {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.alunoInformacoesEmail section {
+  width: 92%;
+  height: 5rem;
+  background-color: #1E1D26;
+  border-radius: 1rem;
+}
+
 .campo {
     display: flex;
     flex-direction: row;
@@ -92,13 +231,14 @@
 
 
 .card {
-    width: 25rem;
-    height: 7rem;
-    background-color: #8257E5;
+    width: 23rem;
+    height: 9rem;
+    background-color: #202024;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 1rem;
     border-radius: 1rem;
     cursor: pointer;
     transform: scale(90%);
@@ -106,24 +246,48 @@
     overflow: hidden;
 }
 
+.card section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+
+.card section h2 {
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.card section p {
+  font-weight: bold;
+  color: #6F6F6F;
+}
+
+.card img {
+  background-color: #0D0C13;
+  border-radius: 50%;
+  padding: 0.5rem;
+}
+
 .card:hover {
-    transform: scale(100%);
+    background-color: #121214;
 }
 
 .infosModal {
-  width: 70vh;
+  width: auto;
   height: 80vh;
   background-color: #121214;
   border: solid 2px #8257E5;
   position: fixed;
-  transform: translateY(-10rem);
+  transform: translateY(-3rem);
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem;
 }
 
 .infosCampo section{
-  width: 90%;
+  width: 100%;
   height: 10rem;
   background-color: black;
   border-radius: 1rem;
@@ -131,24 +295,48 @@
 }
 
 .infosCampo section h2 {
-  height: 100%;
+  height: 10rem;
 }
 
 .infosCampo {
+  margin-top: 5rem;
   width: 100%;
-  height: 100%;
+  height: auto;
   overflow-y: scroll;
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding-left:1rem;
+  padding-right:1rem;
   gap: 1rem;
   margin-top: 1rem;
 }
 
 .infosCampo::-webkit-scrollbar {
   display: none;
+}
+
+.excluirModal {
+  width: 20rem;
+  position: fixed;
+  height: 15rem;
+  background-color: #121214;
+  border: solid 2px #8257E5;
+  border-radius: 1rem;
+  transform: translateY(5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.excluirModal section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 768px) {

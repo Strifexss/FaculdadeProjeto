@@ -73,9 +73,6 @@ export default function Layout({ children }) {
               />
           </div>          
           <div className={styles.Links}>
-          <div onClick={exercicios}>
-            <Icones nome="Exercicios" imagem={ExercicioIcon}/>
-          </div>
           <div onClick={calendario}>
             <Icones nome="Calendário" imagem={CalendarIcon}/>
           </div>

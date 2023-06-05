@@ -177,7 +177,6 @@ export default function Usuarios() {
             <div className={styles.campo}>
                 <div className={styles.botoes}>
                     <button onClick={() => setCadastro(!cadastro)}><h2>Cadastrar Aluno</h2> </button>
-                    <input type="text" placeholder="Pesquisar"/>
                 </div>
                 <div className={styles.cardsCampo}>
                     {isLoading && 
@@ -329,7 +328,7 @@ export default function Usuarios() {
                             <button onClick={() => {setOpenCliente(false)}}>Fechar</button>
                             <button onClick={() => {modalDeletarConfirm(!deletarConfirm)}}>Excluir</button>
                             <button onClick={() => salvar(dadosClientes[0].cliente_id)}>Salvar Alterações</button>
-                            <button onClick={pushAulas}>Aulas</button>
+                            <button onClick={pushAulas}>Exercicios</button>
                         </div>
                         <section>
                             <div className={styles.principalContainer}>

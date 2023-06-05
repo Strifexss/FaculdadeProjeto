@@ -183,13 +183,14 @@
   }
 
   .cadastro {
-    position: absolute;
+    position: fixed;
     width: 50%;
-    height: 100%vh;
+    height: auto;
     background-color: #fff;
     border-radius: 1.5rem;
     background-color: #121214;
     border: solid 2px #2f2053;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -442,7 +443,7 @@
     width: 100%;
     justify-content: space-around;
     align-items: center;
-  }
+  } 
   @media screen and (min-width: 768px) and (max-width: 1400px) {
     
      
