@@ -339,6 +339,128 @@
   align-items: center;
 }
 
+@media screen and (min-width: 1000px) and (max-width: 1400px)  {
+  .main {
+    padding-top: 4rem;
+}
+  
+  .alunoInformacoes {
+    height: 100%;
+    width: 30rem;
+    background-color: #0D0C13;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .userIcon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem;
+  }
+  .userIcon h2{
+    font-size: 1.2rem;
+  }
+  
+  .userIcon img {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    padding: 1rem;
+    margin: 0.5rem;
+    margin-top: 1rem;
+    border: solid 3px #8257E5;
+  }
+  
+  .alunoInformacoes section {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem;
+  }
+  
+  .alunoInformacoes section h3 {
+    margin-left: 1rem;
+  }
+  
+  .alunoInformacoesObjetivo {
+    margin: 0.5rem;
+    width: 90%;
+    padding: 1rem;
+    height: 3rem;
+    background-color: #1E1D26;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .alturaPeso {
+    width: 100%;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .alturaPeso section {
+    margin: 0.5rem;
+    width: 45%;
+    height: 3.5rem;
+    border-radius: 1rem;
+    background-color: #1E1D26;
+    display: flex;
+    gap: 2rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .alturaPeso img {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 30%;
+    border: solid 2px #8257E5;
+    padding: 0.1rem;
+  }
+  
+  .alturaPeso section h3 {
+    margin: 0;
+  }
+  
+  .flexarAlturaPeso {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .flexarAlturaPeso p {
+    font-weight: bold;
+  }
+  
+  .alunoInformacoesEmail {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .alunoInformacoesEmail section {
+    width: 92%;
+    height: 3rem;
+    background-color: #1E1D26;
+    border-radius: 1rem;
+  }
+}
+
+
 @media screen and (max-width: 768px) {
   .main {
     padding-left: 0;
