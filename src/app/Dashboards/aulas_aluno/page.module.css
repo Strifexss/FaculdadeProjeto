@@ -274,34 +274,53 @@
 }
 
 .infosModal {
-  width: auto;
+  width: 30rem;
   height: 80vh;
   background-color: #121214;
   border: solid 2px #8257E5;
+  border-radius: 1rem;
   position: fixed;
-  transform: translateY(-3rem);
+  transform: translateY(-7rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1rem;
 }
 
+.infosModal header {
+  margin: 1rem;
+  border-bottom: none;
+}
+
+.infosModal button {
+  background-color: inherit;
+  border: solid 2px white;
+  width: 6rem;
+  height: 3rem;
+  border-radius: 0;
+  margin: 1rem;
+}
+
+.infosModal button:hover {
+  background-color: inherit;
+}
+
 .infosCampo section{
   width: 100%;
-  height: 10rem;
+  height: 7rem;
   background-color: black;
   border-radius: 1rem;
   padding: 1rem;
 }
 
 .infosCampo section h2 {
-  height: 10rem;
+  height: 5rem;
 }
 
 .infosCampo {
   margin-top: 5rem;
   width: 100%;
-  height: auto;
+  height: 100%;
   overflow-y: scroll;
   align-items: center;
   display: flex;
@@ -344,6 +363,27 @@
     padding-top: 4rem;
 }
   
+.infosModal {
+  width: 25rem;
+  height: 95vh;
+  background-color: #121214;
+  border: solid 2px #8257E5;
+  border-radius: 1rem;
+  position: fixed;
+  transform: translateY(-12rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.infosCampo h2 {
+  font-size: 1rem;
+}
+.infosCampo h3 {
+  font-size: 1rem;
+}
+
   .alunoInformacoes {
     height: 100%;
     width: 30rem;

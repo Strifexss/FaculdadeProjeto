@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import Cookies from "js-cookies"
 import Image from "next/image"
 import userIcon from "../../imgs/icons/userIconBig.png"
+import alterIcon from "../../imgs/icons/alterIcon.png"
 import quadradoIcon from "../../imgs/icons/quadradoIcon.png"
 import pesoIcon from "../../imgs/icons/pesoIcon.png"
 import heightIcon from "../../imgs/icons/heightIcon.png"
@@ -110,13 +111,9 @@ setDataAluno(response.data)
             exercicio_1: exercicio_1.current.textContent,
             exercicio_2: exercicio_2.current.textContent,
             exercicio_3: exercicio_3.current.textContent,
-            exercicio_4: exercicio_4.current.textContent,
-            exercicio_5: exercicio_5.current.textContent,
             nomeExercicio_1: nomeExercicio_1.current.textContent,
             nomeExercicio_2: nomeExercicio_2.current.textContent,
             nomeExercicio_3: nomeExercicio_3.current.textContent,
-            nomeExercicio_4: nomeExercicio_4.current.textContent,
-            nomeExercicio_5: nomeExercicio_5.current.textContent
         }).then(response => {
             console.log(response)
         }).catch(err => {
@@ -202,10 +199,19 @@ setDataAluno(response.data)
                 {
                     infosModal && 
                     <div className={styles.infosModal}>
-                        <header>
+                        <header style={{display: "flex", flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+                            <div style={{display: "flex", flexDirection: 'row'}}>
+                                <Image style={{marginRight: '1rem'}}
+                                    src={alterIcon}
+                                    width={50}
+                                    height={50}
+                                />
+                                <div>
+                                    <h2 contentEditable ref={dias_Edita}>{infos[0].dia_semana}</h2>
+                                    <p>Visualize e gerencie <br /> os exercicios</p>
+                                </div>
+                            </div>
                             <button onClick={() => setInfosModal(false)}>Fechar</button>
-                            <button onClick={() => setExcluirModal(true)}>Excluir</button>
-                            <button onClick={editar}>Editar </button>
                         </header>
                         {
                             excluirModal && 
@@ -217,28 +223,30 @@ setDataAluno(response.data)
                                 </section>
                             </div>
                         }
-                            <h1 contentEditable ref={dias_Edita}>{infos[0].dia_semana}</h1>
+                            
                         <div className={styles.infosCampo}>
                             <h2 ref={nomeExercicio_1} contentEditable>{infos[0].nomeExercicio1}</h2>
                             <section>
-                            <h2 contentEditable ref={exercicio_1}>{infos[0].exercicio_1}</h2>
+                            <h3 contentEditable ref={exercicio_1}>{infos[0].exercicio_1}</h3>
                             </section>
                             <h2 ref={nomeExercicio_2 } contentEditable>{infos[0].nomeExercicio2}</h2>
                             <section>
-                            <h2 ref={exercicio_2} contentEditable>{infos[0].exercicio_2}</h2>
+                            <h3 ref={exercicio_2} contentEditable>{infos[0].exercicio_2}</h3>
                             </section>
                             <h2 ref={nomeExercicio_3} contentEditable>{infos[0].nomeExercicio3}</h2>
                             <section>
-                            <h2 ref={exercicio_3} contentEditable>{infos[0].exercicio_3}</h2>
+                            <h3 ref={exercicio_3} contentEditable>{infos[0].exercicio_3}</h3>
                             </section>
-                            <h2 ref={nomeExercicio_4} contentEditable>{infos[0].nomeExercicio4}</h2>
-                            <section>
-                            <h2 ref={exercicio_4} contentEditable>{infos[0].exercicio_4}</h2>
-                            </section>
-                            <h2 ref={nomeExercicio_5} contentEditable>{infos[0].nomeExercicio5}</h2>
-                            <section>
-                            <h2 ref={exercicio_5} contentEditable>{infos[0].exercicio_5}</h2>
-                            </section>
+                       </div>
+                       <div style={{margin: '1rem', display: "flex", flexDirection: 'row', width: '100%', justifyContent: 'space-around', alignItems: 'center'}}>
+                            <button onClick={editar} 
+                            style={{backgroundColor: 'white', color: 'black', width: '8rem'}}
+                            >Editar
+                            </button>
+                            <button onClick={() => setExcluirModal(true)} 
+                            style={{backgroundColor: '#8257E5', color: 'white', width: '8rem', border: 'none'}}
+                            >Excluir 
+                            </button>
                        </div>
                     </div>
                 }
