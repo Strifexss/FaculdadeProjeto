@@ -105,7 +105,7 @@ export default function Home() {
               />
               </div>
             }
-          <Link href="/registrar"><p>Não tem uma conta? <span>Registre-se</span></p></Link>
+          <Link href=""><p>Leio os <span>Termos de uso</span></p></Link>
         </div>
       </motion.div>
     </div>

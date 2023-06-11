@@ -22,6 +22,7 @@ export default function Professores() {
     const telefoneEdit = useRef()
     const salarioEdit = useRef()
     const senhaEdit = useRef()
+   
     const { isLoading, error} =useQuery('buscarProfessores', async () =>
     await axios.post("https://planet-scale-database-connect.vercel.app/buscarProfessores", {
         id_usuario: Cookies.getItem("id_usuario")
@@ -58,12 +59,10 @@ export default function Professores() {
         const nome = document.getElementById("nome").value
         const telefone = document.getElementById("telefone").value
         const email = document.getElementById("email").value
-        const salario = document.getElementById("salario").value
         const senha = document.getElementById('senha').value
         axios.post("http://localhost:3001/registrarProfessores", {
             nome: nome,
             telefone: telefone,
-            salario: salario,
             email: email,
             senha: senha,
             id_usuario: Cookies.getItem("id_usuario")
@@ -78,11 +77,10 @@ export default function Professores() {
 
    function editar() {
 
-    axios.post("http://localhost:3001/editarProfessores", {
+    axios.post("https://planet-scale-database-connect.vercel.app/editarProfessores", {
         nome: nomeEdit.current.textContent,
         email: emailEdit.current.textContent,
         telefone: telefoneEdit.current.textContent,
-        salario: salarioEdit.current.textContent,
         id: filterData[0].id,
         senha: senhaEdit.current.textContent
     }).then(response => {
@@ -127,11 +125,11 @@ export default function Professores() {
                                         height={500}
                                     />
                                 </section>
-                                <h3>{x.nome}</h3>
+                                <h3>{x.nomeProfessor}</h3>
                                 <div className={styles.infoProfessor}>
                                     <p>Telefone: {x.telefone}</p>
                                     <p>E-mail: {x.email}</p>
-                                    <p>Salario: R${x.salario}</p>
+                                    <p>Senha: {x.senha}</p>
                                     <p>Contratação: {x.data_contratacao}</p>                                
                                 </div>
                             </div>
@@ -148,7 +146,6 @@ export default function Professores() {
                         <input type="text"  id="email" placeholder="E-mail" />
                         <input type="text"  id="senha" placeholder="Senha" />
                         <input type="text"  id="telefone" placeholder="Telefone" />
-                        <input type="number"  id="salario" placeholder="Salario" />
                         <button onClick={cadastrarProfessor}>Cadastrar</button>
                     </div>
                 }
@@ -182,7 +179,7 @@ export default function Professores() {
                         }
                         <section>
                             <h1>Nome:</h1>
-                            <h1 contentEditable ref={nomeEdit}>{filterData[0].nome}</h1>
+                            <h1 contentEditable ref={nomeEdit}>{filterData[0].nomeProfessor}</h1>
                         </section>
                         <section>
                             <h1>Email:</h1>
@@ -195,10 +192,6 @@ export default function Professores() {
                         <section>
                             <h1>Telefone:</h1>
                             <h1  contentEditable ref={telefoneEdit}>{filterData[0].telefone}</h1>
-                        </section>
-                        <section>
-                            <h1>Salario:</h1>
-                            <h1 contentEditable ref={salarioEdit}>{filterData[0].salario}</h1>
                         </section>
                     </div>
                     

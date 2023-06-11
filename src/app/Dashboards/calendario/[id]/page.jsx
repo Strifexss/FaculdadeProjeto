@@ -263,7 +263,7 @@ const carregarAulas =useQuery('buscarAulas', async () =>
                         <div className={styles.aulasModalColuna}>
                             <section>
                             <h1>Professor:</h1>
-                            <h2>{infos[0].nome}</h2>
+                            <h2>{infos[0].nomeProfessor}</h2>
                             </section>
                             <section>
                             <h1>Hora de Inicio:</h1>

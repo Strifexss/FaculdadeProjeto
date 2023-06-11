@@ -76,19 +76,15 @@ setDataAluno(response.data)
    
 
     function adicionar() {
-        axios.post("http://localhost:3001/criarAulaAluno", {
+        axios.post("https://planet-scale-database-connect.vercel.app/criarAulaAluno", {
             id_aluno: Cookies.getItem("id_aluno"),
             dia: diasEdita.current.value,
             exercicio_1: exercicio1.current.value,
             exercicio_2: exercicio2.current.value,
             exercicio_3: exercicio3.current.value,
-            exercicio_4: exercicio4.current.value,
-            exercicio_5: exercicio5.current.value,
             nomeExercicio1: nomeExercicio1.current.value,
             nomeExercicio2: nomeExercicio2.current.value,
             nomeExercicio3: nomeExercicio3.current.value,
-            nomeExercicio4: nomeExercicio4.current.value,
-            nomeExercicio5: nomeExercicio5.current.value,
         }).then(response => {
             console.log(response)
         }).catch(error => {
@@ -123,7 +119,7 @@ setDataAluno(response.data)
     }
 
     function excluirAulas() {
-        axios.post("http://localhost:3001/excluirAulasAluno", {
+        axios.post("https://planet-scale-database-connect.vercel.app/excluirAulasAluno", {
             id: infos[0].id
         }).then(response =>{ 
             console.log(response)
@@ -173,27 +169,43 @@ setDataAluno(response.data)
                   {
                     adicionarModal && 
                     <div className={styles.adicionar} >
-                        <button onClick={() => setAdicionarModal(false)}>Fechar</button>
-                        <select name="Dias" id="diasSemana" ref={diasEdita}>
-                            <option value="Segunda">Segunda</option>
-                            <option value="Terça">Terça</option>
-                            <option value="Quarta">Quarta</option>
-                            <option value="Quinta">Quinta</option>
-                            <option value="Sexta">Sexta</option>
-                            <option value="Sábado">Sábado</option>
-                            <option value="Domingo">Domingo</option>
-                        </select>
-                        <input type="text" placeholder="Nome do Exercicio 1" ref={nomeExercicio1}/>
-                        <input type="text" placeholder="Exercicio 1" ref={exercicio1}/>
-                        <input type="text" placeholder="Nome do Exercicio 2" ref={nomeExercicio2}/>
-                        <input type="text" placeholder="Exercicio 2" ref={exercicio2}/>
-                        <input type="text" placeholder="Nome do Exercicio 3" ref={nomeExercicio3}/>
-                        <input type="text" placeholder="Exercicio 3" ref={exercicio3}/>
-                        <input type="text" placeholder="Nome do Exercicio 4" ref={nomeExercicio4}/>
-                        <input type="text" placeholder="Exercicio 4" ref={exercicio4}/>
-                        <input type="text" placeholder="Nome do Exercicio 5" ref={nomeExercicio5}/>
-                        <input type="text" placeholder="Exercicio 5" ref={exercicio5}/>
-                        <button onClick={adicionar}>Enviar</button>
+                        <div style={{display: "flex", flexDirection: "row", width: '100%', justifyContent: "space-around", margin: '0.5rem'}}>
+                            <h3>Adicionar Novos Exercicios:</h3>
+                            <h3 style={{cursor: "pointer"}} onClick={() => setAdicionarModal(false)}>X</h3>
+                        </div>
+                        <section>
+                            <select name="Dias" id="diasSemana" ref={diasEdita}>
+                                <option value="Segunda">Segunda</option>
+                                <option value="Terça">Terça</option>
+                                <option value="Quarta">Quarta</option>
+                                <option value="Quinta">Quinta</option>
+                                <option value="Sexta">Sexta</option>
+                                <option value="Sábado">Sábado</option>
+                                <option value="Domingo">Domingo</option>
+                            </select>
+                        </section>
+                        <section>
+                            <h3>Exercicio 1:</h3>
+                            <input type="text" placeholder="Nome do Exercicio 1" ref={nomeExercicio1}/>
+                            <input type="text" placeholder="Exercicio 1" ref={exercicio1}/>
+                        </section>
+                        <section>
+                            <h3>Exercicio 2:</h3>
+                            <input type="text" placeholder="Nome do Exercicio 2" ref={nomeExercicio2}/>
+                            <input type="text" placeholder="Exercicio 2" ref={exercicio2}/>
+                        </section>
+                        <section>
+                            <h3>Exercicio 3:</h3>
+                            <input type="text" placeholder="Nome do Exercicio 3" ref={nomeExercicio3}/>
+                            <input type="text" placeholder="Exercicio 3" ref={exercicio3}/>
+                        </section>
+                        <div className={styles.adicionarButtons}>
+                            <button style={{width: '7rem', height: '3rem', backgroundColor: 'transparent', fontWeight: 'bold'}} 
+                            onClick={() => setAdicionarModal(false)}>Fechar</button>
+                            <button style={{width: '7rem', height: '3rem', fontWeight: 'bold'}} 
+                            onClick={adicionar}>Adicionar</button>
+                        </div>
+                       
                     </div>
                 }
                 {
