@@ -4,7 +4,10 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import Cookies from "js-cookies"
+import { useRouter } from 'next/navigation';
 export default function Calendario() {
+
+    const {push} = useRouter()
 
     const [data, setData] = useState([])
     
@@ -35,6 +38,10 @@ export default function Calendario() {
    }
 
   useEffect(() => {
+    if(Cookies.getItem("email") == null) {
+        push("/invalido")
+    }
+
     handleHandleDias()
   },[data])
     

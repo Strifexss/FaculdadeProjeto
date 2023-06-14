@@ -20,6 +20,7 @@ export default function Aulas() {
     const nivelEdit = useRef()
     const duracaoEdit = useRef()
     const { push } = useRouter(null);
+    
     useEffect(() => {
         console.log(Cookies.getItem("email"))
         if(Cookies.hasItem("email") == false) {

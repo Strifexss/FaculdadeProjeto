@@ -6,8 +6,12 @@ import Image from "next/image"
 import axios from "axios"
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import Cookies from "js-cookies"
+import { useRouter } from 'next/navigation';
 
 export default function Planos() {
+
+
+    const {push} = useRouter()
 
     const [deletarModal, setDeletarModal] = useState(false)
     const [info, setInfo] = useState([])
@@ -19,6 +23,12 @@ export default function Planos() {
     const valorEdit = useRef()
     const duracaoEdit = useRef()
     const [editarInfo, setEditarInfo] = useState(false)
+
+    useEffect(() => {
+        if(Cookies.getItem("email") == null) {
+            push("/invalido")
+        }
+    },[])
 
     const { isLoading, error} =useQuery('buscarPlanos', async () =>
     await axios.post("https://planet-scale-database-connect.vercel.app/buscarPlanos", {

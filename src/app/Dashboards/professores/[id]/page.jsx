@@ -2,7 +2,7 @@
 import styles from "./page.module.css"
 import Image from "next/image"
 import UserImage from "../../../imgs/icons/userIcon.png"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import axios from "axios"
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import Cookies from "js-cookies"
@@ -23,6 +23,12 @@ export default function Professores() {
     const salarioEdit = useRef()
     const senhaEdit = useRef()
    
+    useEffect(() => {
+        if(Cookies.getItem("email") == null) {
+            push("/invalido")
+        }
+    },[]) 
+
     const { isLoading, error} =useQuery('buscarProfessores', async () =>
     await axios.post("https://planet-scale-database-connect.vercel.app/buscarProfessores", {
         id_usuario: Cookies.getItem("id_usuario")

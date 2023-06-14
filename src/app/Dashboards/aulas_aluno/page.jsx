@@ -54,6 +54,11 @@ export default function AulasAluno() {
 
 
   useEffect(() => {
+
+    if(Cookies.getItem("email") == null) {
+        push("/invalido")
+    }
+
     buscarAluno
     buscarAulas
   },[]) 

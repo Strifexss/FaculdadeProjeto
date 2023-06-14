@@ -556,6 +556,11 @@ font-size: 1rem;
   margin: 0;
 }
 
+.adicionar {
+  width: 90vw;
+  transform: translateY(-10rem);
+}
+
 .alunoInformacoes {
   display: none;
 }
