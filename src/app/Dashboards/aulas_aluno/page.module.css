@@ -1,132 +1,434 @@
 .main {
-    width: 100vw;
-    height: 100vh;
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-top: 5rem;
-    color: #fff;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 5rem;
+  color: #fff;
 }
 
 .main button {
-    cursor: pointer;
-    width: 15rem;
-    height: 3.5rem;
-    margin: 1rem;
-    border: none;
-    border-radius: 0.5rem;
-    font-weight: bold;
-    color: #fff;
-    background-color: #8257E5;
-    scale: 100%;
-    z-index: 0;
-  }
+  cursor: pointer;
+  width: 15rem;
+  height: 3.5rem;
+  margin: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #8257E5;
+  scale: 100%;
+  z-index: 0;
+}
 
 .main button:hover {
-    background-color: #4e348a;
-  }
+  background-color: #4e348a;
+}
 
 .main header {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 .adicionar {
-    position: fixed;
-    padding: 1rem;
-    width: 25vw;
-    height: auto;
-    border-radius: 1rem;
-    background-color: #121214;
-    border: solid #8257E5 2px;
-    transform: translateY(-7rem);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.adicionar input[type=text]  {
-    margin: 0.5rem;
-    height: 3rem;
-    border-radius: 0.5rem;
-    background-color: black;
-    border: none;
-    outline: 0;
-    transition: 0.1s;
-    color: #fff;
-    width: 100%;
-    padding: 1rem;
-    text-align: start;
-  }
-
-  .adicionar select {
-    width: 45%;
-    height: 2rem;
-    margin: 1.5rem;
-    text-align: center;
-    background-color: #2d1f4e;
-    border: none;
-    color: #fff;
-    font-weight: bold;
-  }
-
-  .adicionar section {
-    margin-bottom: 1rem;
-    width: 100%;
-    margin-right: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .adicionar section h3{
-    margin-left: 0.5rem;
-  }
-
-.adicionarButtons {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
-.divisoria {
-  width: 100vw;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.divisoria header {
-  width: 100%;
-  height: 4rem;
-  background-color: #121214;
-  border-bottom: solid 2px #585858;
+  position: fixed;
   padding: 1rem;
+  width: 25vw;
+  height: auto;
+  border-radius: 1rem;
+  background-color: #121214;
+  border: solid #8257E5 2px;
+  transform: translateY(-7rem);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 }
 
-.divisoria header h3 {
-  color: gray;
-  cursor: pointer;
+.adicionar input[type=text]  {
   margin: 0.5rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  background-color: black;
+  border: none;
+  outline: 0;
   transition: 0.1s;
+  color: #fff;
+  width: 100%;
+  padding: 1rem;
+  text-align: start;
+}
+
+.adicionar select {
+  width: 45%;
+  height: 2rem;
+  margin: 1.5rem;
+  text-align: center;
+  background-color: #2d1f4e;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.adicionar section {
+  margin-bottom: 1rem;
+  width: 100%;
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.adicionar section h3{
+  margin-left: 0.5rem;
+}
+
+.adicionarButtons {
+width: 100%;
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+}
+
+.divisoria {
+width: 100vw;
+height: 100%;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+}
+
+.divisoria header {
+width: 100%;
+height: 4rem;
+background-color: #121214;
+border-bottom: solid 2px #585858;
+padding: 1rem;
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+align-items: center;
+}
+
+.divisoria header h3 {
+color: gray;
+cursor: pointer;
+margin: 0.5rem;
+transition: 0.1s;
 }
 
 .divisoria header h3:hover {
-  
-  color: white;
+
+color: white;
+}
+
+.alunoInformacoes {
+height: 100%;
+width: 45rem;
+background-color: #0D0C13;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.userIcon {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin: 0.5rem;
+}
+
+.userIcon img {
+border-radius: 50%;
+padding: 1rem;
+margin: 0.5rem;
+margin-top: 1rem;
+border: solid 5px #8257E5;
+}
+
+.alunoInformacoes section {
+display: flex;
+width: 100%;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin: 0.5rem;
+}
+
+.alunoInformacoes section h3 {
+margin-left: 1rem;
+}
+
+.alunoInformacoesObjetivo {
+margin: 1rem;
+width: 90%;
+padding: 1rem;
+height: 7rem;
+background-color: #1E1D26;
+border-radius: 1rem;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.alturaPeso {
+width: 100%;
+margin-top: 1rem;
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+
+.alturaPeso section {
+margin: 0.5rem;
+width: 45%;
+height: 5rem;
+border-radius: 1rem;
+background-color: #1E1D26;
+display: flex;
+gap: 2rem;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+}
+
+.alturaPeso img {
+border-radius: 30%;
+border: solid 2px #8257E5;
+padding: 0.1rem;
+}
+
+.alturaPeso section h3 {
+margin: 0;
+}
+
+.flexarAlturaPeso {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.flexarAlturaPeso p {
+font-weight: bold;
+}
+
+.alunoInformacoesEmail {
+display: flex;
+flex-direction: column;
+margin: 1rem;
+width: 100%;
+justify-content: center;
+align-items: center;
+}
+
+.alunoInformacoesEmail section {
+width: 92%;
+height: 5rem;
+background-color: #1E1D26;
+border-radius: 1rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.campo::-webkit-scrollbar {
+  display: none;
+}
+
+
+.card {
+  width: 23rem;
+  height: 9rem;
+  background-color: #202024;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  transform: scale(90%);
+  transition: 0.1s;
+  overflow: hidden;
+}
+
+.card section {
+display: flex;
+flex-direction: column;
+height: 100%;
+justify-content: center;
+}
+
+.card section h2 {
+font-weight: bold;
+margin-top: 0.5rem;
+}
+
+.card section p {
+font-weight: bold;
+color: #6F6F6F;
+}
+
+.card img {
+background-color: #0D0C13;
+border-radius: 50%;
+padding: 0.5rem;
+}
+
+.card:hover {
+  background-color: #121214;
+}
+
+.infosModal {
+width: 30rem;
+height: 80vh;
+background-color: #121214;
+border: solid 2px #8257E5;
+border-radius: 1rem;
+position: fixed;
+transform: translateY(-7rem);
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 1rem;
+}
+
+.infosModal header {
+margin: 1rem;
+border-bottom: none;
+}
+
+.infosModal button {
+background-color: inherit;
+border: solid 2px white;
+width: 6rem;
+height: 3rem;
+border-radius: 0;
+margin: 1rem;
+}
+
+.infosModal button:hover {
+background-color: inherit;
+}
+
+.infosCampo section{
+width: 100%;
+height: 7rem;
+background-color: black;
+border-radius: 1rem;
+padding: 1rem;
+}
+
+.infosCampo section h2 {
+height: 5rem;
+}
+
+.infosCampo {
+margin-top: 5rem;
+width: 100%;
+height: 100%;
+overflow-y: scroll;
+align-items: center;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding-left:1rem;
+padding-right:1rem;
+gap: 1rem;
+margin-top: 1rem;
+}
+
+.infosCampo::-webkit-scrollbar {
+display: none;
+}
+
+.excluirModal {
+width: 20rem;
+position: fixed;
+height: 15rem;
+background-color: #121214;
+border: solid 2px #8257E5;
+border-radius: 1rem;
+transform: translateY(5rem);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.excluirModal section {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1400px)  {
+.main {
+  padding-top: 4rem;
+}
+
+.adicionar {
+width: 30vw;
+transform: translateY(-12.5rem);
+padding: 0.5rem;
+}
+
+.adicionar select {
+margin: 0.5rem;
+}
+
+.adicionar input[type=text]  {
+margin: 0.5rem;
+height: 2.3rem;
+border-radius: 0.5rem;
+background-color: black;
+border: none;
+outline: 0;
+transition: 0.1s;
+color: #fff;
+width: 100%;
+padding: 1rem;
+text-align: start;
+}
+
+.infosModal {
+width: 25rem;
+height: 95vh;
+background-color: #121214;
+border: solid 2px #8257E5;
+border-radius: 1rem;
+position: fixed;
+transform: translateY(-12rem);
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 1rem;
+}
+
+.infosCampo h2 {
+font-size: 1rem;
+}
+.infosCampo h3 {
+font-size: 1rem;
 }
 
 .alunoInformacoes {
   height: 100%;
-  width: 45rem;
+  width: 30rem;
   background-color: #0D0C13;
   display: flex;
   flex-direction: column;
@@ -140,13 +442,18 @@
   justify-content: center;
   margin: 0.5rem;
 }
+.userIcon h2{
+  font-size: 1.2rem;
+}
 
 .userIcon img {
+  width: 7rem;
+  height: 7rem;
   border-radius: 50%;
   padding: 1rem;
   margin: 0.5rem;
   margin-top: 1rem;
-  border: solid 5px #8257E5;
+  border: solid 3px #8257E5;
 }
 
 .alunoInformacoes section {
@@ -163,10 +470,10 @@
 }
 
 .alunoInformacoesObjetivo {
-  margin: 1rem;
+  margin: 0.5rem;
   width: 90%;
   padding: 1rem;
-  height: 7rem;
+  height: 3rem;
   background-color: #1E1D26;
   border-radius: 1rem;
   display: flex;
@@ -176,7 +483,7 @@
 
 .alturaPeso {
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -185,7 +492,7 @@
 .alturaPeso section {
   margin: 0.5rem;
   width: 45%;
-  height: 5rem;
+  height: 3.5rem;
   border-radius: 1rem;
   background-color: #1E1D26;
   display: flex;
@@ -196,6 +503,8 @@
 }
 
 .alturaPeso img {
+  height: 2rem;
+  width: 2rem;
   border-radius: 30%;
   border: solid 2px #8257E5;
   padding: 0.1rem;
@@ -219,7 +528,7 @@
 .alunoInformacoesEmail {
   display: flex;
   flex-direction: column;
-  margin: 1rem;
+  margin: 0.5rem;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -227,344 +536,39 @@
 
 .alunoInformacoesEmail section {
   width: 92%;
-  height: 5rem;
+  height: 3rem;
   background-color: #1E1D26;
   border-radius: 1rem;
 }
-
-.campo {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    width: 100%;
-    height: 100%;
-    overflow-y: scroll;
-}
-
-.campo::-webkit-scrollbar {
-    display: none;
-  }
-
-
-.card {
-    width: 23rem;
-    height: 9rem;
-    background-color: #202024;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    border-radius: 1rem;
-    cursor: pointer;
-    transform: scale(90%);
-    transition: 0.1s;
-    overflow: hidden;
-}
-
-.card section {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: center;
-}
-
-.card section h2 {
-  font-weight: bold;
-  margin-top: 0.5rem;
-}
-
-.card section p {
-  font-weight: bold;
-  color: #6F6F6F;
-}
-
-.card img {
-  background-color: #0D0C13;
-  border-radius: 50%;
-  padding: 0.5rem;
-}
-
-.card:hover {
-    background-color: #121214;
-}
-
-.infosModal {
-  width: 30rem;
-  height: 80vh;
-  background-color: #121214;
-  border: solid 2px #8257E5;
-  border-radius: 1rem;
-  position: fixed;
-  transform: translateY(-7rem);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-}
-
-.infosModal header {
-  margin: 1rem;
-  border-bottom: none;
-}
-
-.infosModal button {
-  background-color: inherit;
-  border: solid 2px white;
-  width: 6rem;
-  height: 3rem;
-  border-radius: 0;
-  margin: 1rem;
-}
-
-.infosModal button:hover {
-  background-color: inherit;
-}
-
-.infosCampo section{
-  width: 100%;
-  height: 7rem;
-  background-color: black;
-  border-radius: 1rem;
-  padding: 1rem;
-}
-
-.infosCampo section h2 {
-  height: 5rem;
-}
-
-.infosCampo {
-  margin-top: 5rem;
-  width: 100%;
-  height: 100%;
-  overflow-y: scroll;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding-left:1rem;
-  padding-right:1rem;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.infosCampo::-webkit-scrollbar {
-  display: none;
-}
-
-.excluirModal {
-  width: 20rem;
-  position: fixed;
-  height: 15rem;
-  background-color: #121214;
-  border: solid 2px #8257E5;
-  border-radius: 1rem;
-  transform: translateY(5rem);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.excluirModal section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-@media screen and (min-width: 1000px) and (max-width: 1400px)  {
-  .main {
-    padding-top: 4rem;
-}
-  
-.adicionar {
-  width: 30vw;
-  transform: translateY(-12.5rem);
-  padding: 0.5rem;
-}
-
-.adicionar select {
-  margin: 0.5rem;
-}
-
-.adicionar input[type=text]  {
-  margin: 0.5rem;
-  height: 2.3rem;
-  border-radius: 0.5rem;
-  background-color: black;
-  border: none;
-  outline: 0;
-  transition: 0.1s;
-  color: #fff;
-  width: 100%;
-  padding: 1rem;
-  text-align: start;
-}
-
-.infosModal {
-  width: 25rem;
-  height: 95vh;
-  background-color: #121214;
-  border: solid 2px #8257E5;
-  border-radius: 1rem;
-  position: fixed;
-  transform: translateY(-12rem);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-}
-
-.infosCampo h2 {
-  font-size: 1rem;
-}
-.infosCampo h3 {
-  font-size: 1rem;
-}
-
-  .alunoInformacoes {
-    height: 100%;
-    width: 30rem;
-    background-color: #0D0C13;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .userIcon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0.5rem;
-  }
-  .userIcon h2{
-    font-size: 1.2rem;
-  }
-  
-  .userIcon img {
-    width: 7rem;
-    height: 7rem;
-    border-radius: 50%;
-    padding: 1rem;
-    margin: 0.5rem;
-    margin-top: 1rem;
-    border: solid 3px #8257E5;
-  }
-  
-  .alunoInformacoes section {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0.5rem;
-  }
-  
-  .alunoInformacoes section h3 {
-    margin-left: 1rem;
-  }
-  
-  .alunoInformacoesObjetivo {
-    margin: 0.5rem;
-    width: 90%;
-    padding: 1rem;
-    height: 3rem;
-    background-color: #1E1D26;
-    border-radius: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .alturaPeso {
-    width: 100%;
-    margin-top: 0.5rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-  
-  .alturaPeso section {
-    margin: 0.5rem;
-    width: 45%;
-    height: 3.5rem;
-    border-radius: 1rem;
-    background-color: #1E1D26;
-    display: flex;
-    gap: 2rem;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .alturaPeso img {
-    height: 2rem;
-    width: 2rem;
-    border-radius: 30%;
-    border: solid 2px #8257E5;
-    padding: 0.1rem;
-  }
-  
-  .alturaPeso section h3 {
-    margin: 0;
-  }
-  
-  .flexarAlturaPeso {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .flexarAlturaPeso p {
-    font-weight: bold;
-  }
-  
-  .alunoInformacoesEmail {
-    display: flex;
-    flex-direction: column;
-    margin: 0.5rem;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .alunoInformacoesEmail section {
-    width: 92%;
-    height: 3rem;
-    background-color: #1E1D26;
-    border-radius: 1rem;
-  }
 }
 
 
 @media screen and (max-width: 768px) {
-  .main {
-    padding-left: 0;
-    padding-right: 0;
-    align-items: center;
-  }
+.main {
+  padding-left: 0;
+  padding-right: 0;
+  align-items: center;
+}
 
-  .main header {
-    text-align: center;
-    font-size: 0.5rem;
-    margin: 0;
-  }
+.main header {
+  text-align: center;
+  font-size: 0.5rem;
+  margin: 0;
+}
 
-  .infosModal {
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    transform: translateY(0);
-  }
+.alunoInformacoes {
+  display: none;
+}
 
-  .infosModal button {
-    height: 3rem;
-    width: 7rem;
-  }
+.infosModal {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  transform: translateY(0);
+}
+
+.infosModal button {
+  height: 3rem;
+  width: 7rem;
+}
 }
