@@ -66,7 +66,7 @@ export default function Calendario() {
   })
  .then(async response => {
   setProfessor(response.data)
-   
+   console.log(response.data)
  }),
  {
    retry: 5, 
@@ -303,7 +303,7 @@ const carregarAulas =useQuery('buscarAulas', async () =>
                                     {  
                                         professor.map(x => {
                                             return(
-                                            <option key={x.nome} value={x.id}>{x.nome}</option>
+                                            <option key={x.nome} value={x.id}>{x.nomeProfessor}</option>
                                             )
                                         })
                                     }

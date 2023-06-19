@@ -98,7 +98,7 @@
     width: 70vw;
     border-radius: 1rem;
     border: solid 2px #8257E5;
-    position: absolute;
+    position: fixed;
     top: 50%;                         
    transform: translate(0, -50%);
    display: flex;
@@ -188,9 +188,9 @@
 
 .adicionar {
     width: 35vw;
-    height: 70vh;
+    height: auto;
     background-color: #121214;
-    position: absolute;
+    position: fixed;
     margin: 1rem;
     top: 50%;                         /* 3 */
    transform: translate(0, -50%) ;

@@ -90,6 +90,10 @@
     overflow-y: scroll;
   }
 
+  .professorArea::-webkit-scrollbar {
+    display: none;
+  }
+
   .professor {
     width: 20rem;
     height: 27rem;
@@ -157,7 +161,7 @@
   }
 
   .cadastro {
-    position: absolute;
+    position: fixed;
     width: auto;
     height: auto;
     background-color: #fff;
@@ -263,7 +267,7 @@
   background-color: black;
   width: auto;
   height: auto;
-  position: absolute;
+  position: fixed;
   margin-top: 2rem;
   border: solid #8257E5 2px;
   display: flex;
@@ -384,6 +388,12 @@ font-weight: bold;
       
     }
 
+  }
+
+  @media screen and (min-width: 1400px) and (max-width: 1700px)  {
+    .Modal {
+      transform: translateY(-2rem);
+    }
   }
 
   @media screen and (min-width: 1000px) and (max-width: 1360px)  {

@@ -184,7 +184,7 @@
 
   .cadastro {
     position: fixed;
-    width: 50%;
+    width: 50vw;
     height: auto;
     background-color: #fff;
     border-radius: 1.5rem;
@@ -206,7 +206,7 @@
 
   .cadastro button {
     cursor: pointer;
-    width: 10rem;
+    width: 25%;
     height: 3rem;
     margin: 1rem;
     border: none;
@@ -262,7 +262,7 @@
     width: 80%;
     height: 80%;
     background-color: black;
-    position: absolute;
+    position: fixed;
     margin: 1rem;
     border-radius: 1rem;
     border: solid 2px #8257E5;
@@ -444,9 +444,11 @@
     justify-content: space-around;
     align-items: center;
   } 
-  @media screen and (min-width: 768px) and (max-width: 1400px) {
+  @media screen and (min-width: 1400px) and (max-width: 1600px) {
     
-     
+     .OpenCliente {
+      transform: translateY(-5rem);
+     }
     
   
   }

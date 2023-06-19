@@ -131,7 +131,18 @@ background-color: #0D0C13;
 display: flex;
 flex-direction: column;
 align-items: center;
+overflow: scroll;
 }
+
+.alunoInformacoes::-webkit-scrollbar {
+  display: none;
+}
+
+.alunoInformacoes::-webkit-scrollbar-thumb {
+  background: #4e348a;
+  border-radius: 1rem;    
+}
+
 
 .userIcon {
 display: flex;
