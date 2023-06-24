@@ -22,12 +22,23 @@ export default function Professores() {
     const telefoneEdit = useRef()
     const salarioEdit = useRef()
     const senhaEdit = useRef()
-   
+    const [fecharEdit, setFecharEdit] = useState(false)
+
     useEffect(() => {
         if(Cookies.getItem("email") == null) {
             push("/invalido")
         }
     },[]) 
+
+    function confirmarFechar() {
+        if(fecharEdit == true) {
+            setEditarModal(true)
+            setFecharEdit(false)
+        }
+        else {
+            setOpenModal(false)
+        }
+    }
 
     const { isLoading, error} =useQuery('buscarProfessores', async () =>
     await axios.post("https://planet-scale-database-connect.vercel.app/buscarProfessores", {
@@ -159,7 +170,7 @@ export default function Professores() {
                     openModal && 
                     <div className={styles.Modal}>
                         <div className={styles.ModalButtons}>
-                            <button onClick={() => setOpenModal(false)}>Fechar</button>
+                            <button onClick={() => confirmarFechar()}>Fechar</button>
                             <button onClick={ () => modalDeletarConfirm(!deletarConfirm)}>Excluir</button>
                             <button onClick={() => setEditarModal(true)}>Editar</button>
                         </div>
@@ -185,19 +196,19 @@ export default function Professores() {
                         }
                         <section>
                             <h1>Nome:</h1>
-                            <h1 contentEditable ref={nomeEdit}>{filterData[0].nomeProfessor}</h1>
+                            <h1 contentEditable onClick={() => setFecharEdit(true)} ref={nomeEdit}>{filterData[0].nomeProfessor}</h1>
                         </section>
                         <section>
                             <h1>Email:</h1>
-                            <h1 contentEditable ref={emailEdit}>{filterData[0].email}</h1>
+                            <h1 contentEditable onClick={() => setFecharEdit(true)} ref={emailEdit}>{filterData[0].email}</h1>
                         </section>
                         <section>
                             <h1>Senha:</h1>
-                            <h1 contentEditable ref={senhaEdit}>{filterData[0].senha}</h1>
+                            <h1 contentEditable onClick={() => setFecharEdit(true)} ref={senhaEdit}>{filterData[0].senha}</h1>
                         </section>
                         <section>
                             <h1>Telefone:</h1>
-                            <h1  contentEditable ref={telefoneEdit}>{filterData[0].telefone}</h1>
+                            <h1  contentEditable onClick={() => setFecharEdit(true)} ref={telefoneEdit}>{filterData[0].telefone}</h1>
                         </section>
                     </div>
                     

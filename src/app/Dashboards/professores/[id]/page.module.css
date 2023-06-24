@@ -20,6 +20,7 @@
  
  .header h1 {
      margin: 1rem;
+     transform: translateY(0.5rem);
  }
 
  .campo {

@@ -19,8 +19,20 @@ export default function Aulas() {
     const descricaoEdit = useRef()
     const nivelEdit = useRef()
     const duracaoEdit = useRef()
+    const [fecharEdit, setFecharEdit] = useState(false)
     const { push } = useRouter(null);
-    
+
+
+    function confirmarFechar() {
+        if(fecharEdit == true) {
+            setModificar(true)
+            setFecharEdit(false)
+        }
+        else {
+            setOpenModal(false)
+        }
+    }
+
     useEffect(() => {
         console.log(Cookies.getItem("email"))
         if(Cookies.hasItem("email") == false) {
@@ -101,6 +113,7 @@ export default function Aulas() {
 
    function editar(id) {
     console.log(nomeEdit.current.textContent)
+    console.log(modalData[0].id)
 
     axios.post("https://planet-scale-database-connect.vercel.app/modificarAulas", {
         nome: nomeEdit.current.textContent,
@@ -117,6 +130,7 @@ export default function Aulas() {
        .then(response => {
         console.log(response.data)
         setData(response.data)
+        setOpenModal(false)
        })
 
     }).catch(error => {
@@ -234,29 +248,34 @@ export default function Aulas() {
                     openModal &&
                     <div className={styles.openAula}>
                     <section>
-                        <button onClick={() => setOpenModal(false)}>Fechar</button>
+                        <button onClick={() => confirmarFechar()}>Fechar</button>
                         <button onClick={() => setModificar(true)}>Editar</button>
                         <button onClick={() => { setDeletarModal(true), handleAulaInfo(modalData[0].id) }}>Deletar</button>
                     </section>
                         <div className={styles.openAulaInfos}>
                         <h2>Nome:</h2>
-                        <h3 ref={nomeEdit} contentEditable>{modalData[0].nome}</h3>
+                        <h3 ref={nomeEdit} contentEditable
+                            onClick={() => setFecharEdit(true)}
+                        >{modalData[0].nome}</h3>
                         </div>
                         <div className={styles.openAulaInfosDesc}>
                         <h2>Descrição:</h2>
-                        <h3 ref={descricaoEdit} contentEditable>{modalData[0].descricao}</h3>
+                        <h3 ref={descricaoEdit} contentEditable onClick={() => setFecharEdit(true)}
+                        >{modalData[0].descricao}</h3>
                         </div>
                         <div style={{width:'80%', display: "flex", justifyContent: "space-around"}}>
                                 <div className={styles.openAulaInfosDesc} style={{height: "6rem"}}>
                                 <h2>Duração:</h2>
                                 <div style={{display: "flex"}}>
-                                <h3 ref={duracaoEdit} contentEditable>{modalData[0].duracao}</h3>
+                                <h3 ref={duracaoEdit} contentEditable onClick={() => setFecharEdit(true)}
+                                >{modalData[0].duracao}</h3>
                                 <h3>hrs</h3>
                                 </div>
                                 </div>
                                 <div className={styles.openAulaInfosDesc}>
                                 <h2>Nivel:</h2>
-                                <h3 ref={nivelEdit} contentEditable> {modalData[0].nivel}</h3>
+                                <h3 ref={nivelEdit} contentEditable onClick={() => setFecharEdit(true)}
+                                > {modalData[0].nivel}</h3>
                                 </div>
                         </div>
                     </div>
@@ -277,7 +296,7 @@ export default function Aulas() {
                     <h2>Deseja salvar a modificação?</h2>
                     <section>
                     <button onClick={() => setModificar(false)}>Não</button>
-                    <button onClick={() => {editar(modalData[0].id), setModificar(false)}}>Sim</button>
+                    <button onClick={() => {editar(modalData[0].id), setModificar(false), setFecharEdit(false)}}>Sim</button>
                     </section>
                 </div>
                  }

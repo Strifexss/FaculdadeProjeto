@@ -43,6 +43,10 @@
   margin: 1rem;
 }
 
+.logins input {
+  width: 100%;
+}
+
 .logins input:focus {
   border: solid 2.5px #8257E5;
 }
@@ -53,8 +57,9 @@
 
 .logins button {
   cursor: pointer;
-  width: 65%;
+  width: 69%;
   height: 3.5rem;
+  transform: translateX(0.5rem);
   margin: 1rem;
   border: none;
   border-radius: 0.5rem;
@@ -66,6 +71,13 @@
 
 .logins button:hover {
   background-color: #4e348a;
+}
+
+.logins label {
+  color: white;
+  font-weight: bolder;
+  margin-left: 1rem;
+
 }
 
 .logins a {
@@ -85,6 +97,12 @@
 
 .loading {
   position: absolute;
+}
+
+.revelarIcon {
+  width: 1rem;
+  height: 0.8rem;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 425px) {
@@ -107,7 +125,7 @@
   }
 
   .logins input {
-    width: 80%;
+    width: 100%;
   }
 
   .logins button {

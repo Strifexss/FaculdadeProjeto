@@ -25,7 +25,18 @@ export default function Usuarios() {
     const telefoneAluno = useRef(null)
     const pesoAluno = useRef(null)
     const alturaAluno = useRef(null)
+    const [modificarConfirm, setModificarConfirm] = useState(false)
+    const [fecharEdit, setFecharEdit] = useState(false)
 
+    function confirmarFechar() {
+        if(fecharEdit == true) {
+            setModificarConfirm(true)
+            setFecharEdit(false)
+        }
+        else {
+            setOpenCliente(false)
+        }
+    }
 
     //Função para validar o acesso a pagina
     useEffect(() => {
@@ -162,6 +173,7 @@ export default function Usuarios() {
     .then(response => {
         console.log(response.data)
         setData(response.data)
+        setFecharEdit(false)
     })
 
     }).catch(err => {
@@ -325,9 +337,9 @@ export default function Usuarios() {
                     &&
                     <div className={styles.OpenCliente}>
                         <div className={styles.flexarButtons}>
-                            <button onClick={() => {setOpenCliente(false)}}>Fechar</button>
+                            <button onClick={() => {confirmarFechar()}}>Fechar</button>
                             <button onClick={() => {modalDeletarConfirm(!deletarConfirm)}}>Excluir</button>
-                            <button onClick={() => salvar(dadosClientes[0].cliente_id)}>Salvar Alterações</button>
+                            <button onClick={() => setModificarConfirm(true)}>Salvar Alterações</button>
                             <button onClick={pushAulas}>Exercicios</button>
                         </div>
                         <section>
@@ -344,6 +356,18 @@ export default function Usuarios() {
                                         </div>
                                         
                                 }
+                                {
+                                    modificarConfirm && 
+                                        <div className={styles.deletar}>
+                                            <h1>Deseja salvar as Alterações?</h1>
+                                            <section>
+                                                <button onClick={() => {setModificarConfirm(!modificarConfirm)}}><h2>Não</h2></button>
+                                                <button onClick={() => (salvar(dadosClientes[0].cliente_id), setModificarConfirm(!modificarConfirm))}><h2>Sim</h2></button>
+                                             
+                                            </section>
+                                        </div>
+                                        
+                                }
                                  <div className={styles.userName}>
                                     <Image
                                         src={UserImage}
@@ -351,13 +375,13 @@ export default function Usuarios() {
                                         height={500}
                                         alt="Cliente"
                                     />
-                                    <h1 contentEditable ref={nomeAluno} >{dadosClientes[0].nome}</h1>
+                                    <h1 contentEditable ref={nomeAluno} onClick={() => setFecharEdit(true)}>{dadosClientes[0].nome}</h1>
                                     
                                  </div>
                                  <section>
                                  <div className={styles.Objetivo}>
                                     <h1>Objetivo:</h1>
-                                    <h3 ref={objetivoAluno} contentEditable>{dadosClientes[0].objetivo}</h3>
+                                    <h3 ref={objetivoAluno} contentEditable onClick={() => setFecharEdit(true)}>{dadosClientes[0].objetivo}</h3>
                                  </div>
                                  <div className={styles.Objetivo}>
                                     <h1>{dadosClientes[0].nomePlanos}</h1>
@@ -367,11 +391,11 @@ export default function Usuarios() {
                                  <section>
                                  <div className={styles.dadosPrincipais}>
                                     <h1>Email:</h1>
-                                    <h3 ref={emailAluno} contentEditable>{dadosClientes[0].email}</h3>
+                                    <h3 ref={emailAluno} contentEditable onClick={() => setFecharEdit(true)}>{dadosClientes[0].email}</h3>
                                  </div>
                                  <div className={styles.dadosPrincipais}>
                                     <h1>Telefone:</h1>
-                                    <h3 ref={telefoneAluno} contentEditable>{dadosClientes[0].telefone}</h3>
+                                    <h3 ref={telefoneAluno} contentEditable onClick={() => setFecharEdit(true)}>{dadosClientes[0].telefone}</h3>
                                  </div>
                                  </section>
                                  <div className={styles.infoCorpo}>
@@ -379,7 +403,7 @@ export default function Usuarios() {
                                         <h1>
                                             Peso:
                                         </h1>
-                                        <h3 ref={pesoAluno} contentEditable>
+                                        <h3 ref={pesoAluno} contentEditable onClick={() => setFecharEdit(true)}>
                                             {dadosClientes[0].peso}
                                         </h3>
                                     </section>
@@ -387,7 +411,7 @@ export default function Usuarios() {
                                         <h1>
                                             Altura:
                                         </h1>
-                                        <h3 ref={alturaAluno} contentEditable>
+                                        <h3 ref={alturaAluno} contentEditable onClick={() => setFecharEdit(true)}> 
                                             {dadosClientes[0].altura}
                                         </h3>
                                     </section>

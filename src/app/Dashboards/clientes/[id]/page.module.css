@@ -443,7 +443,11 @@
     width: 100%;
     justify-content: space-around;
     align-items: center;
-  } 
+  }
+  
+  .deletar button {
+    width: 100%;
+  }
   @media screen and (min-width: 1400px) and (max-width: 1600px) {
     
      .OpenCliente {

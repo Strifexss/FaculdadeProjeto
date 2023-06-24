@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import CidadeImagem from "./imgs/purpleCidade.webp"
 import loadingIcon from "./imgs/icons/spinnerLoading.svg"
+import eyeIcon from "./imgs/icons/olho.png"
 import Logo from "./imgs/GymHubFont.png"
 import {motion} from "framer-motion"
 import axios from 'axios'
@@ -17,6 +18,16 @@ export default function Home() {
   const [loginErro, setLoginErro] = useState(false)
   const focusInputRef = useRef(null)
   const [loading, setLoading] = useState(false)
+
+  function revelarSenha() {
+    const senha = document.getElementById("senha")
+    if(senha.type == 'password') {
+      senha.type = 'text'
+    }
+    else {
+      senha.type = 'password'
+    }
+  }
 
   function login() {
     setLoading(true)
@@ -88,8 +99,24 @@ export default function Home() {
               Usuário ou senha incorretos
               </motion.p>
           }
-          <input type="text" id="email" placeholder='E-mail' ref={focusInputRef} />
-          <input type="password" id="senha" placeholder='Senha' />
+          <div style={{width: '70%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
+            <label htmlFor="email">Email:</label>
+            <input type="text" id="email" placeholder='Insira seu Email' ref={focusInputRef} />
+          </div>
+          <div style={{width: '70%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
+            <div style={{width: '100%', display: 'flex', flexDirection: 'row', justifyContent:'space-between' }}>
+              <label htmlFor="senha">Senha:</label>
+              <div className={styles.revelarIcon} style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%'}}>
+              <Image onClick={revelarSenha}
+                src={eyeIcon}
+                width={1}
+                height={1}
+                alt='Revelar Senha'
+              />
+              </div>
+            </div>
+            <input type="password" spellCheck id="senha" placeholder='Insira sua senha' />
+          </div>
           <button onClick={login}>
             <h2>Entrar</h2>
           

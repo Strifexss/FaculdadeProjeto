@@ -23,12 +23,24 @@ export default function Planos() {
     const valorEdit = useRef()
     const duracaoEdit = useRef()
     const [editarInfo, setEditarInfo] = useState(false)
+    const [fecharEdit, setFecharEdit] = useState(false)
 
     useEffect(() => {
         if(Cookies.getItem("email") == null) {
             push("/invalido")
         }
     },[])
+
+    function confirmarFechar() {
+        if(fecharEdit == true) {
+            setEditarInfo(true)
+            setFecharEdit(false)
+        }
+        else {
+            setModalInfo(false)
+        }
+    }
+
 
     const { isLoading, error} =useQuery('buscarPlanos', async () =>
     await axios.post("https://planet-scale-database-connect.vercel.app/buscarPlanos", {
@@ -194,7 +206,7 @@ export default function Planos() {
                     modalInfo &&
                     <div className={styles.info}>
                         <div className={styles.infoButtons}>
-                            <button onClick={() => setModalInfo(false)}>Fechar</button>
+                            <button onClick={() => confirmarFechar()}>Fechar</button>
                             <button onClick={() => setDeletarModal(true)}>Deletar</button>
                             <button onClick={() => {setEditarInfo(!editarInfo)}}>Editar</button>
                         </div>
@@ -212,13 +224,13 @@ export default function Planos() {
                      }          
                         <section>
                             <h1>Plano:</h1>
-                            <h1 contentEditable ref={nomeEdit}>{info[0].nomePlanos}</h1>
+                            <h1 contentEditable onClick={() => setFecharEdit(true)} ref={nomeEdit}>{info[0].nomePlanos}</h1>
                         </section>
                         {
                             editarInfo &&
                             <div>
                           <div className={styles.deletar}>
-                            <h1>Deseja deletar o plano?</h1>
+                            <h1>Deseja salvar as alterações?</h1>
                          <section>
                             <button onClick={() => {setEditarInfo(false)}}><h2>Não</h2></button>
                              <button onClick={() => (editar(), setEditarInfo(false))}><h2>Sim</h2></button>
@@ -228,16 +240,16 @@ export default function Planos() {
                         }
                         <section>
                             <h1>Descricao:</h1>
-                            <p contentEditable ref={descricaoEdit}>{info[0].descricao}</p>
+                            <p contentEditable onClick={() => setFecharEdit(true)} ref={descricaoEdit}>{info[0].descricao}</p>
                         </section>
                         <section>
                             <h1>Duração:</h1>
-                            <h1 contentEditable ref={duracaoEdit}>{info[0].duracao_dias}</h1>
+                            <h1 contentEditable onClick={() => setFecharEdit(true)} ref={duracaoEdit}>{info[0].duracao_dias}</h1>
                             <h1>Dias</h1>
                         </section>
                         <section>
                             <h1>Valor:</h1>
-                            <h1 contentEditable ref={valorEdit}>{info[0].preco}</h1>
+                            <h1 contentEditable onClick={() => setFecharEdit(true)} ref={valorEdit}>{info[0].preco}</h1>
                             <h1>R$</h1>
                         </section>
                 
