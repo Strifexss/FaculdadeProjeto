@@ -9,6 +9,8 @@ import ProfessorIcon from "../imgs/icons/ProfessorIcon.png"
 import CalendarIcon from "../imgs/icons/Calendar.png"
 import MenuIcon from "../imgs/icons/IconMenu.png"
 import CloseIcon from "../imgs/icons/CloseIcon.png"
+import GymHubAjuda from "../imgs/GymHubAjuda.png"
+import GymHubAjuda2 from "../imgs/GymHubAjuda2.png"
 import Logo from "../imgs/GymHubFont.png"
 import Cookies from "js-cookies"
 import { useRouter } from 'next/navigation';
@@ -19,9 +21,19 @@ export default function Layout({ children }) {
   const {push} = useRouter()
   const [modal, openModal] = useState(false)
   const [mobileModal, setMobileModal] = useState(false)
+  const [ajuda, setAjuda] = useState(false)
+  const [ajudaImagem, setAjudaImagem] = useState(GymHubAjuda)
+  
+  function trocarImagemAjuda() {
+    if(ajudaImagem == GymHubAjuda) {
+      setAjudaImagem(GymHubAjuda2)
+    }
+    else {
+      setAjudaImagem(GymHubAjuda)
+    }
+  }
 
-
-   async function deslogar() {
+  async function deslogar() {
      Cookies.removeItem("email")
      Cookies.removeItem("id_usuario")
       window.alert("Deslogado com sucesso")
@@ -91,7 +103,9 @@ export default function Layout({ children }) {
           <div onClick={inicio}>
           <Icones nome="Início" imagem={ExercicioIcon}/>
           </div>
-          
+          <div className={styles.ajuda} onClick={() => setAjuda(true)}>
+            <h1>?</h1>
+          </div>
           </div>
           <div className={styles.perfilFlex}>
             <motion.div className={styles.perfil} onClick={() => {openModal(!modal)}}
@@ -192,6 +206,24 @@ export default function Layout({ children }) {
             </footer>     
           </motion.div>
         
+        }
+        {
+          ajuda && 
+          <div className={styles.ajudaArea}>
+            <header>
+              <h2 onClick={() => setAjuda(false)}>Fechar</h2>
+            </header>
+            <section>
+            <h1 onClick={() => trocarImagemAjuda()}>Anterior</h1>
+            <Image 
+              src={ajudaImagem}
+              width={500}
+              height={500}
+              alt="Ajuda"
+            />
+            <h1 onClick={() => trocarImagemAjuda()}>Proximo</h1>
+            </section>
+          </div>
         }
         {children}
       </div>   

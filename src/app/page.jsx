@@ -91,7 +91,7 @@ export default function Home() {
           {
             loginErro &&
             <motion.p
-              style={{color: "red", fontWeight: "bold", textAlign: "left"}}
+              style={{color: "red", fontWeight: "bold", textAlign: "left", backgroundColor: 'white', borderRadius: '1rem', width: '50%', textAlign: 'center'}}
               initial={{y: 10, opacity: 0}}
               animate={{y: 0, opacity: 1}}
               transition={{ duration: 0.3 }}

@@ -91,6 +91,77 @@
   display: none;
 }
 
+.ajuda {
+
+}
+
+.ajuda h1 {
+    width: 3rem;
+    text-align: center;
+    border: solid 1px white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.ajuda h1:hover {
+    color: gray;
+    border: solid 2px gray;
+}
+
+.ajudaArea {
+    display: flex;
+    flex-direction: column;
+    background-color: #101010;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+.ajudaArea header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 1rem;
+}
+
+.ajudaArea header h2 {
+    margin: 1rem;
+    color: white;
+    cursor: pointer;
+    border: solid white 2px;
+    padding: 0.5rem;
+}
+.ajudaArea header h2:hover {
+    color: gray;
+    border: solid gray 2px;
+}
+
+.ajudaArea section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.ajudaArea h1 {
+    color: white;
+    cursor: pointer;
+    margin: 1rem;
+    transform: translateY(-5rem);
+}
+.ajudaArea h1:hover {
+    color: gray;
+}
+
+.ajudaArea img {
+    width: 70%;
+    height: 70%;
+    transform: translateY(-5rem);
+}
+
 @media screen and (max-width: 768px) {
     .main {
         flex-direction: column;
@@ -106,6 +177,25 @@
         align-items: center;
         margin-left: 4rem;
     } 
+
+    .ajudaArea {
+        display: flex;
+        flex-direction: column;
+        background-color: #101010;
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        align-items: center;
+    }
+
+    .ajudaArea section {
+        flex-direction: column;
+    }
+
+    .ajudaArea img {
+        height: 40%;
+        width: 90%;
+    }
 
     .barra h1{
         display: none;
