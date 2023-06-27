@@ -413,6 +413,7 @@ font-weight: bold;
     width: 100vh;
     height: auto;
     position: fixed;
+    transform: translateY(-7rem);
    }
 
     .header {
