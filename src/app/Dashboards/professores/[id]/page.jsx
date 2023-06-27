@@ -79,7 +79,7 @@ export default function Professores() {
         const telefone = document.getElementById("telefone").value
         const email = document.getElementById("email").value
         const senha = document.getElementById('senha').value
-        axios.post("http://localhost:3001/registrarProfessores", {
+        axios.post("https://planet-scale-database-connect.vercel.app/registrarProfessores", {
             nome: nome,
             telefone: telefone,
             email: email,
