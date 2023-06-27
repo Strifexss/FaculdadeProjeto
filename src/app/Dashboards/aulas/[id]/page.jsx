@@ -142,6 +142,8 @@ export default function Aulas() {
     return(
         <div  className={styles.main}>
             <header>
+                <h1 onClick={() => push(`/Dashboards/landing/${Cookies.getItem("email")}`)}>Início</h1>
+                <h1> - </h1>
                 <h1>Aulas</h1>
             </header>
             <div className={styles.botoes}>

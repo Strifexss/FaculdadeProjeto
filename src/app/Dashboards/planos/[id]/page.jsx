@@ -139,6 +139,8 @@ export default function Planos() {
     return(
         <div className={styles.main}>
             <header>
+                <h1 onClick={() => push(`/Dashboards/landing/${Cookies.getItem("email")}`)}>Início</h1>
+                <h1>-</h1>
                 <h1>Planos</h1>
             </header>
             <div className={styles.botoes}>

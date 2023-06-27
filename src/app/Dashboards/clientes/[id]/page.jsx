@@ -184,6 +184,8 @@ export default function Usuarios() {
     return(
         <div className={styles.main}>
             <div className={styles.rodape}>
+                <h1 onClick={() => push(`/Dashboards/landing/${Cookies.getItem("email")}`)}>Início</h1>
+                <h1>-</h1>
                 <h1>Alunos</h1>
             </div>
             <div className={styles.campo}>

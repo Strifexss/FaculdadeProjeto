@@ -205,7 +205,7 @@ export default function Landing() {
            
         >
             <header>
-                <h2>Bem vindo de volta, {Cookies.getItem("nome")}!</h2>
+                <h2>Bem vindo de volta a Academia Saudênse, {Cookies.getItem("nome")}!</h2>
             </header>
             <motion.div className={styles.campo}
             >
@@ -223,7 +223,7 @@ export default function Landing() {
                                 height={35}
                                 alt="Imagem"
                             />
-                            <Link href={`./Dashboards/calendario/${Cookies.getItem("email")}`}><h3>Alunos</h3></Link>
+                            <Link href={`./Dashboards/clientes/${Cookies.getItem("email")}`}><h3>Alunos</h3></Link>
                         </section>
                         <section className={styles.editCampos} style={{backgroundColor: "#FFEECC",}}>
                             <Image
@@ -241,7 +241,7 @@ export default function Landing() {
                                 height={35}
                                 alt="Imagem"
                             />
-                        <Link href={`./Dashboards/professores/${Cookies.getItem("email")}`}> <h3 style={{color: "#F64E60"}}>Aulas</h3></Link>
+                        <Link href={`./Dashboards/aulas/${Cookies.getItem("email")}`}> <h3 style={{color: "#F64E60"}}>Aulas</h3></Link>
                         </section>
                         <section className={styles.editCampos} style={{backgroundColor: "#E7DCFE",}}>
                             <Image
@@ -250,7 +250,7 @@ export default function Landing() {
                                 height={35}
                                 alt="Imagem"
                             />
-                        <Link href={`./Dashboards/professores/${Cookies.getItem("email")}`}> <h3 style={{color: "#8950FC"}}>Calendário</h3></Link>
+                        <Link href={`./Dashboards/calendario/${Cookies.getItem("email")}`}> <h3 style={{color: "#8950FC"}}>Calendário</h3></Link>
                         </section>
                     </div>
                 </motion.div>

@@ -18,7 +18,16 @@ export default function AulasAluno() {
     function linkarAlunos() {
         push(`/Dashboards/clientes/${Cookies.getItem("email")}`)
     }
-
+    
+    function confirmarFechar() {
+        if(fecharEdit == true) {
+            setEditarModal(true)
+            setFecharEdit(false)
+        }
+        else {
+            setInfosModal(false)
+        }
+    }
 
     const [infosModal, setInfosModal] = useState(false)
     const [excluirModal, setExcluirModal] = useState(false)
@@ -26,7 +35,8 @@ export default function AulasAluno() {
     const [adicionarModal, setAdicionarModal] = useState(false)
     const [dataAluno, setDataAluno] = useState([])
     const [dataAulas, setDataAulas] = useState([])
-    
+    const [editarModal, setEditarModal] = useState(false)
+    const [fecharEdit, setFecharEdit] = useState(false)
     /**Adicionar */
     const diasEdita = useRef()
     const exercicio1 = useRef()
@@ -92,6 +102,7 @@ setDataAluno(response.data)
             nomeExercicio3: nomeExercicio3.current.value,
         }).then(response => {
             console.log(response)
+            window.location.reload()
         }).catch(error => {
             console.log(error)
         })
@@ -117,6 +128,7 @@ setDataAluno(response.data)
             nomeExercicio_3: nomeExercicio_3.current.textContent,
         }).then(response => {
             console.log(response)
+            window.location.reload()
         }).catch(err => {
             console.log(err)
         })
@@ -128,13 +140,7 @@ setDataAluno(response.data)
             id: infos[0].id
         }).then(response =>{ 
             console.log(response)
-            axios.post("https://planet-scale-database-connect.vercel.app/buscarAlunoEspecifico", {
-                id_aluno: Cookies.getItem("id_aluno")
-            }).then(response => {
-            console.log(response)
-            setDataAluno(response.data)
-            setInfosModal(false)
-            })
+            window.location.reload()
         })
         .catch(err => console.log(err))
     }
@@ -147,6 +153,8 @@ setDataAluno(response.data)
             <div className={styles.divisoria}>
                 <div style={{display: 'flex', flexDirection: 'column', width: '100%', height: '100%', alignItems: 'center'}}>
                     <header>
+                        <h3 onClick={() => push(`/Dashboards/landing/${Cookies.getItem("email")}`)}>Início</h3>
+                        <h3> - </h3>
                         <h3 onClick={linkarAlunos}>Alunos</h3>
                         <h3>-</h3>
                         <h3>Exercicios: {dataAluno[0] && dataAluno[0].nome}</h3>
@@ -228,7 +236,7 @@ setDataAluno(response.data)
                                     <p>Visualize e gerencie <br /> os exercicios</p>
                                 </div>
                             </div>
-                            <button onClick={() => setInfosModal(false)}>Fechar</button>
+                            <button onClick={() => confirmarFechar()}>Fechar</button>
                         </header>
                         {
                             excluirModal && 
@@ -240,23 +248,39 @@ setDataAluno(response.data)
                                 </section>
                             </div>
                         }
+                        {
+                            editarModal && 
+                            <div className={styles.excluirModal}>
+                                <h3 style={{textAlign: "center"}}>Deseja mesmo salvar as modificações?</h3>
+                                <section>
+                                    <button onClick={() => setEditarModal(false)}>Não</button>
+                                    <button onClick={() => {editar()}}>Sim</button>
+                                </section>
+                            </div>
+                        }
                             
                         <div className={styles.infosCampo}>
-                            <h2 ref={nomeExercicio_1} contentEditable>{infos[0].nomeExercicio1}</h2>
+                            <h2 onClick={() => setFecharEdit(true)} 
+                            ref={nomeExercicio_1} contentEditable>{infos[0].nomeExercicio1}</h2>
                             <section>
-                            <h3 contentEditable ref={exercicio_1}>{infos[0].exercicio_1}</h3>
+                            <h3 onClick={() => setFecharEdit(true)}
+                            contentEditable ref={exercicio_1}>{infos[0].exercicio_1}</h3>
                             </section>
-                            <h2 ref={nomeExercicio_2 } contentEditable>{infos[0].nomeExercicio2}</h2>
+                            <h2 onClick={() => setFecharEdit(true)} 
+                            ref={nomeExercicio_2 } contentEditable>{infos[0].nomeExercicio2}</h2>
                             <section>
-                            <h3 ref={exercicio_2} contentEditable>{infos[0].exercicio_2}</h3>
+                            <h3 onClick={() => setFecharEdit(true)} 
+                            ref={exercicio_2} contentEditable>{infos[0].exercicio_2}</h3>
                             </section>
-                            <h2 ref={nomeExercicio_3} contentEditable>{infos[0].nomeExercicio3}</h2>
+                            <h2 onClick={() => setFecharEdit(true)} 
+                            ref={nomeExercicio_3} contentEditable>{infos[0].nomeExercicio3}</h2>
                             <section>
-                            <h3 ref={exercicio_3} contentEditable>{infos[0].exercicio_3}</h3>
+                            <h3 onClick={() => setFecharEdit(true)} 
+                            ref={exercicio_3} contentEditable>{infos[0].exercicio_3}</h3>
                             </section>
                        </div>
                        <div style={{margin: '1rem', display: "flex", flexDirection: 'row', width: '100%', justifyContent: 'space-around', alignItems: 'center'}}>
-                            <button onClick={editar} 
+                            <button onClick={() => setEditarModal(true)} 
                             style={{backgroundColor: 'white', color: 'black', width: '8rem'}}
                             >Editar
                             </button>

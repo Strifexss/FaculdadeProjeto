@@ -139,6 +139,8 @@ const carregarAulas =useQuery('buscarAulas', async () =>
     return(
         <div className={styles.main}>
             <header>
+                <h1 onClick={() => push(`/Dashboards/landing/${Cookies.getItem("email")}`)}>Início</h1>
+                <h1> - </h1>
                 <h1>Calendário</h1>
                 {isLoading &&
                     <h1>Carregando...</h1>

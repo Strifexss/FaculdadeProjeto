@@ -95,17 +95,16 @@
 
 }
 
-.ajuda h1 {
+.ajuda h3 {
+    color: gray;
+    transform: translateX(6rem);
     width: 3rem;
     text-align: center;
-    border: solid 1px white;
-    border-radius: 50%;
     cursor: pointer;
 }
 
-.ajuda h1:hover {
-    color: gray;
-    border: solid 2px gray;
+.ajuda h3:hover {
+    color: white;
 }
 
 .ajudaArea {
@@ -158,7 +157,7 @@
 
 .ajudaArea img {
     width: 70%;
-    height: 70%;
+    height: 80%;
     transform: translateY(-5rem);
 }
 

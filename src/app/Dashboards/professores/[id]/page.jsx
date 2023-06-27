@@ -10,6 +10,8 @@ import { useRouter } from 'next/navigation';
 
 export default function Professores() {
     
+    const {push} = useRouter()
+
     const router = useRouter()
     const [data, setData] = useState([])
     const [modalCadastro, setModalCadastro] = useState(false)
@@ -119,6 +121,8 @@ export default function Professores() {
     return(
         <div className={styles.main}>
             <div className={styles.header}>
+                <h1 onClick={() => push(`/Dashboards/landing/${Cookies.getItem("email")}`)}>Início</h1>
+                <h1> - </h1>
                 <h1>Professores</h1>
             </div>
             <div className={styles.campo}>

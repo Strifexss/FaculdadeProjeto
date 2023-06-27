@@ -104,7 +104,7 @@ export default function Layout({ children }) {
           <Icones nome="Início" imagem={ExercicioIcon}/>
           </div>
           <div className={styles.ajuda} onClick={() => setAjuda(true)}>
-            <h1>?</h1>
+            <h3>Ajuda</h3>
           </div>
           </div>
           <div className={styles.perfilFlex}>
@@ -217,8 +217,8 @@ export default function Layout({ children }) {
             <h1 onClick={() => trocarImagemAjuda()}>Anterior</h1>
             <Image 
               src={ajudaImagem}
-              width={500}
-              height={500}
+              width={1000}
+              height={1000}
               alt="Ajuda"
             />
             <h1 onClick={() => trocarImagemAjuda()}>Proximo</h1>

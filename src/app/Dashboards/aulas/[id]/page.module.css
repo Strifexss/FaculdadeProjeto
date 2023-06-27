@@ -18,8 +18,13 @@
 }
 
 .main header h1 {
-    margin: 1rem;
-    transform: translateY(0.5rem);
+  color: gray;
+  cursor: pointer;
+  margin: 0.5rem;
+  transition: 0.1s;
+}
+.main header h1:hover {
+  color: white;
 }
 
 .botoes {

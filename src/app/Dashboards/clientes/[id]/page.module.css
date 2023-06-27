@@ -19,7 +19,13 @@
 }
 
 .rodape h1 {
-    margin: 1rem;
+  color: gray;
+  cursor: pointer;
+  margin: 0.5rem;
+  transition: 0.1s;
+}
+.rodape h1:hover {
+    color:white;
 }
 
 .campo {
